@@ -1,26 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { ResultComponent } from './components/result/result.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from './app.component';
+import { MetroComponent } from './metro/metro.component';
+import { MetroService } from './metro/metro.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent, 
-    ResultComponent
+    MetroComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule, 
-    HttpClientModule
+    FormsModule
   ],
-  providers: [],
+  providers: [MetroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
