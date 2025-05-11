@@ -21,7 +21,8 @@ export class MetroComponent implements OnInit {
   onFindRoute(): void {
     if (this.startStation && this.endStation) {
       const directRoute = this.metroService.findDirectRoute(this.startStation, this.endStation);
-      const transferRoutes = directRoute ? '' : this.metroService.findTransferRoutes(this.startStation, this.endStation);
+      const startIndex = directRoute ? 2 : 1;
+      const transferRoutes = this.metroService.findTransferRoutes(this.startStation, this.endStation, startIndex);
       this.routeDetails = [directRoute, transferRoutes].filter(Boolean).join('\n');
     } else {
       this.routeDetails = 'Please enter both start and end stations.';
