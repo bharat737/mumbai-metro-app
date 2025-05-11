@@ -1,37 +1,32 @@
-body {
-  font-family: Arial, sans-serif;
+.metro-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.container {
-  margin: 20px;
+.input-group {
+  margin-bottom: 15px;
 }
 
-h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-select {
-  margin-right: 10px;
+input {
+  width: 100%;
+  padding: 8px;
 }
 
 button {
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #007bff;
   color: white;
   border: none;
-  cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
-ul {
+.route-output {
+  background: #f1f1f1;
+  padding: 20px;
   margin-top: 20px;
-  list-style-type: none;
-}
-
-li {
-  margin: 5px 0;
+  white-space: pre-wrap;
 }

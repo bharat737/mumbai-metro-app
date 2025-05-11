@@ -1,0 +1,28 @@
+{
+  "lines": [
+    {
+      "name": "Red Line",
+      "stations": ["Dahisar", "Ovaripada", "Borivali East", "Shimpoli", "Gundavali"]
+    },
+    {
+      "name": "Green Line",
+      "stations": ["Mahalaxmi", "Lower Parel", "Dadar", "Gundavali"]
+    },
+    {
+      "name": "Yellow Line",
+      "stations": ["Gundavali", "Andheri", "Marol", "Ghatkopar"]
+    },
+    {
+      "name": "Blue Line",
+      "stations": [
+        "Versova", "D.N. Nagar", "Azad Nagar", "Andheri", "Western Express Highway (WEH)", 
+        "Chakala", "Airport Road", "Marol Naka", "Saki Naka", "Asalpha", "Jagruti Nagar", "Ghatkopar"
+      ]
+    }
+  ],
+  "interchanges": [
+    { "station": "Gundavali", "lines": ["Red Line", "Green Line", "Yellow Line"] },
+    { "station": "Andheri", "lines": ["Yellow Line", "Blue Line"] },
+    { "station": "Ghatkopar", "lines": ["Yellow Line", "Blue Line"] }
+  ]
+}

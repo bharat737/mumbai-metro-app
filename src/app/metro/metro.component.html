@@ -1,26 +1,24 @@
-<div class="container">
-  <h1>Metro Route Finder</h1>
+<div class="metro-container">
+  <h2>Metro Route Finder</h2>
 
-  <div>
-    <label for="startStation">Start Station:</label>
-    <select id="startStation" [(ngModel)]="startStation">
-      <option *ngFor="let station of stations" [value]="station">{{ station }}</option>
-    </select>
+  <div class="input-group">
+    <label>Start Station:</label>
+    <input list="stations" [(ngModel)]="startStation" placeholder="e.g. Versova" />
   </div>
 
-  <div>
-    <label for="endStation">End Station:</label>
-    <select id="endStation" [(ngModel)]="endStation">
-      <option *ngFor="let station of stations" [value]="station">{{ station }}</option>
-    </select>
+  <div class="input-group">
+    <label>End Station:</label>
+    <input list="stations" [(ngModel)]="endStation" placeholder="e.g. Gundavali" />
   </div>
 
-  <button (click)="getRoute()">Find Route</button>
+  <datalist id="stations">
+    <option *ngFor="let station of stations" [value]="station"></option>
+  </datalist>
 
-  <div *ngIf="instructions.length > 0">
-    <h2>Travel Instructions:</h2>
-    <ul>
-      <li *ngFor="let instruction of instructions">{{ instruction }}</li>
-    </ul>
+  <button (click)="onFindRoute()">Find Route</button>
+
+  <div class="route-output" *ngIf="routeDetails">
+    <h3>Route Details:</h3>
+    <pre>{{ routeDetails }}</pre>
   </div>
 </div>

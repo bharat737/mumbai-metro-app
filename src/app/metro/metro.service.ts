@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import stationsData from '../metro/stations.json';
+import stationsData from '../../assets/metro-data.json';
 
-interface Line {
+interface MetroLine {
   name: string;
   stations: string[];
 }
@@ -11,89 +11,97 @@ interface Interchange {
   lines: string[];
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class MetroService {
-  private lines: Line[] = stationsData.lines;
-  private interchanges: Interchange[] = stationsData.interchanges;
+  private lines: MetroLine[] = (stationsData as any).lines;
+  private interchanges: Interchange[] = (stationsData as any).interchanges;
 
-  private buildGraph(): Map<string, string[]> {
-    const graph = new Map<string, string[]>();
+  getAllStations(): string[] {
+    const allStations = this.lines.flatMap((line: MetroLine) => line.stations);
+    return Array.from(new Set(allStations));
+  }
 
+  findDirectRoute(start: string, end: string): string {
     for (const line of this.lines) {
-      for (let i = 0; i < line.stations.length; i++) {
-        const station = line.stations[i];
+      const startIdx = line.stations.indexOf(start);
+      const endIdx = line.stations.indexOf(end);
+      if (startIdx !== -1 && endIdx !== -1) {
+        const route = line.stations.slice(
+          Math.min(startIdx, endIdx),
+          Math.max(startIdx, endIdx) + 1
+        );
+        const time = this.calculateTime(route.length);
+        return `1: From ${start} to ${end} via ${line.name} Line:\n\t${route.join(' -> ')} (Time: ${time})\n`;
+      }
+    }
+    return '';
+  }
 
-        if (!graph.has(station)) graph.set(station, []);
+  findTransferRoutes(start: string, end: string): string {
+    const visitedStations: Set<string> = new Set();
+    let output = '';
 
-        if (i + 1 < line.stations.length) {
-          graph.get(station)!.push(line.stations[i + 1]);
-          if (!graph.has(line.stations[i + 1])) graph.set(line.stations[i + 1], []);
-          graph.get(line.stations[i + 1])!.push(station);
+    for (const interchange of this.interchanges) {
+      if (
+        this.getLines(start).some((line) => interchange.lines.includes(line)) &&
+        this.getLines(end).some((line) => interchange.lines.includes(line))
+      ) {
+        const routeToInterchange = this.getRouteWithInterchange(start, interchange.station, visitedStations);
+        const routeFromInterchange = this.getRouteWithInterchange(interchange.station, end, visitedStations);
+
+        if (
+          routeToInterchange.length === 0 ||
+          routeFromInterchange.length === 0 ||
+          routeToInterchange.includes(end) ||
+          routeToInterchange[routeToInterchange.length - 1] === routeFromInterchange[0]
+        ) {
+          continue;
         }
+
+        const combinedRoute = [...routeToInterchange, ...routeFromInterchange];
+        const endIdx = combinedRoute.indexOf(end);
+        const uniqueRoute = this.removeDuplicateStations(combinedRoute.slice(0, endIdx + 1));
+        const time = this.calculateTime(uniqueRoute.length);
+        const cleanedLineNames = interchange.lines.map(l => l.replace(/ Line$/, '')).join(' and ');
+
+        output += `2: From ${start} to ${end} via ${cleanedLineNames} Line:\n\t${uniqueRoute.join(' -> ')}\n\tChange at ${interchange.station} and take ${cleanedLineNames} Line to ${end}\n\tTotal Time: ${time}\n\n`;
       }
     }
 
-    return graph;
+    return output || 'No transfer route found.';
   }
 
-  private findLinesOfStation(station: string): string[] {
-    return this.lines.filter(line => line.stations.includes(station)).map(line => line.name);
+  getLines(station: string): string[] {
+    return this.lines.filter((line) => line.stations.includes(station)).map((line) => line.name);
   }
 
-  public findPath(start: string, end: string): string[] {
-    const graph = this.buildGraph();
-    const visited = new Set<string>();
-    const queue: [string, string[]][] = [[start, [start]]];
+  calculateTime(stops: number): string {
+    const timeInMinutes = stops * 3;
+    return `${timeInMinutes} minutes`;
+  }
 
-    while (queue.length > 0) {
-      const [current, path] = queue.shift()!;
-      if (current === end) return path;
-
-      for (const neighbor of graph.get(current) || []) {
-        if (!visited.has(neighbor)) {
-          visited.add(neighbor);
-          queue.push([neighbor, [...path, neighbor]]);
-        }
+  getRouteWithInterchange(start: string, end: string, visitedStations: Set<string>): string[] {
+    const routes: string[] = [];
+    for (const line of this.lines) {
+      const startIdx = line.stations.indexOf(start);
+      const endIdx = line.stations.indexOf(end);
+      if (startIdx !== -1 && endIdx !== -1) {
+        const route = line.stations.slice(
+          Math.min(startIdx, endIdx),
+          Math.max(startIdx, endIdx) + 1
+        );
+        routes.push(...route);
       }
     }
-
-    return []; // no path
+    return routes;
   }
 
-  public getTravelInstructions(start: string, end: string): string[] {
-    const path = this.findPath(start, end);
-    if (path.length === 0) return ['No route found'];
-
-    const steps: string[] = [];
-    let currentLine = this.getCommonLine(path[0], path[1]);
-    steps.push(`Start at ${path[0]} on ${currentLine}`);
-
-    for (let i = 1; i < path.length - 1; i++) {
-      const thisLine = this.getCommonLine(path[i], path[i + 1]);
-      if (thisLine !== currentLine) {
-        steps.push(`Get down at ${path[i]} and switch to ${thisLine}`);
-        currentLine = thisLine;
-      }
-    }
-
-    steps.push(`Arrive at ${path[path.length - 1]}`);
-    return steps;
-  }
-
-  private getCommonLine(stationA: string, stationB: string): string {
-    const linesA = this.findLinesOfStation(stationA);
-    const linesB = this.findLinesOfStation(stationB);
-    const common = linesA.find(line => linesB.includes(line));
-    return common || 'Unknown Line';
-  }
-
-  public getAllStations(): string[] {
-    const stationSet = new Set<string>();
-    this.lines.forEach(line => {
-      line.stations.forEach(station => stationSet.add(station));
+  removeDuplicateStations(route: string[]): string[] {
+    const seen = new Set();
+    return route.filter((station) => {
+      if (seen.has(station)) return false;
+      seen.add(station);
+      return true;
     });
-    return Array.from(stationSet).sort();
   }
 }
