@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+select {
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+ul {
+  margin-top: 20px;
+  list-style-type: none;
+}
+
+li {
+  margin: 5px 0;
+}
