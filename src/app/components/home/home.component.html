@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Mumbai Metro Route Finder</h2>
+  <form (ngSubmit)="findRoute()" *ngIf="allStations.length > 0">
+    <label for="start">Start Station:</label>
+    <select [(ngModel)]="startStation" name="start" required>
+      <option *ngFor="let station of allStations" [value]="station">{{ station }}</option>
+    </select>
+
+    <label for="end">End Station:</label>
+    <select [(ngModel)]="endStation" name="end" required>
+      <option *ngFor="let station of allStations" [value]="station">{{ station }}</option>
+    </select>
+
+    <button type="submit">Find Route</button>
+  </form>
+
+  <div *ngIf="result.length > 0" class="result">
+    <h3>Route Instructions:</h3>
+    <ul>
+      <li *ngFor="let step of result">{{ step }}</li>
+    </ul>
+  </div>
+</div>
