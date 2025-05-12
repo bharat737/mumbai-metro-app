@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: '<app-metro></app-metro>',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'mumbai-metro-app';
+  title = 'Metro Route Finder';
 }
