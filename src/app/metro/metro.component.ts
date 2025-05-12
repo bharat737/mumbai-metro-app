@@ -11,12 +11,21 @@ export class MetroComponent implements OnInit {
   endStation: string = '';
   routeDetails: string = '';
   stations: string[] = [];
-  selectedCity: string = ''; // dynamic city toggle
+  selectedCity: string = '';
 
   constructor(private metroService: MetroService) {}
 
-  ngOnInit(): void {
-    this.stations = this.metroService.getAllStations();
+  ngOnInit(): void {}
+
+  selectCity(city: string): void {
+    this.selectedCity = city;
+    this.routeDetails = '';
+    this.startStation = '';
+    this.endStation = '';
+
+    this.metroService.loadCityData(city).then(() => {
+      this.stations = this.metroService.getAllStations();
+    });
   }
 
   onFindRoute(): void {
@@ -28,12 +37,5 @@ export class MetroComponent implements OnInit {
     } else {
       this.routeDetails = 'Please enter both start and end stations.';
     }
-  }
-
-  selectCity(city: string): void {
-    this.selectedCity = city;
-    this.routeDetails = '';
-    this.startStation = '';
-    this.endStation = '';
   }
 }

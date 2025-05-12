@@ -1,52 +1,64 @@
-<div class="app-tabs">
+<!-- Add Bootstrap & Bootstrap Icons to index.html -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+<div class="container py-4">
   <!-- Top tab icons -->
-  <div class="main-tabs">
-    <button class="tab-icon selected">
-      <span class="material-icons">directions_subway</span>
-      <div>Metro</div>
+  <div class="d-flex justify-content-center mb-3">
+    <button class="btn btn-outline-primary me-2 active">
+      <i class="bi bi-train-front"></i> Metro
     </button>
-    <button class="tab-icon">
-      <span class="material-icons">train</span>
-      <div>Train</div>
+    <button class="btn btn-outline-secondary">
+      <i class="bi bi-train-lightrail-front"></i> Train
     </button>
   </div>
 
-  <!-- Region tabs -->
-  <div class="region-tabs">
-    <button class="region-tab selected">Maharashtra</button>
-    <button class="region-tab">Delhi</button>
-    <button class="region-tab">Bangalore</button>
-  </div>
+  <!-- Region tabs inside Metro -->
+  <ul class="nav nav-tabs justify-content-center mb-3">
+    <li class="nav-item">
+      <button class="nav-link active">Maharashtra</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link">Delhi</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link">Bangalore</button>
+    </li>
+  </ul>
 
-  <!-- City options -->
-  <div class="city-options">
-    <div class="city-tile" (click)="selectCity('mumbai')">
-      <img src="assets/icons/mumbai.png" alt="Mumbai" />
+  <!-- City icons inside Maharashtra -->
+  <div class="d-flex justify-content-center gap-4 flex-wrap mb-4">
+    <div class="text-center" role="button" (click)="selectCity('mumbai')">
+      <img src="../../assets/icons/mumbai-logo.png" alt="Mumbai" class="img-fluid" style="max-width: 80px;" />
       <div>Mumbai</div>
     </div>
-    <div class="city-tile" (click)="selectCity('pune')">
-      <img src="assets/icons/pune.png" alt="Pune" />
+    <div class="text-center" role="button" (click)="selectCity('pune')">
+      <img src="../../assets/icons/pune.png" alt="Pune" class="img-fluid" style="max-width: 80px;" />
       <div>Pune</div>
     </div>
   </div>
 
-  <!-- Mumbai Route UI -->
-  <div *ngIf="selectedCity === 'mumbai'" style="padding-top: 20px;">
-    <label for="start">Start Station:</label>
-    <input list="stations" id="start" [(ngModel)]="startStation" placeholder="Enter start station" />
+  <!-- Metro Route UI -->
+  <div *ngIf="selectedCity">
+    <div class="mb-3">
+      <label for="start" class="form-label">Start Station:</label>
+      <input list="stations" id="start" [(ngModel)]="startStation" placeholder="Enter start station" class="form-control" />
+    </div>
 
-    <label for="end">End Station:</label>
-    <input list="stations" id="end" [(ngModel)]="endStation" placeholder="Enter end station" />
+    <div class="mb-3">
+      <label for="end" class="form-label">End Station:</label>
+      <input list="stations" id="end" [(ngModel)]="endStation" placeholder="Enter end station" class="form-control" />
+    </div>
 
     <datalist id="stations">
       <option *ngFor="let station of stations" [value]="station"></option>
     </datalist>
 
-    <button (click)="onFindRoute()">Find Route</button>
+    <button class="btn btn-primary mb-3" (click)="onFindRoute()">Find Route</button>
 
     <div *ngIf="routeDetails">
-      <h3>Route Details:</h3>
-      <pre>{{ routeDetails }}</pre>
+      <h4>Route Details:</h4>
+      <pre class="bg-light p-3 border rounded">{{ routeDetails }}</pre>
     </div>
   </div>
 </div>
