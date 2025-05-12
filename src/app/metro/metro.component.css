@@ -1,32 +1,122 @@
-.metro-container {
-  max-width: 600px;
-  margin: 0 auto;
+.app-tabs {
+  max-width: 800px;
+  margin: auto;
   padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
-.input-group {
-  margin-bottom: 15px;
+.main-tabs,
+.region-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-icon,
+.region-tab {
+  background-color: #eee;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  flex: 1 0 100px;
+}
+
+.tab-icon.selected,
+.region-tab.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.tab-icon .material-icons {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.city-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.city-tile {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease;
+  width: 100px;
+}
+
+.city-tile:hover {
+  transform: scale(1.05);
+}
+
+.city-tile img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 input {
   width: 100%;
   padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
 button {
-  padding: 10px;
+  padding: 10px 20px;
+  margin-top: 10px;
   background-color: #007bff;
-  color: white;
   border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
 }
 
 button:hover {
   background-color: #0056b3;
 }
 
-.route-output {
-  background: #f1f1f1;
-  padding: 20px;
-  margin-top: 20px;
+pre {
+  background-color: #f0f0f0;
+  padding: 15px;
   white-space: pre-wrap;
+  border-radius: 5px;
+}
+
+/* ✅ Mobile responsiveness */
+@media (max-width: 600px) {
+  .main-tabs,
+  .region-tabs,
+  .city-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab-icon,
+  .region-tab,
+  .city-tile {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  button {
+    width: 100%;
+  }
 }

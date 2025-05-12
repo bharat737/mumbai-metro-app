@@ -11,6 +11,7 @@ export class MetroComponent implements OnInit {
   endStation: string = '';
   routeDetails: string = '';
   stations: string[] = [];
+  selectedCity: string = ''; // dynamic city toggle
 
   constructor(private metroService: MetroService) {}
 
@@ -27,5 +28,12 @@ export class MetroComponent implements OnInit {
     } else {
       this.routeDetails = 'Please enter both start and end stations.';
     }
+  }
+
+  selectCity(city: string): void {
+    this.selectedCity = city;
+    this.routeDetails = '';
+    this.startStation = '';
+    this.endStation = '';
   }
 }

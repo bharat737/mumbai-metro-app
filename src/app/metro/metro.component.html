@@ -1,24 +1,52 @@
-<div class="metro-container">
-  <h2>Metro Route Finder</h2>
-
-  <div class="input-group">
-    <label>Start Station:</label>
-    <input list="stations" [(ngModel)]="startStation" placeholder="e.g. Versova" />
+<div class="app-tabs">
+  <!-- Top tab icons -->
+  <div class="main-tabs">
+    <button class="tab-icon selected">
+      <span class="material-icons">directions_subway</span>
+      <div>Metro</div>
+    </button>
+    <button class="tab-icon">
+      <span class="material-icons">train</span>
+      <div>Train</div>
+    </button>
   </div>
 
-  <div class="input-group">
-    <label>End Station:</label>
-    <input list="stations" [(ngModel)]="endStation" placeholder="e.g. Gundavali" />
+  <!-- Region tabs -->
+  <div class="region-tabs">
+    <button class="region-tab selected">Maharashtra</button>
+    <button class="region-tab">Delhi</button>
+    <button class="region-tab">Bangalore</button>
   </div>
 
-  <datalist id="stations">
-    <option *ngFor="let station of stations" [value]="station"></option>
-  </datalist>
+  <!-- City options -->
+  <div class="city-options">
+    <div class="city-tile" (click)="selectCity('mumbai')">
+      <img src="assets/icons/mumbai.png" alt="Mumbai" />
+      <div>Mumbai</div>
+    </div>
+    <div class="city-tile" (click)="selectCity('pune')">
+      <img src="assets/icons/pune.png" alt="Pune" />
+      <div>Pune</div>
+    </div>
+  </div>
 
-  <button (click)="onFindRoute()">Find Route</button>
+  <!-- Mumbai Route UI -->
+  <div *ngIf="selectedCity === 'mumbai'" style="padding-top: 20px;">
+    <label for="start">Start Station:</label>
+    <input list="stations" id="start" [(ngModel)]="startStation" placeholder="Enter start station" />
 
-  <div class="route-output" *ngIf="routeDetails">
-    <h3>Route Details:</h3>
-    <pre>{{ routeDetails }}</pre>
+    <label for="end">End Station:</label>
+    <input list="stations" id="end" [(ngModel)]="endStation" placeholder="Enter end station" />
+
+    <datalist id="stations">
+      <option *ngFor="let station of stations" [value]="station"></option>
+    </datalist>
+
+    <button (click)="onFindRoute()">Find Route</button>
+
+    <div *ngIf="routeDetails">
+      <h3>Route Details:</h3>
+      <pre>{{ routeDetails }}</pre>
+    </div>
   </div>
 </div>

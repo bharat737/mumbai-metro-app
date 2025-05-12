@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import stationsData from '../../assets/metro-data.json';
+import stationsData from '../../assets/mumbai-metro.json';
 
 interface MetroLine {
   name: string;
