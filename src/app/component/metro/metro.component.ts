@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MetroService } from './metro.service';
+import { MetroService } from '../../services/metro.service';
 
 @Component({
   selector: 'app-metro',

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MetroComponent } from './metro/metro.component';
-import { TrainComponent } from './train/train.component';
+import { MetroComponent } from './component/metro/metro.component';
+import { TrainComponent } from './component/train/train.component';
 
 const routes: Routes = [
   { path: 'metro', component: MetroComponent },
