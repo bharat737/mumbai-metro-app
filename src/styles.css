@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+h3, h5 { font-weight: bold; }
+.container { max-width: 900px; margin: auto; }
+.nav-link { cursor: pointer; font-weight: 500; color: #495057; }
+.nav-link.active { color: #0d6efd; border-bottom: 2px solid #0d6efd; }
+.text-center img { max-width: 80px; height: auto; }
+.text-center { cursor: pointer; transition: transform 0.2s ease-in-out; }
+.text-center:hover { transform: scale(1.05); }
+.btn { min-width: 120px; }
+pre { white-space: pre-wrap; background-color: #f1f1f1; border: 1px solid #ddd; padding: 1rem; border-radius: 4px; overflow-x: auto; }

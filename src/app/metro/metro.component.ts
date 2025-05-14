@@ -12,17 +12,21 @@ export class MetroComponent implements OnInit {
   routeDetails: string = '';
   stations: string[] = [];
   selectedCity: string = '';
+  region: string = 'Maharashtra';
 
   constructor(private metroService: MetroService) {}
 
   ngOnInit(): void {}
 
+  onRegionSelected(region: string): void {
+    this.region = region;
+    this.selectedCity = '';
+    this.routeDetails = '';
+  }
+
   selectCity(city: string): void {
     this.selectedCity = city;
     this.routeDetails = '';
-    this.startStation = '';
-    this.endStation = '';
-
     this.metroService.loadCityData(city).then(() => {
       this.stations = this.metroService.getAllStations();
     });

@@ -1,0 +1,7 @@
+{
+  "cities": ["Mumbai", "Pune"],
+  "stations": {
+    "Mumbai": ["Station A", "Station B"],
+    "Pune": ["Station C", "Station D"]
+  }
+}

@@ -1,6 +1,13 @@
-<nav class="nav justify-content-center bg-light py-2 mb-3">
-  <a routerLink="/metro" class="nav-link">🚇 Metro</a>
-  <a routerLink="/train" class="nav-link">🚆 Train</a>
-</nav>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-<router-outlet></router-outlet>
+<div class="container py-4">
+  <!-- Top tab icons -->
+  <nav class="nav justify-content-center mb-4">
+    <a routerLink="/metro" routerLinkActive="active" class="nav-link">🚇 Metro</a>
+    <a routerLink="/train" routerLinkActive="active" class="nav-link">🚆 Train</a>
+  </nav>
+
+  <!-- Router outlet displays metro or train UI -->
+  <router-outlet></router-outlet>
+</div>
