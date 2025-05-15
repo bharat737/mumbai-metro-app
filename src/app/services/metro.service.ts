@@ -20,7 +20,7 @@ export class MetroService {
 
   loadCityData(city: string): Promise<void> {
     const file = city === 'mumbai' ? 'mumbai-metro.json' : 'pune-metro.json';
-    return this.http.get<any>(`assets/${file}`).toPromise().then(data => {
+    return this.http.get<any>(`assets/data/metro/${file}`).toPromise().then(data => {
       this.lines = data.lines;
       this.interchanges = data.interchanges;
     });

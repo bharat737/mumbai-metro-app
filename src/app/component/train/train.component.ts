@@ -1,30 +1,36 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
+import { TrainService } from '../../services/train.service';
 
 @Component({
   selector: 'app-train',
   templateUrl: './train.component.html',
   styleUrls: ['./train.component.css']
 })
-export class TrainComponent {
-  region: string = 'Maharashtra';
-  selectedCity: string = '';
+export class TrainComponent implements OnChanges {
+  @Input() cityName!: string;
 
-   @Input() cityName!: string;
+  startStation: string = '';
+  endStation: string = '';
+  stations: string[] = [];
+  routeDetails: string = '';
 
-  onRegionSelected(region: string): void {
-    this.region = region;
-    this.selectedCity = '';
-  }
+  constructor(private trainService: TrainService) {}
 
-  selectCity(city: string): void {
-    this.selectedCity = city;
-  }
-
-  ngOnChanges() {
-  if (this.cityName?.toLowerCase() === 'mumbai') {
-    this.region = 'Maharashtra';
-    this.selectCity('mumbai');
+  ngOnChanges(): void {
+  if (this.cityName) {
+    const city = this.cityName.toLowerCase(); // normalize
+    this.trainService.loadStationData(city).then(() => {
+      this.stations = this.trainService.getStations();
+    });
   }
 }
 
+
+  onFindRoute(): void {
+    if (this.startStation && this.endStation) {
+      this.routeDetails = this.trainService.findRoute(this.startStation, this.endStation);
+    } else {
+      this.routeDetails = 'Please enter both start and end stations.';
+    }
+  }
 }

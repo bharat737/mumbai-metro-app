@@ -1,22 +1,26 @@
-<div class="container py-4">
-  <h3 class="text-center mb-3">🚆 Train Route Finder</h3>
-  
-  <!-- Cities for Maharashtra -->
-  <div class="d-flex justify-content-center gap-4 flex-wrap mb-4" *ngIf="region === 'Maharashtra'">
-    <div class="text-center" role="button" (click)="selectCity('mumbai')">
-      <img src="assets/icons/mumbai-logo.png" alt="Mumbai Train" class="img-fluid" style="max-width: 80px;" />
-      <div>Mumbai Train</div>
+<!-- Only show input if data is loaded -->
+<div *ngIf="stations.length > 0">
+  <app-station-input
+    [stations]="stations"
+    [start]="startStation"
+    [end]="endStation"
+    (startChange)="startStation = $event"
+    (endChange)="endStation = $event"
+  ></app-station-input>
+
+  <button class="btn find-btn" (click)="onFindRoute()">Find Route</button>
+
+  <div *ngIf="routeDetails">
+    <h5 class="route-title">🧭 Route Options</h5>
+    <div class="route-card">
+      <pre class="m-0">{{ routeDetails }}</pre>
     </div>
   </div>
+</div>
 
-  <!-- Coming soon for other regions -->
-  <div class="text-center text-muted" *ngIf="region !== 'Maharashtra'">
-    <p>{{ region }} train routes coming soon...</p>
-  </div>
-
-  <!-- Coming Soon Message for Selected City -->
-  <div *ngIf="selectedCity === 'mumbai'" class="text-center mt-4">
-    <h5>🚧 Mumbai Train Routes</h5>
-    <p class="text-muted">Coming Soon...</p>
-  </div>
+<!-- Show this only if no data loaded -->
+<div *ngIf="stations.length === 0">
+  <p class="text-muted text-center">
+    We're working on local train support for {{ cityName | titlecase }}.
+  </p>
 </div>
