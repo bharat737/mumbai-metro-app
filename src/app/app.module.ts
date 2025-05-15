@@ -7,7 +7,6 @@ import { MetroComponent } from './component/metro/metro.component';
 import { MetroService } from './services/metro.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TrainComponent } from './component/train/train.component';
-import { RegionTabsComponent } from './component/region-tabs/region-tabs.component';
 import { MenuService } from './services/menu.service';
 import { CityTransportSelectorComponent } from './component/city-transport-selector/city-transport-selector.component';
 import { AppHeaderComponent } from './component/app-header/app-header.component';
@@ -16,7 +15,7 @@ import { TransportCardComponent } from './component/transport-card/transport-car
 import { StationInputComponent } from './component/station-input/station-input.component';
 
 @NgModule({
-  declarations: [AppComponent, MetroComponent, TrainComponent, RegionTabsComponent, CityTransportSelectorComponent, AppHeaderComponent, AppSidebarComponent, TransportCardComponent, StationInputComponent],
+  declarations: [AppComponent, MetroComponent, TrainComponent, CityTransportSelectorComponent, AppHeaderComponent, AppSidebarComponent, TransportCardComponent, StationInputComponent],
   imports: [BrowserModule, FormsModule,HttpClientModule],
   providers: [MetroService,MenuService],
   bootstrap: [AppComponent]
