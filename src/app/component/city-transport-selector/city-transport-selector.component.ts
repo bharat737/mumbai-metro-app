@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-city-transport-selector',
@@ -7,14 +7,19 @@ import { Component, Input } from '@angular/core';
 })
 export class CityTransportSelectorComponent {
   @Input() city: any;
-  selectedMode: string | null = null;
+
+  
+  @Input() selectedMode: string | null = null;
+  @Output() modeChange = new EventEmitter<string>();
 
   selectMode(mode: string) {
     this.selectedMode = mode;
+    this.modeChange.emit(mode);
   }
 
   clearMode() {
     this.selectedMode = null;
+     this.modeChange.emit('');
   }
 
   getTransportIcon(mode: string): string {

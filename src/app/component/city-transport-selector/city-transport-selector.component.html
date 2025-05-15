@@ -4,18 +4,17 @@
   <span class="back-button" (click)="clearMode()">←</span>
   <h2>Travel</h2>
 </div>
-
 <!-- Initial transport mode cards shown only if no mode selected -->
-<div *ngIf="!selectedMode && city?.transports?.length">
+<ng-container *ngIf="!selectedMode && city?.transports?.length ">
   <h2>Travel in {{ city.name }}</h2>
   <div class="card-container">
     <app-transport-card
       *ngFor="let mode of city.transports"
       [mode]="mode"
-      (click)="selectMode(mode)"
+      (cardClick)="selectMode($event)"
     ></app-transport-card>
   </div>
-</div>
+</ng-container>
 
 <!-- Transport tabs shown only when a mode is selected -->
 <div *ngIf="selectedMode && city?.transports?.length" class="transport-bar">
@@ -29,6 +28,7 @@
     <span>{{ mode | titlecase }}</span>
   </div>
 </div>
+
 
 <!-- Transport-specific component -->
 <app-metro *ngIf="selectedMode === 'metro'" [cityName]="city.name"></app-metro>

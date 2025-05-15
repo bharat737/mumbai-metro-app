@@ -7,6 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class AppHeaderComponent {
  @Input() selectedCity: any;
+ @Input() selectedMode: string | null = null;
+
   @Output() menuToggle = new EventEmitter<void>();
 
   onMenuClick() {

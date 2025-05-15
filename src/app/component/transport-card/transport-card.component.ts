@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-transport-card',
@@ -7,4 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class TransportCardComponent {
   @Input() mode!: string;
+  @Output() cardClick = new EventEmitter<string>();
+
+  onCardClick() {
+    this.cardClick.emit(this.mode);
+  }
 }

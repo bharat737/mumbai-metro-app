@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   expandedStates: boolean[] = [];
   sidebarOpen = false;
   selectedCity: any = null;
+  selectedMode: string | null = null;
   
 
   ngOnInit() {
@@ -47,5 +48,6 @@ export class AppComponent implements OnInit {
   selectCity(city: any) {
     this.selectedCity = city;
     this.sidebarOpen = false;
+    this.selectedMode = null; 
   }
 }

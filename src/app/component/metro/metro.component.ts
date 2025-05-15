@@ -19,10 +19,13 @@ export class MetroComponent implements OnChanges {
   constructor(private metroService: MetroService) {}
 
   ngOnChanges(): void {
-  if (this.cityName) {
-    this.selectCity(this.cityName.toLowerCase());
+    if (this.cityName) {
+      this.selectedCity = this.cityName.toLowerCase(); // sync input to internal variable
+      this.metroService.loadCityData(this.selectedCity).then(() => {
+        this.stations = this.metroService.getAllStations();
+      });
+    }
   }
-}
 
   onRegionSelected(region: string): void {
     this.region = region;
@@ -38,7 +41,7 @@ export class MetroComponent implements OnChanges {
     });
   }
 
-  onFindRoute(): void {
+   onFindRoute(): void {
     if (this.startStation && this.endStation) {
       const directRoute = this.metroService.findDirectRoute(this.startStation, this.endStation);
       const startIndex = directRoute ? 2 : 1;

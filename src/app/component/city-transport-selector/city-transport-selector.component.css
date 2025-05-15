@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: #fff;
+  background-color: skyblue;
   border-bottom: 1px solid #ccc;
 }
 
@@ -55,4 +55,29 @@
 .transport-tab span {
   font-size: 14px;
   font-weight: 500;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0;
+  padding: 0 16px;
+  width: 100%;
+}
+
+.transport-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 12px;
+  width: 130px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.transport-card:hover {
+  background-color: #e6f0ff;
 }
