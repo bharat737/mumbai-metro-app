@@ -3,19 +3,10 @@
 
   <div class="card-container">
     <ng-container *ngIf="city.transports?.length > 0; else noTransport">
-      <div class="transport-card" *ngFor="let mode of city.transports">
-        <img
-          *ngIf="mode === 'metro'"
-          src="assets/icons/metro-icon.png"
-          alt="metro"
-        />
-        <img
-          *ngIf="mode === 'local train'"
-          src="assets/icons/train-icon.png"
-          alt="train"
-        />
-        <div class="label">{{ mode | titlecase }}</div>
-      </div>
+      <app-transport-card
+  *ngFor="let mode of city.transports"
+  [mode]="mode"></app-transport-card>
+
     </ng-container>
 
     <ng-template #noTransport>

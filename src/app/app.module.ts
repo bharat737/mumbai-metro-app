@@ -11,9 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegionTabsComponent } from './component/region-tabs/region-tabs.component';
 import { MenuService } from './services/menu.service';
 import { CityTransportSelectorComponent } from './component/city-transport-selector/city-transport-selector.component';
+import { AppHeaderComponent } from './component/app-header/app-header.component';
+import { AppSidebarComponent } from './component/app-sidebar/app-sidebar.component';
+import { TransportCardComponent } from './component/transport-card/transport-card.component';
 
 @NgModule({
-  declarations: [AppComponent, MetroComponent, TrainComponent, RegionTabsComponent, CityTransportSelectorComponent],
+  declarations: [AppComponent, MetroComponent, TrainComponent, RegionTabsComponent, CityTransportSelectorComponent, AppHeaderComponent, AppSidebarComponent, TransportCardComponent],
   imports: [BrowserModule, FormsModule,HttpClientModule,AppRoutingModule],
   providers: [MetroService,MenuService],
   bootstrap: [AppComponent]

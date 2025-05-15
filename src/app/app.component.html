@@ -1,33 +1,21 @@
 <div class="app-container">
   <!-- Header -->
-  <header class="app-header">
-    <span class="menu-icon" (click)="toggleSidebar($event)">&#9776;</span>
-    <input class="search-bar" placeholder="Search" />
-    <div class="location">📍 {{ selectedCity?.name || 'Select City' }}</div>
-  </header>
+<app-header
+  [selectedCity]="selectedCity"
+  (menuToggle)="toggleSidebar()"
+></app-header>
+
 
   <!-- Sidebar -->
-  <aside class="sidebar" [class.open]="sidebarOpen" (click)="$event.stopPropagation()">
-    <ng-container *ngFor="let region of regions; let i = index">
-      <div class="state" (click)="toggleState(i)">
-        <img [src]="region.icon" class="state-icon" />
-        {{ region.state }}
-        <span class="arrow">{{ expandedStates[i] ? '▲' : '▼' }}</span>
-      </div>
-
-      <!-- Show cities if state is expanded -->
-      <ng-container *ngIf="expandedStates[i]">
-        <div
-          class="city"
-          *ngFor="let city of region.cities"
-          (click)="selectCity(city)"
-        >
-          <img [src]="city.icon" class="city-icon" />
-          {{ city.name }}
-        </div>
-      </ng-container>
-    </ng-container>
-  </aside>
+  
+<app-sidebar
+  [regions]="regions"
+  [expandedStates]="expandedStates"
+  [sidebarOpen]="sidebarOpen"
+  (citySelected)="selectCity($event)"
+  (stateToggle)="toggleState($event)"
+  (closeSidebar)="closeSidebar()"
+></app-sidebar>
 
   <!-- Overlay -->
   <div class="overlay" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>

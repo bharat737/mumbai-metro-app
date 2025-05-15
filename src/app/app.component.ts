@@ -1,28 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import regionsData from '../assets/menu/regions.json'; // Adjust path if needed
+
+interface City {
+  name: string;
+  icon: string;
+  transports?: string[];
+}
+
+interface Region {
+  state: string;
+  icon: string;
+  cities: City[];
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
   regions: any[] = [];
-  selectedCity: any = null;
-  sidebarOpen = false;
   expandedStates: boolean[] = [];
-
-  constructor(private http: HttpClient) {}
+  sidebarOpen = false;
+  selectedCity: any = null;
+  
 
   ngOnInit() {
-    this.http.get<any>('assets/menu/regions.json').subscribe((data) => {
-      this.regions = data.regions;
-      this.expandedStates = new Array(this.regions.length).fill(false);
-    });
+    const data = regionsData as { regions: Region[] };
+    this.regions = data.regions;
+    this.expandedStates = Array(this.regions.length).fill(false);
   }
 
-  toggleSidebar(event: Event) {
-    event.stopPropagation();
+  toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }
 
@@ -31,11 +41,11 @@ export class AppComponent implements OnInit {
   }
 
   toggleState(index: number) {
-    this.expandedStates = this.expandedStates.map((v, i) => i === index ? !v : false);
+    this.expandedStates[index] = !this.expandedStates[index];
   }
 
   selectCity(city: any) {
     this.selectedCity = city;
-    this.closeSidebar();
+    this.sidebarOpen = false;
   }
 }
