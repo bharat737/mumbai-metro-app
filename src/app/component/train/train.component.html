@@ -1,9 +1,6 @@
 <div class="container py-4">
   <h3 class="text-center mb-3">🚆 Train Route Finder</h3>
-
-  <!-- Region Tabs -->
-  <app-region-tabs (regionChange)="onRegionSelected($event)"></app-region-tabs>
-
+  
   <!-- Cities for Maharashtra -->
   <div class="d-flex justify-content-center gap-4 flex-wrap mb-4" *ngIf="region === 'Maharashtra'">
     <div class="text-center" role="button" (click)="selectCity('mumbai')">

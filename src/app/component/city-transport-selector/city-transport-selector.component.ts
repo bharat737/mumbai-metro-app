@@ -13,5 +13,20 @@ selectedMode: string | null = null;
 selectMode(mode: string) {
   this.selectedMode = mode;
 }
+clearMode() {
+  this.selectedMode = null;
+}
+
+getTransportIcon(mode: string): string {
+  switch (mode) {
+    case 'metro':
+      return 'assets/icons/metro-icon.png';
+    case 'local train':
+      return 'assets/icons/train-icon.png';
+    default:
+      return 'assets/icons/default.png';
+  }
+}
+
 
 }

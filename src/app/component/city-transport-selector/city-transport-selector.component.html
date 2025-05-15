@@ -1,17 +1,34 @@
-<div *ngIf="city">
-  <h2>Travel in {{ city.name }}</h2>
+<!-- Back Header (only when a mode is selected) -->
+<div *ngIf="selectedMode" class="transport-header">
+  <span class="back-button" (click)="clearMode()">←</span>
+  <h2>Travel</h2>
+</div>
 
+<!-- Initial transport cards shown only if no mode selected -->
+<div *ngIf="!selectedMode && city?.transports?.length">
+  <h2>Travel in {{ city.name }}</h2>
   <div class="card-container">
-  <app-transport-card
+    <app-transport-card
+      *ngFor="let mode of city.transports"
+      [mode]="mode"
+      (click)="selectMode(mode)"
+    ></app-transport-card>
+  </div>
+</div>
+
+<!-- Transport tabs shown only when a mode is selected -->
+<div *ngIf="selectedMode && city?.transports?.length" class="transport-bar">
+  <div
     *ngFor="let mode of city.transports"
-    [mode]="mode"
+    class="transport-tab"
+    [class.active]="selectedMode === mode"
     (click)="selectMode(mode)"
-  ></app-transport-card>
+  >
+    <img [src]="getTransportIcon(mode)" alt="{{ mode }}" />
+    <span>{{ mode | titlecase }}</span>
+  </div>
 </div>
-</div>
-    <!-- Metro Component integration -->
-<app-metro *ngIf="city.transports?.includes('metro')" [cityName]="city.name"></app-metro>
-    <ng-template #noTransport>
-      <div class="no-transport">We're working on transport options for {{ city.name }}!</div>
-    </ng-template>
-  
+
+<!-- Transport-specific component -->
+<app-metro *ngIf="selectedMode === 'metro'" [cityName]="city.name"></app-metro>
+<app-train *ngIf="selectedMode === 'local train'" [cityName]="city.name"></app-train>

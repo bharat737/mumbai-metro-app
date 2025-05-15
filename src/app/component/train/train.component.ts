@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-train',
@@ -9,6 +9,8 @@ export class TrainComponent {
   region: string = 'Maharashtra';
   selectedCity: string = '';
 
+   @Input() cityName!: string;
+
   onRegionSelected(region: string): void {
     this.region = region;
     this.selectedCity = '';
@@ -17,4 +19,12 @@ export class TrainComponent {
   selectCity(city: string): void {
     this.selectedCity = city;
   }
+
+  ngOnChanges() {
+  if (this.cityName?.toLowerCase() === 'mumbai') {
+    this.region = 'Maharashtra';
+    this.selectCity('mumbai');
+  }
+}
+
 }
