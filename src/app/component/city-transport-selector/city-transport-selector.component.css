@@ -12,6 +12,14 @@
   cursor: pointer;
 }
 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+  justify-content: flex-start;
+}
+
 .transport-bar {
   display: flex;
   overflow-x: auto;

@@ -1,10 +1,11 @@
-<!-- Back Header (only when a mode is selected) -->
+<!-- city-transport-selector.component.html -->
+<!-- Full Header when a mode is selected -->
 <div *ngIf="selectedMode" class="transport-header">
   <span class="back-button" (click)="clearMode()">←</span>
   <h2>Travel</h2>
 </div>
 
-<!-- Initial transport cards shown only if no mode selected -->
+<!-- Initial transport mode cards shown only if no mode selected -->
 <div *ngIf="!selectedMode && city?.transports?.length">
   <h2>Travel in {{ city.name }}</h2>
   <div class="card-container">

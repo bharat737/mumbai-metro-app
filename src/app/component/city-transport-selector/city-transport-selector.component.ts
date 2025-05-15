@@ -7,26 +7,28 @@ import { Component, Input } from '@angular/core';
 })
 export class CityTransportSelectorComponent {
   @Input() city: any;
+  selectedMode: string | null = null;
 
-selectedMode: string | null = null;
-
-selectMode(mode: string) {
-  this.selectedMode = mode;
-}
-clearMode() {
-  this.selectedMode = null;
-}
-
-getTransportIcon(mode: string): string {
-  switch (mode) {
-    case 'metro':
-      return 'assets/icons/metro-icon.png';
-    case 'local train':
-      return 'assets/icons/train-icon.png';
-    default:
-      return 'assets/icons/default.png';
+  selectMode(mode: string) {
+    this.selectedMode = mode;
   }
-}
 
+  clearMode() {
+    this.selectedMode = null;
+  }
 
+  getTransportIcon(mode: string): string {
+    switch (mode) {
+      case 'metro':
+        return 'assets/icons/metro-icon.png';
+      case 'local train':
+        return 'assets/icons/train-icon.png';
+      case 'bus':
+        return 'assets/icons/bus-icon.png';
+      case 'monorail':
+        return 'assets/icons/monorail-icon.png';
+      default:
+        return 'assets/icons/default-icon.png';
+    }
+  }
 }
