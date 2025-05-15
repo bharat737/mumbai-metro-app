@@ -1,13 +1,39 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+<div class="app-container">
+  <!-- Header -->
+  <header class="app-header">
+    <span class="menu-icon" (click)="toggleSidebar($event)">&#9776;</span>
+    <input class="search-bar" placeholder="Search" />
+    <div class="location">📍 {{ selectedCity?.name || 'Select City' }}</div>
+  </header>
 
-<div class="container py-4">
-  <!-- Top tab icons -->
-  <nav class="nav justify-content-center mb-4">
-    <a routerLink="/metro" routerLinkActive="active" class="nav-link">🚇 Metro</a>
-    <a routerLink="/train" routerLinkActive="active" class="nav-link">🚆 Train</a>
-  </nav>
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.open]="sidebarOpen" (click)="$event.stopPropagation()">
+    <ng-container *ngFor="let region of regions; let i = index">
+      <div class="state" (click)="toggleState(i)">
+        <img [src]="region.icon" class="state-icon" />
+        {{ region.state }}
+        <span class="arrow">{{ expandedStates[i] ? '▲' : '▼' }}</span>
+      </div>
 
-  <!-- Router outlet displays metro or train UI -->
-  <router-outlet></router-outlet>
+      <!-- Show cities if state is expanded -->
+      <ng-container *ngIf="expandedStates[i]">
+        <div
+          class="city"
+          *ngFor="let city of region.cities"
+          (click)="selectCity(city)"
+        >
+          <img [src]="city.icon" class="city-icon" />
+          {{ city.name }}
+        </div>
+      </ng-container>
+    </ng-container>
+  </aside>
+
+  <!-- Overlay -->
+  <div class="overlay" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>
+
+  <!-- Main Content with dynamic city transport rendering -->
+  <main class="content">
+    <app-city-transport-selector [city]="selectedCity"></app-city-transport-selector>
+  </main>
 </div>
