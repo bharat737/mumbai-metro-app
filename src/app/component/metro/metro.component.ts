@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MetroService } from '../../services/metro.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { MetroService } from '../../services/metro.service';
   templateUrl: './metro.component.html',
   styleUrls: ['./metro.component.css']
 })
-export class MetroComponent implements OnInit {
+export class MetroComponent implements OnChanges {
   startStation: string = '';
   endStation: string = '';
   routeDetails: string = '';
@@ -14,9 +14,15 @@ export class MetroComponent implements OnInit {
   selectedCity: string = '';
   region: string = 'Maharashtra';
 
+  @Input() cityName: string | undefined;
+
   constructor(private metroService: MetroService) {}
 
-  ngOnInit(): void {}
+  ngOnChanges(): void {
+  if (this.cityName) {
+    this.selectCity(this.cityName.toLowerCase());
+  }
+}
 
   onRegionSelected(region: string): void {
     this.region = region;

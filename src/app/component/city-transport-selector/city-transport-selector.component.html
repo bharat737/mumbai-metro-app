@@ -2,15 +2,16 @@
   <h2>Travel in {{ city.name }}</h2>
 
   <div class="card-container">
-    <ng-container *ngIf="city.transports?.length > 0; else noTransport">
-      <app-transport-card
-  *ngFor="let mode of city.transports"
-  [mode]="mode"></app-transport-card>
-
-    </ng-container>
-
+  <app-transport-card
+    *ngFor="let mode of city.transports"
+    [mode]="mode"
+    (click)="selectMode(mode)"
+  ></app-transport-card>
+</div>
+</div>
+    <!-- Metro Component integration -->
+<app-metro *ngIf="city.transports?.includes('metro')" [cityName]="city.name"></app-metro>
     <ng-template #noTransport>
       <div class="no-transport">We're working on transport options for {{ city.name }}!</div>
     </ng-template>
-  </div>
-</div>
+  

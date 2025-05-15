@@ -1,26 +1,5 @@
 <div class="container py-4">
   <h3 class="text-center mb-3">🚇 Metro Route Finder</h3>
-
-  <!-- Region Tabs -->
-  <app-region-tabs (regionChange)="onRegionSelected($event)"></app-region-tabs>
-
-  <!-- Cities for Maharashtra -->
-  <div class="d-flex justify-content-center gap-4 flex-wrap mb-4" *ngIf="region === 'Maharashtra'">
-    <div class="text-center" role="button" (click)="selectCity('mumbai')">
-      <img src="assets/icons/mumbai-logo.png" alt="Mumbai Metro" class="img-fluid" style="max-width: 80px;" />
-      <div>Mumbai</div>
-    </div>
-    <div class="text-center" role="button" (click)="selectCity('pune')">
-      <img src="assets/icons/pune.png" alt="Pune Metro" class="img-fluid" style="max-width: 80px;" />
-      <div>Pune</div>
-    </div>
-  </div>
-
-  <!-- Coming soon for other regions -->
-  <div class="text-center text-muted" *ngIf="region !== 'Maharashtra'">
-    <p>{{ region }} metro routes coming soon...</p>
-  </div>
-
   <!-- Metro Route UI -->
   <div *ngIf="selectedCity === 'mumbai' || selectedCity === 'pune'">
     <div class="mb-3">

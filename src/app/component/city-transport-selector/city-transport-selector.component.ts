@@ -7,4 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class CityTransportSelectorComponent {
   @Input() city: any;
+
+selectedMode: string | null = null;
+
+selectMode(mode: string) {
+  this.selectedMode = mode;
+}
+
 }

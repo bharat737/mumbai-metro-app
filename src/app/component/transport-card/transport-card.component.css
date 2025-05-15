@@ -17,3 +17,8 @@
   margin-top: 10px;
   font-weight: bold;
 }
+
+.transport-card.selected {
+  border: 2px solid #007bff;
+  background-color: #e6f0ff;
+}
