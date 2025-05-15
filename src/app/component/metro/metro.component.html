@@ -1,20 +1,15 @@
 <div class="metro-wrapper">
-  <h3 class="text-center mb-3">🚇 Metro Route Finder</h3>
-  <!-- Metro Route UI -->
+  <h3 class="text-center mb-4">🚇 Metro Route Finder</h3>
+
+  <!-- Metro Input Section (Only for valid cities like Mumbai, Pune) -->
   <div *ngIf="selectedCity === 'mumbai' || selectedCity === 'pune'">
-    <div class="mb-3">
-      <label class="form-label">Start Station:</label>
-      <input list="stations" [(ngModel)]="startStation" class="form-control" placeholder="Enter start station" />
-    </div>
-
-    <div class="mb-3">
-      <label class="form-label">End Station:</label>
-      <input list="stations" [(ngModel)]="endStation" class="form-control" placeholder="Enter end station" />
-    </div>
-
-    <datalist id="stations">
-      <option *ngFor="let station of stations" [value]="station"></option>
-    </datalist>
+    <app-station-input
+      [stations]="stations"
+      [start]="startStation"
+      [end]="endStation"
+      (startChange)="startStation = $event"
+      (endChange)="endStation = $event"
+    ></app-station-input>
 
     <button class="btn btn-primary mb-3" (click)="onFindRoute()">Find Route</button>
 
@@ -22,5 +17,10 @@
       <h5>Route Details:</h5>
       <pre class="bg-light p-3 border rounded">{{ routeDetails }}</pre>
     </div>
+  </div>
+
+  <!-- Optional: message for unsupported cities -->
+  <div *ngIf="selectedCity !== 'mumbai' && selectedCity !== 'pune'">
+    <p class="text-muted text-center">We're working on metro support for {{ selectedCity | titlecase }}.</p>
   </div>
 </div>

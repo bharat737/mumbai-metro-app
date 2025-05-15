@@ -1,0 +1,29 @@
+<div class="station-wrapper">
+  <div>
+    <div class="label">Start Station:</div>
+    <input
+      list="stations"
+      class="form-control"
+      [value]="start"
+      #startInput
+      (input)="onStartChange(startInput.value)"
+      placeholder="Enter start station"
+    />
+  </div>
+
+  <div>
+    <div class="label">End Station:</div>
+    <input
+      list="stations"
+      class="form-control"
+      [value]="end"
+      #endInput
+      (input)="onEndChange(endInput.value)"
+      placeholder="Enter end station"
+    />
+
+    <datalist id="stations">
+      <option *ngFor="let station of stations" [value]="station"></option>
+    </datalist>
+  </div>
+</div>

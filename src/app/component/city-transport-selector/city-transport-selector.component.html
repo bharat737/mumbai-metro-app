@@ -1,8 +1,11 @@
 <!-- city-transport-selector.component.html -->
 <!-- Full Header when a mode is selected -->
-<div *ngIf="selectedMode" class="transport-header">
-  <span class="back-button" (click)="clearMode()">←</span>
-  <h2>Travel</h2>
+<div *ngIf="selectedMode" class="transport-header d-flex align-items-center justify-content-between">
+  <div class="d-flex align-items-center">
+    <span class="back-button" (click)="clearMode()">←</span>
+    <h2 class="mb-0 ms-2">Travel</h2>
+  </div>
+  <div class="location pe-3">📍 {{ city?.name }}</div>
 </div>
 <!-- Initial transport mode cards shown only if no mode selected -->
 <ng-container *ngIf="!selectedMode && city?.transports?.length ">
