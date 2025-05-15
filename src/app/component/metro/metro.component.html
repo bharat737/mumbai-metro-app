@@ -11,11 +11,13 @@
       (endChange)="endStation = $event"
     ></app-station-input>
 
-    <button class="btn btn-primary mb-3" (click)="onFindRoute()">Find Route</button>
+    <button class="btn find-btn" (click)="onFindRoute()">Find Route</button>
 
     <div *ngIf="routeDetails">
-      <h5>Route Details:</h5>
-      <pre class="bg-light p-3 border rounded">{{ routeDetails }}</pre>
+      <h5 class="route-title">🧭 Route Options</h5>
+      <div class="route-card">
+        <pre class="m-0">{{ routeDetails }}</pre>
+      </div>
     </div>
   </div>
 
