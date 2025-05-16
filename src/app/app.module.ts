@@ -13,9 +13,10 @@ import { AppHeaderComponent } from './component/app-header/app-header.component'
 import { AppSidebarComponent } from './component/app-sidebar/app-sidebar.component';
 import { TransportCardComponent } from './component/transport-card/transport-card.component';
 import { StationInputComponent } from './component/station-input/station-input.component';
+import { TransportTabBarComponent } from './component/transport-tab-bar/transport-tab-bar.component';
 
 @NgModule({
-  declarations: [AppComponent, MetroComponent, TrainComponent, CityTransportSelectorComponent, AppHeaderComponent, AppSidebarComponent, TransportCardComponent, StationInputComponent],
+  declarations: [AppComponent, MetroComponent, TrainComponent, CityTransportSelectorComponent, AppHeaderComponent, AppSidebarComponent, TransportCardComponent, StationInputComponent, TransportTabBarComponent],
   imports: [BrowserModule, FormsModule,HttpClientModule],
   providers: [MetroService,MenuService],
   bootstrap: [AppComponent]

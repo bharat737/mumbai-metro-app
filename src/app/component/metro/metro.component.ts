@@ -42,6 +42,10 @@ export class MetroComponent implements OnChanges {
   }
 
    onFindRoute(): void {
+    if (this.startStation === this.endStation) {
+      this.routeDetails = 'Start and End stations cannot be the same.';
+      return;
+    }
     if (this.startStation && this.endStation) {
       const directRoute = this.metroService.findDirectRoute(this.startStation, this.endStation);
       const startIndex = directRoute ? 2 : 1;
