@@ -13,6 +13,7 @@ export class TrainComponent implements OnChanges {
   endStation: string = '';
   stations: string[] = [];
   routeDetails: string = '';
+  activeTab: string = 'search';
 
   constructor(private trainService: TrainService) {}
 

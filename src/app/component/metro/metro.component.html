@@ -1,8 +1,13 @@
 <div class="metro-wrapper">
   <h3 class="text-center mb-4">🚇 Metro Route Finder</h3>
 
-  <!-- Metro Input Section (Only for valid cities like Mumbai, Pune) -->
-  <div *ngIf="selectedCity === 'mumbai' || selectedCity === 'pune'">
+  <app-transport-tab-bar
+    [activeTab]="activeTab"
+    (activeTabChange)="activeTab = $event"
+  ></app-transport-tab-bar>
+
+  <!-- Search Destination Tab -->
+  <div *ngIf="activeTab === 'search' && stations.length > 0">
     <app-station-input
       [stations]="stations"
       [start]="startStation"
@@ -21,8 +26,20 @@
     </div>
   </div>
 
-  <!-- Optional: message for unsupported cities -->
-  <div *ngIf="selectedCity !== 'mumbai' && selectedCity !== 'pune'">
-    <p class="text-muted text-center">We're working on metro support for {{ selectedCity | titlecase }}.</p>
+  <!-- By Station Tab -->
+  <div *ngIf="activeTab === 'station'">
+    <p class="text-muted text-center">We're working on station-wise browsing.</p>
+  </div>
+
+  <!-- Fare Tab -->
+  <div *ngIf="activeTab === 'fare'">
+    <p class="text-muted text-center">Fare calculation coming soon.</p>
+  </div>
+
+  <!-- Unsupported city message -->
+  <div *ngIf="stations.length === 0">
+    <p class="text-muted text-center">
+      We're working on metro support for {{ selectedCity | titlecase }}.
+    </p>
   </div>
 </div>

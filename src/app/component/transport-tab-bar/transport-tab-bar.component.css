@@ -1,0 +1,30 @@
+.custom-tabs {
+  display: flex;
+  background-color: skyblue;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px 0;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.tab.active {
+  background-color: green;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background-color: white;
+}

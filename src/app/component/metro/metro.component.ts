@@ -13,6 +13,7 @@ export class MetroComponent implements OnChanges {
   stations: string[] = [];
   selectedCity: string = '';
   region: string = 'Maharashtra';
+  activeTab: string = 'search'; 
 
   @Input() cityName: string | undefined;
 
