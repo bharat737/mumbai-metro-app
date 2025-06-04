@@ -1,0 +1,22 @@
+<!-- app-sidebar.component.html -->
+<aside class="sidebar" [class.open]="sidebarOpen" (click)="$event.stopPropagation()">
+  <ng-container *ngFor="let region of regions; let i = index">
+    <div class="state" (click)="onToggleState(i)">
+      <img [src]="region.icon" class="state-icon" />
+      <strong>{{ region.state }}</strong>
+      <span class="arrow">{{ expandedStates[i] ? '▲' : '▼' }}</span>
+    </div>
+
+    <div class="city-list" *ngIf="expandedStates[i]">
+      <div
+        class="city"
+        *ngFor="let city of region.cities"
+        [class.selected]="city.name === city?.name"
+        (click)="onSelectCity(city)"
+      >
+        <img [src]="city.icon" class="city-icon" />
+        <span>{{ city.name }}</span>
+      </div>
+    </div>
+  </ng-container>
+</aside>

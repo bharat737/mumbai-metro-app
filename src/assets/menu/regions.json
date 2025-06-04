@@ -1,0 +1,32 @@
+{
+  "regions": [
+    {
+      "state": "Maharashtra",
+      "icon": "assets/icons/maharashtra.png",
+      "cities": [
+        {
+          "name": "Mumbai",
+          "icon": "assets/icons/maharashtra.png",
+          "transports": ["metro", "local train"]
+        },
+        {
+          "name": "Pune",
+          "icon": "assets/icons/maharashtra.png",
+          "transports": ["metro", "local train"]
+        }
+      ]
+    },
+    {
+      "state": "Delhi",
+      "icon": "assets/icons/delhi.png",
+      "cities": [
+        {
+          "name": "Delhi",
+          "icon": "assets/icons/delhi.png",
+          "transports": ["metro"]
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,1 +1,30 @@
-<router-outlet></router-outlet>
+<div class="app-container">
+  <!-- Header -->
+  <app-header
+    [selectedCity]="selectedCity"
+    [selectedMode]="selectedMode"
+    (menuToggle)="toggleSidebar()"
+  ></app-header>
+
+  <!-- Sidebar -->
+  <app-sidebar
+    [regions]="regions"
+    [expandedStates]="expandedStates"
+    [sidebarOpen]="sidebarOpen"
+    (citySelected)="selectCity($event)"
+    (stateToggle)="toggleState($event)"
+    (closeSidebar)="closeSidebar()"
+  ></app-sidebar>
+
+  <!-- Overlay -->
+  <div class="overlay" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>
+
+  <!-- Main Content with dynamic city transport rendering -->
+  <main class="content">
+    <app-city-transport-selector
+  [city]="selectedCity"
+  [selectedMode]="selectedMode"
+  (modeChange)="selectedMode = $event"
+></app-city-transport-selector>
+  </main>
+</div>

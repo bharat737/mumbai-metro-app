@@ -1,0 +1,13 @@
+<div class="transport-card" (click)="onCardClick()">
+  <img
+    *ngIf="mode === 'metro'"
+    src="assets/icons/metro-icon.png"
+    alt="metro"
+  />
+  <img
+    *ngIf="mode === 'local train'"
+    src="assets/icons/train-icon.png"
+    alt="train"
+  />
+  <div class="label">{{ mode | titlecase }}</div>
+</div>

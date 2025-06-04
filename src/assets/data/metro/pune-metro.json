@@ -1,0 +1,15 @@
+{
+  "lines": [
+    {
+      "name": "Purple Line",
+      "stations": ["PCMC", "Sant Tukaram Nagar", "Kasarwadi", "Phugewadi", "Bopodi", "Shivaji Nagar"]
+    },
+    {
+      "name": "Aqua Line",
+      "stations": ["Vanaz", "Garware College", "Deccan", "Shivaji Nagar"]
+    }
+  ],
+  "interchanges": [
+    { "station": "Shivaji Nagar", "lines": ["Purple Line", "Aqua Line"] }
+  ]
+}

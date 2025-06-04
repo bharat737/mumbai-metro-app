@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { ResultComponent } from './components/result/result.component';
+import { MetroComponent } from './component/metro/metro.component';
+import { TrainComponent } from './component/train/train.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }
+  { path: 'metro', component: MetroComponent },
+  { path: 'train', component: TrainComponent },
+  { path: '', redirectTo: '/metro', pathMatch: 'full' }, // default route
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

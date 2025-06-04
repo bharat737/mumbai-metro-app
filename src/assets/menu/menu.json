@@ -1,0 +1,4 @@
+[
+  { "name": "Metro", "path": "metro", "icon": "🚇" },
+  { "name": "Train", "path": "train", "icon": "🚆" }
+]

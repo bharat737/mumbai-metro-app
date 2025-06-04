@@ -1,0 +1,21 @@
+.station-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+  max-width: 400px;
+  margin: auto;
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+input.form-control {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  width: 100%;
+}
