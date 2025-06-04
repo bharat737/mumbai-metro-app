@@ -1,0 +1,58 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.state {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #e7f3ff;
+  border-bottom: 1px solid #ccc;
+}
+
+.state-icon {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.arrow {
+  margin-left: auto;
+}
+
+.city-list {
+  padding-left: 30px;
+}
+
+.city {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.city-icon {
+  width: 16px;
+  margin-right: 10px;
+}
+
+.city.selected {
+  font-weight: bold;
+  background-color: #e0e0e0;
+}

@@ -1,0 +1,38 @@
+<!-- city-transport-selector.component.html -->
+<!-- Full Header when a mode is selected -->
+<div *ngIf="selectedMode" class="transport-header d-flex align-items-center justify-content-between">
+  <div class="d-flex align-items-center">
+    <span class="back-button" (click)="clearMode()">←</span>
+    <h2 class="mb-0 ms-2">Travel</h2>
+  </div>
+  <div class="location pe-3">📍 {{ city?.name }}</div>
+</div>
+<!-- Initial transport mode cards shown only if no mode selected -->
+<ng-container *ngIf="!selectedMode && city?.transports?.length ">
+  <h2>Travel in {{ city.name }}</h2>
+  <div class="card-container">
+    <app-transport-card
+      *ngFor="let mode of city.transports"
+      [mode]="mode"
+      (cardClick)="selectMode($event)"
+    ></app-transport-card>
+  </div>
+</ng-container>
+
+<!-- Transport tabs shown only when a mode is selected -->
+<div *ngIf="selectedMode && city?.transports?.length" class="transport-bar">
+  <div
+    *ngFor="let mode of city.transports"
+    class="transport-tab"
+    [class.active]="selectedMode === mode"
+    (click)="selectMode(mode)"
+  >
+    <img [src]="getTransportIcon(mode)" alt="{{ mode }}" />
+    <span>{{ mode | titlecase }}</span>
+  </div>
+</div>
+
+
+<!-- Transport-specific component -->
+<app-metro *ngIf="selectedMode === 'metro'" [cityName]="city.name"></app-metro>
+<app-train *ngIf="selectedMode === 'local train'" [cityName]="city.name"></app-train>

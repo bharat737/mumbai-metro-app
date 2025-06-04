@@ -1,0 +1,28 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: skyblue;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+}
+
+.menu-icon {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.search-bar {
+  flex: 1;
+  margin: 0 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+}
+
+.location {
+  font-size: 14px;
+}

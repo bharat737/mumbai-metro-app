@@ -1,1 +1,139 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reset and base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+  height: 100%;
+}
+
+/* Header */
+.header {
+  background-color: #b71c1c;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 1001;
+}
+
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.search-input {
+  flex: 1;
+  max-width: 300px;
+  margin: 0 15px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+.location {
+  font-size: 16px;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 60px; /* Start below header */
+  left: 0;
+  background-color: #fff;
+  width: 250px;
+  height: calc(100vh - 60px); /* Leave space for header */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+/* Sidebar Content */
+.state-list {
+  list-style: none;
+  padding: 10px;
+}
+
+.state-item, .city-list li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.state-item img, .city-list li img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.city-list {
+  margin-left: 25px;
+  list-style: none;
+}
+
+/* Main Content */
+.content {
+  margin-top: 80px; /* Push below fixed header */
+  padding: 20px;
+}
+
+.section-title {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 150px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  object-fit: contain;
+}

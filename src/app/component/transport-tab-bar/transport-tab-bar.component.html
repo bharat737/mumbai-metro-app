@@ -1,0 +1,10 @@
+<div class="custom-tabs">
+  <div
+    class="tab"
+    *ngFor="let tab of tabs"
+    [class.active]="activeTab === tab.id"
+    (click)="setTab(tab.id)"
+  >
+    {{ tab.label }}
+  </div>
+</div>

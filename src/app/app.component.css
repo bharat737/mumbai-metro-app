@@ -1,0 +1,55 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.content {
+  padding: 20px;
+  margin-left: 260px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+  justify-content: flex-start;
+}
+
+.transport-card {
+  display: inline-block;
+  padding: 15px;
+  margin: 10px;
+  background: #f1f1f1;
+  border-radius: 8px;
+  text-align: center;
+  width: 150px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.transport-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transport-card img {
+  width: 50px;
+  height: 50px;
+}
+
+.label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.content {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
