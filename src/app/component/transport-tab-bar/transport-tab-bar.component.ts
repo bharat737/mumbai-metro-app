@@ -11,7 +11,7 @@ export class TransportTabBarComponent {
 
   tabs = [
     { id: 'search', label: 'Search Destination' },
-    { id: 'station', label: 'By Station' },
+    { id: 'station', label: 'Lines' },
     { id: 'help', label: 'Help' }
   ];
 

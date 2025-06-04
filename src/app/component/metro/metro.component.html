@@ -28,11 +28,12 @@
 
   <!-- By Station Tab -->
   <div *ngIf="activeTab === 'station'">
-    <p class="text-muted text-center">We're working on station-wise browsing.</p>
+    <!-- <p class="text-muted text-center">We're working on station-wise browsing.</p> -->
+      <app-by-station></app-by-station>
   </div>
 
   <!-- Fare Tab -->
-  <div *ngIf="activeTab === 'fare'">
+  <div *ngIf="activeTab === 'help'">
     <p class="text-muted text-center">Fare calculation coming soon.</p>
   </div>
 
