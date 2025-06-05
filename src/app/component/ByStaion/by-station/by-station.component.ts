@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import stationsData from '../../../../assets/data/metro/mumbai-metro.json';
 
+interface MetroLine {
+  name: string;
+  line_name: string;
+  status: 'AC' | 'AP';
+  stations: string[];
+}
+
 @Component({
   selector: 'app-by-station',
   templateUrl: './by-station.component.html',
@@ -28,4 +35,26 @@ export class ByStationComponent implements OnInit {
   showLineDetails(line: any): void {
     alert(`Line: ${line.name}\nStations: ${line.stations.join(' -> ')}`);
   }
+
+ getLineColor(name: string): string {
+    const colors: any = {
+      'Blue Line': '#0000ff',
+      'Yello Line': '#ffc107',
+      'Yellow Line': '#ffc107',
+      'Green Line': '#28a745',
+      'Red Line': '#dc3545',
+      'Orange Line': '#fd7e14',
+      'Pink Line': '#e83e8c'
+    };
+    return colors[name] || '#6c757d';
+  }
+
+  filteredLineFilter(): MetroLine[] {
+  if (!this.searchQuery) return this.lines;
+  return this.lines.filter(line =>
+    line.stations.some((station: string) =>
+      station.toLowerCase().includes(this.searchQuery.toLowerCase())
+    )
+  );
+}
 }

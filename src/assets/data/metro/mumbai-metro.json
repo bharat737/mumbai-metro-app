@@ -2,6 +2,8 @@
   "lines": [
     {
       "name": "Mumbai Metro Line 1",
+      "line_name": "Blue Line",
+      "status": "AC",
       "stations": [
         "Versova",
         "D. N. Nagar",
@@ -19,6 +21,8 @@
     },
     {
       "name": "Mumbai Metro Line 2A",
+      "line_name": "Yello Line",
+      "status": "AC",
       "stations": [
         "Dahisar(East)",
         "Anand Nagar",
@@ -41,6 +45,8 @@
     },
     {
       "name": "Mumbai Metro Line 2B",
+      "line_name": "Yello Line",
+      "status": "AC",
       "stations": [
         "ESIC Nagar",
         "Prem Nagar",
@@ -66,6 +72,8 @@
     },
     {
       "name": "Mumbai Metro Line 4",
+      "line_name": "Green Line",
+      "status": "AC",
       "stations": [
         "Bhakti Park Metro",
         "Wadala TT",
@@ -101,6 +109,8 @@
     },
     {
       "name": "Mumbai Metro Line 4A",
+      "line_name": "Green Line",
+      "status": "AC",
       "stations": [
         "Kasarvadavali",
         "Gaimukh"
@@ -108,6 +118,8 @@
     },
     {
       "name": "Mumbai Metro Line 5",
+      "line_name": "Orange Line",
+      "status": "AC",
       "stations": [
         "Balkum Naka",
         "Kasheli",
@@ -128,6 +140,8 @@
     },
     {
       "name": "Mumbai Metro Line 6",
+      "line_name": "Pink Line",
+      "status": "AC",
       "stations": [
         "Swami Samarth Nagar",
         "Adarsh Nagar",
@@ -165,7 +179,7 @@
     {
       "name": "Mumbai Metro Line 9",
       "stations": [
-        "Dahisar",
+        "Dahisar(East)",
         "Pandhurang Wadi",
         "Miragaon",
         "Kashigaon",
@@ -178,8 +192,11 @@
       ]
     },
     {
-      "name": "Mumbai Metro Line7A",
+      "name": "Mumbai Metro Line 7A",
+      "line_name": "Red Line",
+      "status": "AC",
       "stations": [
+        "Andheri (East)",
         "Airport Colony",
         "CSIA"
       ]
@@ -227,9 +244,8 @@
       ]
     },
     {
-      "station": "Dahisar",
+      "station": "Dahisar(East)",
       "lines": [
-        "Line 2A",
         "Line 7",
         "Mumbai Metro Line 2A",
         "Mumbai Metro Line 7"
@@ -287,7 +303,7 @@
     {
       "station": "Infinity Mall",
       "lines": [
-        "Line 2A",
+        "Mumbai Metro Line 2A",
         "Mumbai Metro Line 6"
       ]
     },
