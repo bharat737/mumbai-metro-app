@@ -1,65 +1,33 @@
-<div class="metro-line-detail p-3">
-  <!-- <button class="btn btn-link text-primary mb-3" (click)="goBack()">← Back</button> -->
+<div class="line-header">
+  <h2>Mumbai {{ line.line_name }} Metro Route</h2>
+  <p><strong>Network:</strong> Mumbai Metro</p>
+</div>
 
-  <h4>Mumbai {{ line?.line_name }} Metro Route</h4>
-  <p class="text-muted">Network: <strong>Mumbai Metro</strong></p>
-
-  <div class="bg-light p-3 rounded shadow-sm mb-4">
-    <div class="row text-center">
-      <div class="col-md-3">
-        <div class="text-uppercase small text-muted">Line Color</div>
-        <div><span [style.color]="metroService.getLineColor(line.line_name)">●</span> {{ line.line_name }}</div>
-      </div>
-      <div class="col-md-3">
-        <div class="text-uppercase small text-muted">Length</div>
-        <div><strong>~{{ line.stations.length * 0.9 | number: '1.1-1' }} KM</strong></div>
-      </div>
-      <div class="col-md-3">
-        <div class="text-uppercase small text-muted">Active Stations</div>
-        <div>{{ line.stations.length }}</div>
-      </div>
-      <div class="col-md-3">
-        <div class="text-uppercase small text-muted">Inactive Stations</div>
-        <div>0</div>
-      </div>
+<div class="line-summary shadow-sm mb-4">
+  <div class="row text-center">
+    <div class="col-md-3"><strong>Line Color</strong><br>
+      <span class="line-dot" [style.color]="getLineColor(line.line_name)">●</span> {{ line.line_name }}
     </div>
-    <hr />
-    <div class="row text-center">
-      <div class="col-md-6 text-primary">
-        <div class="small text-muted">Terminal One-Side</div>
-        <div><strong>{{ line.stations[0] }}</strong></div>
-      </div>
-      <div class="col-md-6 text-primary">
-        <div class="small text-muted">Terminal Other-Side</div>
-        <div><strong>{{ line.stations[line.stations.length - 1] }}</strong></div>
-      </div>
-    </div>
+    <div class="col-md-3"><strong>Length</strong><br>~{{ getLength(line.stations.length) }}</div>
+    <div class="col-md-3"><strong>Active Stations</strong><br>{{ line.stations.length }}</div>
+    <div class="col-md-3"><strong>Inactive Stations</strong><br>0</div>
   </div>
-
-  <h5 class="mb-3">Station List</h5>
-<div class="table-responsive">
-  <table class="table table-bordered table-sm">
-    <thead class="table-light">
-      <tr>
-        <th>#</th>
-        <th>Station</th>
-        <!-- <th>🅿️</th>
-        <th>🚌</th>
-        <th>🏧</th> -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let station of line.stations; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td>
-          {{ station }}
-          <span *ngIf="isInterchange(station)" class="badge badge-warning ms-2">Interchange</span>
-        </td>
-        <!-- <td>✘</td>
-        <td>✘</td>
-        <td>✔</td> -->
-      </tr>
-    </tbody>
-  </table>
+  <div class="row text-center mt-3">
+    <div class="col-md-6"><strong>Terminal One-Side</strong><br><span class="terminal">{{ line.stations[0] }}</span></div>
+    <div class="col-md-6"><strong>Terminal Other-Side</strong><br><span class="terminal">{{ line.stations[line.stations.length - 1] }}</span></div>
+  </div>
+</div>
+<div class="line-summary shadow-sm mb-4">
+    <h2 id="stations">Mumbai Metro {{ line.line_name }} Stations List</h2>
+<div class="station-list">
+  <h5>Stations</h5>
+  <ul class="list-group">
+  <li *ngFor="let station of line.stations; let i = index" class="d-flex justify-content-between align-items-center">
+    <div>
+      <span class="station-index">{{ i + 1 }}.</span> {{ station }}
+        <span *ngIf="isInterchange(station)" class="interchange-badge">Interchange</span>
+    </div>
+  </li>
+</ul>
 </div>
 </div>

@@ -36,6 +36,11 @@ export class MetroService {
     return this.lines;
   }
 
+  getInterchanges(): any[] {
+  return this.interchanges;
+}
+
+
   findRoute(start: string, end: string): string {
     const visitedStations: Set<string> = new Set();
     let output = '';

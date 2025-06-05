@@ -1,95 +1,52 @@
-.metro-line-detail {
-  background-color: #f9f9f9;
+.line-header {
+  margin-bottom: 1rem;
+}
+
+.line-header h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.line-summary {
+  background-color: #f8f9fa;
   border-radius: 8px;
-  padding: 1.5rem;
-  font-family: 'Inter', sans-serif;
+  padding: 1.25rem;
+  border: 10px solid #dee2e6;
 }
 
-.metro-line-detail h4 {
+.line-summary .terminal {
+  color: #4a4a4a;
   font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: #333;
 }
 
-.metro-line-detail .text-muted {
-  color: #666;
-}
-
-.metro-line-detail .bg-light {
-  background-color: #f1f3f5;
-  border: 1px solid #dee2e6;
-}
-
-.metro-line-detail .table {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-}
-
-.metro-line-detail .table th {
-  background-color: #e9ecef;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.metro-line-detail .table td,
-.metro-line-detail .table th {
+.line-dot {
+  font-size: 1.2rem;
   vertical-align: middle;
-  text-align: center;
 }
 
-.metro-line-detail .badge {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.375rem;
+.station-list {
+  margin-top: 2rem;
 }
 
-.metro-line-detail .badge-success {
-  background-color: #28a745;
-  color: #fff;
+.station-list .list-group-item {
+  font-size: 1rem;
+  border-left: 4px solid #007bff;
 }
 
-.metro-line-detail .badge-warning {
-  background-color: #ffc107;
-  color: #212529;
-}
-
-.metro-line-detail .badge-danger {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.metro-line-detail .badge-secondary {
-  background-color: #6c757d;
-  color: #fff;
-}
-
-.metro-line-detail .btn-link {
-  color: #007bff;
+.station-index {
   font-weight: 500;
-  text-decoration: none;
+  margin-right: 0.5rem;
 }
 
-.metro-line-detail .btn-link:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .metro-line-detail .row {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .metro-line-detail .col-md-3,
-  .metro-line-detail .col-md-6 {
-    text-align: center;
-  }
-}
-
-.badge-warning {
-  background-color: #ffc107;
-  color: #212529;
+.interchange-badge {
+  display: inline-block;
+  background-color: #ffc107; /* Bootstrap warning color */
+  color: #000;
   font-size: 0.75rem;
-  padding: 0.2rem 0.4rem;
-  border-radius: 0.25rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 8px;
   vertical-align: middle;
 }
+
