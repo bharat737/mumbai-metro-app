@@ -1,44 +1,69 @@
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-input[type="text"] {
-  font-size: 1rem;
-}
-li:hover {
-  border-left: 4px solid #4CAF50;
-}
-
-
 /* by-station.component.css */
 
-.line-color {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 0.5rem;
+.metro-line {
+  border-left-width: 5px;
+  border-left-style: solid;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
 }
 
-.table td,
-.table th {
-  vertical-align: middle;
-}
-
-.status-badge {
+.metro-line-name {
+  font-size: 1.1rem;
   font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.9rem;
 }
 
-.status-ac {
-  background-color: #d4edda;
-  color: #155724;
+.metro-line-status {
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
-.status-ap {
-  background-color: #f8d7da;
-  color: #721c24;
+.metro-line-terminals {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #007bff;
+}
+
+.metro-search {
+  margin-bottom: 1.5rem;
+}
+
+.metro-search input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.metro-search input[type="text"]:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+@media (min-width: 768px) {
+  .metro-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .metro-line > div {
+    flex: 1;
+  }
+  .metro-line-name {
+    flex: 1.5;
+  }
+  .metro-line-status,
+  .metro-line-terminals {
+    text-align: center;
+  }
+}
+.metro-lines-scroll {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
 }

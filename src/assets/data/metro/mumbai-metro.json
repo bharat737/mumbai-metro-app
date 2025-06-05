@@ -73,7 +73,7 @@
     {
       "name": "Mumbai Metro Line 4",
       "line_name": "Green Line",
-      "status": "AC",
+      "status": "AP",
       "stations": [
         "Bhakti Park Metro",
         "Wadala TT",
@@ -119,7 +119,7 @@
     {
       "name": "Mumbai Metro Line 5",
       "line_name": "Orange Line",
-      "status": "AC",
+      "status": "UC",
       "stations": [
         "Balkum Naka",
         "Kasheli",
@@ -141,7 +141,7 @@
     {
       "name": "Mumbai Metro Line 6",
       "line_name": "Pink Line",
-      "status": "AC",
+      "status": "UC",
       "stations": [
         "Swami Samarth Nagar",
         "Adarsh Nagar",
@@ -160,6 +160,8 @@
     },
     {
       "name": "Mumbai Metro Line 7",
+      "line_name": "Pink Line",
+      "status": "UC",
       "stations": [
         "Gundavali",
         "Mogra",
@@ -178,6 +180,8 @@
     },
     {
       "name": "Mumbai Metro Line 9",
+      "line_name": "Pink Line",
+      "status": "UC",
       "stations": [
         "Dahisar(East)",
         "Pandhurang Wadi",

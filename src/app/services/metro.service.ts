@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 interface MetroLine {
   name: string;
+  line_name: string;
+  status: 'AC' | 'AP';
   stations: string[];
 }
 
@@ -28,6 +30,10 @@ export class MetroService {
 
   getAllStations(): string[] {
     return Array.from(new Set(this.lines.flatMap(line => line.stations)));
+  }
+
+  getAllLines(): MetroLine[] {
+    return this.lines;
   }
 
   findRoute(start: string, end: string): string {
