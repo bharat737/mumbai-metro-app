@@ -50,3 +50,49 @@
   vertical-align: middle;
 }
 
+
+.promo {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.info-box,
+.info-box1 {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.info-item,
+.info-item1 {
+  flex: 1;
+  min-width: 180px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #777;
+  text-transform: uppercase;
+}
+
+.value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.horizontal-separator {
+  margin-bottom: 0.5rem;
+}
+
+.vertical-separator {
+  border-right: 1px solid #ccc;
+  height: 100%;
+}
+

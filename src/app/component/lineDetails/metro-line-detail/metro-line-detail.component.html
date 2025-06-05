@@ -3,18 +3,48 @@
   <p><strong>Network:</strong> Mumbai Metro</p>
 </div>
 
-<div class="line-summary shadow-sm mb-4">
-  <div class="row text-center">
-    <div class="col-md-3"><strong>Line Color</strong><br>
-      <span class="line-dot" [style.color]="getLineColor(line.line_name)">●</span> {{ line.line_name }}
+<div class="promo">
+  <div class="info-box">
+    <div class="info-item">
+      <div class="horizontal-separator">
+        <span class="label">LINE COLOR</span>
+        <div class="value">{{ line.line_name }} <span [style.color]="getLineColor(line.line_name)">▣</span></div>
+      </div>
+      <div class="vertical-separator"></div>
     </div>
-    <div class="col-md-3"><strong>Length</strong><br>~{{ getLength(line.stations.length) }}</div>
-    <div class="col-md-3"><strong>Active Stations</strong><br>{{ line.stations.length }}</div>
-    <div class="col-md-3"><strong>Inactive Stations</strong><br>0</div>
+    <div class="info-item">
+      <span class="label">LENGTH OF LINE</span>
+      <div class="value">~{{ getLength(line.stations.length) }}</div>
+      <div class="vertical-separator"></div>
+    </div>
   </div>
-  <div class="row text-center mt-3">
-    <div class="col-md-6"><strong>Terminal One-Side</strong><br><span class="terminal">{{ line.stations[0] }}</span></div>
-    <div class="col-md-6"><strong>Terminal Other-Side</strong><br><span class="terminal">{{ line.stations[line.stations.length - 1] }}</span></div>
+
+  <div class="info-box">
+    <div class="info-item1">
+      <div class="horizontal-separator">
+        <span class="label">ACTIVE STATIONS</span>
+        <div class="value">{{ line.stations.length }}</div>
+      </div>
+      <div class="vertical-separator"></div>
+    </div>
+    <div class="info-item1">
+      <span class="label">INACTIVE STATIONS</span>
+      <div class="value">0</div>
+      <div class="vertical-separator"></div>
+    </div>
+  </div>
+
+  <div class="info-box1">
+    <div class="info-item1">
+      <div class="horizontal-separator">
+        <span class="label">TERMINAL ONE-SIDE</span>
+        <div class="value">{{ line.stations[0] }}</div>
+      </div>
+    </div>
+    <div class="info-item1">
+      <span class="label">TERMINAL OTHER-SIDE</span>
+      <div class="value">{{ line.stations[line.stations.length - 1] }}</div>
+    </div>
   </div>
 </div>
 <div class="line-summary shadow-sm mb-4">
