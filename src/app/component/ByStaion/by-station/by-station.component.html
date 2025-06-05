@@ -15,10 +15,8 @@
         <div class="metro-line-name fw-bold">
         <span [style.color]="getLineColor(line.line_name)">◙</span> {{ line.line_name }}
         </div>
-        <div class="metro-line-status mt-2 mt-md-0">
-        <span [ngClass]="line.status === 'AC' ? 'text-success' : 'text-danger'">
-            {{ line.status === 'AC' ? '✓ AC' : '✗ AP' }}
-        </span>
+        <div class="metro-line-status mt-2 mt-md-0" [ngClass]="getStatusColor(line.status)">
+            {{ getFullStatus(line.status) }}
         </div>
         <div class="metro-line-terminals text-primary mt-2 mt-md-0">
         {{ line.stations[0] }} ⇄ {{ line.stations[line.stations.length - 1] }}

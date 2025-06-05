@@ -57,4 +57,30 @@ export class ByStationComponent implements OnInit {
     )
   );
 }
+
+getFullStatus(statusCode: string): string {
+  switch (statusCode) {
+    case 'AC':
+      return 'Active';
+    case 'UC':
+      return 'Under Construction';
+    case 'AP':
+      return 'Approved for Construction';
+    case 'PL':
+      return 'In Plan';
+    default:
+      return statusCode;
+  }
+}
+
+getStatusColor(statusCode: string): string {
+  switch (statusCode) {
+    case 'AC': return 'text-success';
+    case 'UC': return 'text-warning';
+    case 'AP': return 'text-danger';
+    case 'PL': return 'text-secondary';
+    default: return '';
+  }
+}
+
 }

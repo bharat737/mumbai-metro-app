@@ -20,6 +20,30 @@
   font-size: 0.95rem;
 }
 
+.metro-line-status.ac::after {
+  content: "Active";
+  color: green;
+  margin-left: 0.5rem;
+}
+
+.metro-line-status.uc::after {
+  content: "Under Construction";
+  color: orange;
+  margin-left: 0.5rem;
+}
+
+.metro-line-status.ap::after {
+  content: "Approved for Construction";
+  color: red;
+  margin-left: 0.5rem;
+}
+
+.metro-line-status.pl::after {
+  content: "In Plan";
+  color: gray;
+  margin-left: 0.5rem;
+}
+
 .metro-line-terminals {
   font-size: 0.95rem;
   font-weight: 500;
@@ -45,6 +69,12 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+.metro-lines-scroll {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
 @media (min-width: 768px) {
   .metro-line {
     display: flex;
@@ -61,9 +91,4 @@
   .metro-line-terminals {
     text-align: center;
   }
-}
-.metro-lines-scroll {
-  max-height: 500px;
-  overflow-y: auto;
-  padding-right: 0.5rem;
 }
