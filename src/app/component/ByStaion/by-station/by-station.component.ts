@@ -17,6 +17,7 @@ export class ByStationComponent implements OnInit {
   lines: any[] = [];
   filteredLines: any[] = [];
   searchQuery: string = '';
+  selectedLine: string | null = null;
 
   ngOnInit(): void {
     this.lines = (stationsData as any).lines;
@@ -81,6 +82,17 @@ getStatusColor(statusCode: string): string {
     case 'PL': return 'text-secondary';
     default: return '';
   }
+}
+
+
+onLineClick(line: any): void {
+  if (line.status === 'AC') {
+    this.selectedLine = line.line_name;
+  }
+}
+
+goBack(): void {
+  this.selectedLine = null;
 }
 
 }

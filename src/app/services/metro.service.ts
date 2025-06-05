@@ -131,4 +131,28 @@ export class MetroService {
     }
     return [];
   }
+
+  getLineByLineName(lineName: string): any {
+  return this.lines.find(l => l.line_name === lineName);
+}
+
+getInterchangeStations(): string[] {
+  return this.interchanges.map(i => i.station);
+}
+
+getLineColor(lineName: string): string {
+  const colorMap: { [key: string]: string } = {
+    'Blue Line': '#0000FF',
+    'Yello Line': '#FFA500',
+    'Yellow Line': '#FFD700',
+    'Green Line': '#008000',
+    'Orange Line': '#FF8C00',
+    'Red Line': '#FF0000',
+    'Pink Line': '#FF69B4',
+    'Aqua Line': '#00FFFF'
+  };
+  return colorMap[lineName] || '#999'; // default gray if unknown
+}
+
+
 }

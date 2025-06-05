@@ -1,1 +1,65 @@
-<p>metro-line-detail works!</p>
+<div class="metro-line-detail p-3">
+  <!-- <button class="btn btn-link text-primary mb-3" (click)="goBack()">← Back</button> -->
+
+  <h4>Mumbai {{ line?.line_name }} Metro Route</h4>
+  <p class="text-muted">Network: <strong>Mumbai Metro</strong></p>
+
+  <div class="bg-light p-3 rounded shadow-sm mb-4">
+    <div class="row text-center">
+      <div class="col-md-3">
+        <div class="text-uppercase small text-muted">Line Color</div>
+        <div><span [style.color]="metroService.getLineColor(line.line_name)">●</span> {{ line.line_name }}</div>
+      </div>
+      <div class="col-md-3">
+        <div class="text-uppercase small text-muted">Length</div>
+        <div><strong>~{{ line.stations.length * 0.9 | number: '1.1-1' }} KM</strong></div>
+      </div>
+      <div class="col-md-3">
+        <div class="text-uppercase small text-muted">Active Stations</div>
+        <div>{{ line.stations.length }}</div>
+      </div>
+      <div class="col-md-3">
+        <div class="text-uppercase small text-muted">Inactive Stations</div>
+        <div>0</div>
+      </div>
+    </div>
+    <hr />
+    <div class="row text-center">
+      <div class="col-md-6 text-primary">
+        <div class="small text-muted">Terminal One-Side</div>
+        <div><strong>{{ line.stations[0] }}</strong></div>
+      </div>
+      <div class="col-md-6 text-primary">
+        <div class="small text-muted">Terminal Other-Side</div>
+        <div><strong>{{ line.stations[line.stations.length - 1] }}</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <h5 class="mb-3">Station List</h5>
+<div class="table-responsive">
+  <table class="table table-bordered table-sm">
+    <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Station</th>
+        <!-- <th>🅿️</th>
+        <th>🚌</th>
+        <th>🏧</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let station of line.stations; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ station }}
+          <span *ngIf="isInterchange(station)" class="badge badge-warning ms-2">Interchange</span>
+        </td>
+        <!-- <td>✘</td>
+        <td>✘</td>
+        <td>✔</td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
