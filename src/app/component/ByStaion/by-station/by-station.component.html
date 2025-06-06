@@ -1,26 +1,27 @@
 <div class="container mt-4">
 
    <div class="breadcrumb mb-3">
-    <a href="#" class="text-muted text-decoration-none" (click)="goBack()" *ngIf="selectedLine">
-      🚇 Metro Lines
+  <a href="#" class="text-muted text-decoration-none" (click)="goBack()" *ngIf="selectedLine">
+    🚇 Metro Lines
+  </a>
+  <span *ngIf="!selectedLine" class="text-muted">🚇 Metro Lines</span>
+
+  <ng-container *ngIf="selectedLine">
+    <span class="mx-1 text-muted">›</span>
+
+    <!-- If station is selected, line name should be clickable -->
+    <a *ngIf="selectedStation" href="#" class="text-muted text-decoration-none" (click)="onBackToLine()">
+      {{ selectedLine.line_name }}
     </a>
-    <span *ngIf="!selectedLine" class="text-muted">🚇 Metro Lines</span>
+    <span *ngIf="!selectedStation" class="fw-semibold">{{ selectedLine.line_name }}</span>
+  </ng-container>
 
-    <ng-container *ngIf="selectedLine">
-      <span class="mx-1 text-muted">›</span>
+  <ng-container *ngIf="selectedStation">
+    <span class="mx-1 text-muted">›</span>
+    <span class="fw-semibold">{{ selectedStation?.name || selectedStation }}</span>
+  </ng-container>
+</div>
 
-      <!-- If station is selected, make line name clickable -->
-      <a *ngIf="selectedStation" href="#" class="text-muted text-decoration-none" (click)="onBackToLine()">
-        {{ selectedLine }}
-      </a>
-      <span *ngIf="!selectedStation" class="fw-semibold">{{ selectedLine }}</span>
-    </ng-container>
-
-    <ng-container *ngIf="selectedStation">
-      <span class="mx-1 text-muted">›</span>
-      <span class="fw-semibold">{{ selectedStation.name }}</span>
-    </ng-container>
-  </div>
 
 
   <!-- <h5 class="mb-3"><strong>🚇 Search Lines</strong></h5> -->
@@ -56,9 +57,17 @@
     </div>
     </div>
   </div>
-    <app-metro-line-detail
-    *ngIf="selectedLine"
-    [lineName]="selectedLine"
-    (back)="goBack()"
-    ></app-metro-line-detail>
+   <!-- Line detail (when a line is selected but no station is selected) -->
+<app-metro-line-detail
+  *ngIf="selectedLine && !selectedStation"
+  [line]="selectedLine"
+  (stationClick)="onStationClick($event)">
+</app-metro-line-detail>
+
+<!-- Station detail (when a station is selected) -->
+<app-metro-station-detail
+  *ngIf="selectedStation"
+  [station]="selectedStation"
+  [lineName]="selectedLine.line_name">
+</app-metro-station-detail>
 </div>
