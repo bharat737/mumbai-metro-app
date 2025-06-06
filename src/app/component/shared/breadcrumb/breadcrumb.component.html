@@ -1,26 +1,13 @@
-  <!-- <div class="breadcrumb mb-3">
-        <a href="#" class="text-muted text-decoration-none" (click)="goBack()" *ngIf="selectedLine">
-            🚇 Metro Lines
-        </a>
-        <span *ngIf="!selectedLine" class="text-muted">🚇 Metro Lines</span>
+<div class="breadcrumb mb-3 custom-breadcrumb">
+  <a href="#" class="breadcrumb-link" (click)="goHome.emit()">
+    🚇 Metro Lines
+  </a>
+  <span class="breadcrumb-separator">›</span>
 
-        <ng-container *ngIf="selectedLine">
-            <span class="mx-1 text-muted">›</span>
-            <span class="fw-semibold">{{ selectedLine }}</span>
-        </ng-container>
+  <a *ngIf="lineName" href="#" class="breadcrumb-link" (click)="backToLine.emit()">
+    {{ lineName }}
+  </a>
+  <span *ngIf="lineName" class="breadcrumb-separator">›</span>
+
+  <span *ngIf="stationName" class="breadcrumb-current">{{ stationName }}</span>
 </div>
- -->
-
- <nav class="breadcrumb">
-  <a href="#" (click)="goHome()">Metro-line</a>
-  <ng-container *ngIf="stationName; else lineOnly">
-    &nbsp;>&nbsp;
-    <a href="#" (click)="goLine()">{{ lineName }}</a>
-    &nbsp;>&nbsp;
-    <span>{{ stationName }}</span>
-  </ng-container>
-  <ng-template #lineOnly>
-    &nbsp;>&nbsp;
-    <span>{{ lineName }}</span>
-  </ng-template>
-</nav>

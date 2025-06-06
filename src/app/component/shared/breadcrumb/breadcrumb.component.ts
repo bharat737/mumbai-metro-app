@@ -9,14 +9,7 @@ export class BreadcrumbComponent {
   @Input() lineName!: string;
   @Input() stationName?: string;
 
-  @Output() homeClick = new EventEmitter<void>();
-  @Output() lineClick = new EventEmitter<void>();
-
-  goHome() {
-    this.homeClick.emit();
-  }
-
-  goLine() {
-    this.lineClick.emit();
-  }
+  @Output() goHome = new EventEmitter<void>();
+  @Output() backToLine = new EventEmitter<void>();
+ 
 }

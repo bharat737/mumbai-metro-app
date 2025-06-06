@@ -91,13 +91,12 @@
 <div *ngIf="viewMode === 'station'" class="station-detail-view">
 
   <!-- Breadcrumb -->
-  <div class="breadcrumb mb-3">
-    <a href="#" class="text-muted text-decoration-none" (click)="goHome()">🚇 Metro Lines</a>
-    <span class="mx-1 text-muted">›</span>
-    <a href="#" class="text-muted text-decoration-none" (click)="onBackToLine()">{{ line.line_name }}</a>
-    <span class="mx-1 text-muted">›</span>
-    <span class="fw-semibold">{{ selectedStation.name }}</span>
-  </div>
+  <app-breadcrumb
+  [lineName]="line?.line_name"
+  [stationName]="selectedStation?.name"
+  (goHome)="goHome()"
+  (backToLine)="onBackToLine()">
+</app-breadcrumb>
 
   <!-- Station Detail Component -->
   <app-metro-station-detail
