@@ -1,0 +1,98 @@
+.line-header {
+  margin-bottom: 1rem;
+}
+
+.line-header h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.line-summary {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 10px solid #dee2e6;
+}
+
+.line-summary .terminal {
+  color: #4a4a4a;
+  font-weight: 600;
+}
+
+.line-dot {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.station-list {
+  margin-top: 2rem;
+}
+
+.station-list .list-group-item {
+  font-size: 1rem;
+  border-left: 4px solid #007bff;
+}
+
+.station-index {
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.interchange-badge {
+  display: inline-block;
+  background-color: #ffc107; /* Bootstrap warning color */
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+
+.promo {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.info-box,
+.info-box1 {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.info-item,
+.info-item1 {
+  flex: 1;
+  min-width: 180px;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #777;
+  text-transform: uppercase;
+}
+
+.value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.horizontal-separator {
+  margin-bottom: 0.5rem;
+}
+
+.vertical-separator {
+  border-right: 1px solid #ccc;
+  height: 100%;
+}
+

@@ -9,7 +9,7 @@
   overflow-y: auto;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  z-index: 2;
+  z-index: 3;
 }
 
 .sidebar.open {

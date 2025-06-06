@@ -1,0 +1,63 @@
+<div class="line-header">
+  <h2>Mumbai {{ line.line_name }} Metro Route</h2>
+  <p><strong>Network:</strong> Mumbai Metro</p>
+</div>
+
+<div class="promo">
+  <div class="info-box">
+    <div class="info-item">
+      <div class="horizontal-separator">
+        <span class="label">LINE COLOR</span>
+        <div class="value">{{ line.line_name }} <span [style.color]="getLineColor(line.line_name)">▣</span></div>
+      </div>
+      <div class="vertical-separator"></div>
+    </div>
+    <div class="info-item">
+      <span class="label">LENGTH OF LINE</span>
+      <div class="value">~{{ getLength(line.stations.length) }}</div>
+      <div class="vertical-separator"></div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-item1">
+      <div class="horizontal-separator">
+        <span class="label">ACTIVE STATIONS</span>
+        <div class="value">{{ line.stations.length }}</div>
+      </div>
+      <div class="vertical-separator"></div>
+    </div>
+    <div class="info-item1">
+      <span class="label">INACTIVE STATIONS</span>
+      <div class="value">0</div>
+      <div class="vertical-separator"></div>
+    </div>
+  </div>
+
+  <div class="info-box1">
+    <div class="info-item1">
+      <div class="horizontal-separator">
+        <span class="label">TERMINAL ONE-SIDE</span>
+        <div class="value">{{ line.stations[0] }}</div>
+      </div>
+    </div>
+    <div class="info-item1">
+      <span class="label">TERMINAL OTHER-SIDE</span>
+      <div class="value">{{ line.stations[line.stations.length - 1] }}</div>
+    </div>
+  </div>
+</div>
+<div class="line-summary shadow-sm mb-4">
+    <h2 id="stations">Mumbai Metro {{ line.line_name }} Stations List</h2>
+<div class="station-list">
+  <h5>Stations</h5>
+  <ul class="list-group">
+  <li *ngFor="let station of line.stations; let i = index" class="d-flex justify-content-between align-items-center">
+    <div>
+      <span class="station-index">{{ i + 1 }}.</span> {{ station }}
+        <span *ngIf="isInterchange(station)" class="interchange-badge">Interchange</span>
+    </div>
+  </li>
+</ul>
+</div>
+</div>
