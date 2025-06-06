@@ -1,0 +1,22 @@
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer {
+  font-family: 'Inter', sans-serif;
+}
+
+
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: skyblue;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+}

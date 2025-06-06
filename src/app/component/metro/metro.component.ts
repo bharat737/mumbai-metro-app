@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { MetroService } from '../../services/metro.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class MetroComponent implements OnChanges {
   stations: string[] = [];
   selectedCity: string = '';
   region: string = 'Maharashtra';
-  activeTab: string = 'search'; 
+  activeTab: string = 'search';
 
   @Input() cityName: string | undefined;
 
@@ -21,7 +21,7 @@ export class MetroComponent implements OnChanges {
 
   ngOnChanges(): void {
     if (this.cityName) {
-      this.selectedCity = this.cityName.toLowerCase(); // sync input to internal variable
+      this.selectedCity = this.cityName.toLowerCase();
       this.metroService.loadCityData(this.selectedCity).then(() => {
         this.stations = this.metroService.getAllStations();
       });
@@ -42,16 +42,14 @@ export class MetroComponent implements OnChanges {
     });
   }
 
-   onFindRoute(): void {
+  onFindRoute(): void {
     if (this.startStation === this.endStation) {
       this.routeDetails = 'Start and End stations cannot be the same.';
       return;
     }
+
     if (this.startStation && this.endStation) {
-      const directRoute = this.metroService.findDirectRoute(this.startStation, this.endStation);
-      const startIndex = directRoute ? 2 : 1;
-      const transferRoutes = this.metroService.findTransferRoutes(this.startStation, this.endStation, startIndex);
-      this.routeDetails = [directRoute, transferRoutes].filter(Boolean).join('\n');
+      this.routeDetails = this.metroService.findRoute(this.startStation, this.endStation);
     } else {
       this.routeDetails = 'Please enter both start and end stations.';
     }

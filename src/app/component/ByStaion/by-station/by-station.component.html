@@ -1,31 +1,54 @@
-<div class="p-4 max-w-3xl mx-auto">
-  <h2 class="text-2xl font-bold mb-4 text-center">Mumbai Metro Lines</h2>
+<div class="container mt-4">
 
-  <div class="mb-4">
-    <input
-      type="text"
-      [(ngModel)]="searchQuery"
-      (input)="onSearchChange()"
-      placeholder="Search by station..."
-      class="w-full p-2 border rounded shadow-sm focus:ring focus:ring-green-200"
-    />
-  </div>
+   <div class="breadcrumb mb-3">
+        <a href="#" class="text-muted text-decoration-none" (click)="goBack()" *ngIf="selectedLine">
+            🚇 Metro Lines
+        </a>
+        <span *ngIf="!selectedLine" class="text-muted">🚇 Metro Lines</span>
 
-  <ul class="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
-    <li
-      *ngFor="let line of filteredLines"
-      (click)="showLineDetails(line)"
-      class="cursor-pointer bg-white p-4 rounded shadow hover:bg-green-50 transition"
-    >
-      <div class="flex items-center space-x-2">
-        <span class="text-xl">🚇</span>
-        <div>
-          <div class="font-semibold text-gray-800">
-            {{ line.stations[0] }} – {{ line.stations[line.stations.length - 1] }}
-          </div>
-          <div class="text-sm text-gray-500">{{ line.name }}</div>
+        <ng-container *ngIf="selectedLine">
+            <span class="mx-1 text-muted">›</span>
+            <span class="fw-semibold">{{ selectedLine }}</span>
+        </ng-container>
+</div>
+
+
+  <!-- <h5 class="mb-3"><strong>🚇 Search Lines</strong></h5> -->
+
+  <div class="metro-search" *ngIf="!selectedLine">
+  <input
+    type="text"
+    placeholder="Search by station..."
+    [(ngModel)]="searchQuery"
+  />
+</div>
+<div *ngIf="!selectedLine" class="metro-lines-scroll">
+    <div *ngFor="let line of filteredLineFilter()" class="metro-line mb-3 p-3 rounded shadow-sm"
+        [ngStyle]="{ 'border-left': '5px solid ' + getLineColor(line.line_name) }">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+        <div class="metro-line-name fw-bold">
+            <span [style.color]="getLineColor(line.line_name)">◙</span>
+            <ng-container *ngIf="line.status === 'AC'; else plainLineName">
+                <a href="#" (click)="onLineClick(line)" class="text-decoration-none text-dark">
+                {{ line.line_name }}
+                </a>
+            </ng-container>
+            <ng-template #plainLineName>
+                {{ line.line_name }}
+            </ng-template>
         </div>
-      </div>
-    </li>
-  </ul>
+        <div class="metro-line-status mt-2 mt-md-0" [ngClass]="getStatusColor(line.status)">
+            {{ getFullStatus(line.status) }}
+        </div>
+        <div class="metro-line-terminals text-primary mt-2 mt-md-0">
+        {{ line.stations[0] }} ⇄ {{ line.stations[line.stations.length - 1] }}
+        </div>
+    </div>
+    </div>
+  </div>
+    <app-metro-line-detail
+    *ngIf="selectedLine"
+    [lineName]="selectedLine"
+    (back)="goBack()"
+    ></app-metro-line-detail>
 </div>
