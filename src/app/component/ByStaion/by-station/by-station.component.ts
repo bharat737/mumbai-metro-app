@@ -18,6 +18,7 @@ export class ByStationComponent implements OnInit {
   filteredLines: any[] = [];
   searchQuery: string = '';
   selectedLine: string | null = null;
+  selectedStation: any = null;
 
   ngOnInit(): void {
     this.lines = (stationsData as any).lines;
@@ -93,6 +94,14 @@ onLineClick(line: any): void {
 
 goBack(): void {
   this.selectedLine = null;
+}
+onBackToLine(): void {
+  this.selectedStation = null;
+}
+
+onBackToHome(): void {
+  this.selectedLine = null;
+  this.selectedStation = null;
 }
 
 }

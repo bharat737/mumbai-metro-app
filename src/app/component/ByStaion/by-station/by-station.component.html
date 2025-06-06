@@ -1,16 +1,26 @@
 <div class="container mt-4">
 
    <div class="breadcrumb mb-3">
-        <a href="#" class="text-muted text-decoration-none" (click)="goBack()" *ngIf="selectedLine">
-            🚇 Metro Lines
-        </a>
-        <span *ngIf="!selectedLine" class="text-muted">🚇 Metro Lines</span>
+    <a href="#" class="text-muted text-decoration-none" (click)="goBack()" *ngIf="selectedLine">
+      🚇 Metro Lines
+    </a>
+    <span *ngIf="!selectedLine" class="text-muted">🚇 Metro Lines</span>
 
-        <ng-container *ngIf="selectedLine">
-            <span class="mx-1 text-muted">›</span>
-            <span class="fw-semibold">{{ selectedLine }}</span>
-        </ng-container>
-</div>
+    <ng-container *ngIf="selectedLine">
+      <span class="mx-1 text-muted">›</span>
+
+      <!-- If station is selected, make line name clickable -->
+      <a *ngIf="selectedStation" href="#" class="text-muted text-decoration-none" (click)="onBackToLine()">
+        {{ selectedLine }}
+      </a>
+      <span *ngIf="!selectedStation" class="fw-semibold">{{ selectedLine }}</span>
+    </ng-container>
+
+    <ng-container *ngIf="selectedStation">
+      <span class="mx-1 text-muted">›</span>
+      <span class="fw-semibold">{{ selectedStation.name }}</span>
+    </ng-container>
+  </div>
 
 
   <!-- <h5 class="mb-3"><strong>🚇 Search Lines</strong></h5> -->

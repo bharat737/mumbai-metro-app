@@ -1,4 +1,4 @@
-<div class="line-header">
+<div class="line-header" *ngIf="viewMode === 'line'">
   <h2>Mumbai {{ line.line_name }} Metro Route</h2>
   <p><strong>Network:</strong> Mumbai Metro</p>
 </div>
@@ -48,7 +48,7 @@
     </div>
   </div>
 </div>
-<div class="line-summary shadow-sm mb-4" >
+<div class="line-summary shadow-sm mb-4"  *ngIf="viewMode === 'line'">
     <h2 id="stations">Mumbai Metro {{ line.line_name }} Stations List</h2>
 <div class="station-list">
   <h5>Stations</h5>
@@ -62,7 +62,7 @@
 </ul> -->
 
 
-<table class="table" *ngIf="viewMode === 'line'">
+<table class="table">
   <thead>
     <tr>
       <th colspan="2">Station</th>
@@ -93,13 +93,13 @@
 
 
 <!-- Use the new metro station detail component -->
+
+
+</div>
+</div>
 <!-- Station View -->
 <app-metro-station-detail
   *ngIf="viewMode === 'station'"
   [station]="selectedStation"
   [lineName]="line.line_name">
 </app-metro-station-detail>
-
-
-</div>
-</div>

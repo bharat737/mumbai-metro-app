@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-metro-station-detail',
@@ -8,4 +8,15 @@ import { Component, Input } from '@angular/core';
 export class MetroStationDetailComponent {
  @Input() lineName: string = '';
 @Input() station: any = {};
+@Output() homeClick = new EventEmitter<void>();
+@Output() backToLine = new EventEmitter<void>();
+
+goHome(): void {
+  this.homeClick.emit();
+}
+
+goBackToLine(): void {
+  this.backToLine.emit();
+}
+
 }
