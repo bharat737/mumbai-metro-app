@@ -96,3 +96,34 @@
   height: 100%;
 }
 
+
+.station-link {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.station-link:hover {
+  text-decoration: underline;
+}
+
+.interchange-label {
+  background-color: #ffe082;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+
+.interchange-badge {
+  background-color: #ffe0b2;
+  color: #d84315;
+  font-weight: bold;
+  font-size: 0.85rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  display: inline-block;
+}

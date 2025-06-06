@@ -1,6 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MetroService } from 'src/app/services/metro.service';
 
+interface Interchange {
+  station: string;
+}
 
 @Component({
   selector: 'app-metro-line-detail',
@@ -10,6 +13,9 @@ import { MetroService } from 'src/app/services/metro.service';
 export class MetroLineDetailComponent implements OnInit {
   @Input() lineName: string = '';
   @Output() back = new EventEmitter<void>();
+   @Output() backToHome = new EventEmitter<void>();
+  selectedStation: any = null;
+  viewMode: 'line' | 'station' = 'line'; 
 
   line: any;
   interchangeStations: Set<string> = new Set();
@@ -56,5 +62,21 @@ export class MetroLineDetailComponent implements OnInit {
   const approxLength = (stationCount - 1) * 0.9;
   return `${approxLength.toFixed(1)} KM`;
 }
+
+onSelectStation(station: any): void {
+  this.selectedStation = { name: station }; // wrap string
+  this.viewMode = 'station';
+}
+
+onBackToLine(): void {
+  this.viewMode = 'line';
+}
+goHome(): void {
+  // emit event or navigate back to main MetroComponent
+  // assuming you have logic like `selectedLine = null`
+  // use Output or shared service if needed
+  this.backToHome.emit();
+}
+
 
 }

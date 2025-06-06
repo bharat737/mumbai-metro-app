@@ -3,7 +3,8 @@
   <p><strong>Network:</strong> Mumbai Metro</p>
 </div>
 
-<div class="promo">
+
+<div class="promo" *ngIf="viewMode === 'line'">
   <div class="info-box">
     <div class="info-item">
       <div class="horizontal-separator">
@@ -47,17 +48,58 @@
     </div>
   </div>
 </div>
-<div class="line-summary shadow-sm mb-4">
+<div class="line-summary shadow-sm mb-4" >
     <h2 id="stations">Mumbai Metro {{ line.line_name }} Stations List</h2>
 <div class="station-list">
   <h5>Stations</h5>
-  <ul class="list-group">
+  <!-- <ul class="list-group">
   <li *ngFor="let station of line.stations; let i = index" class="d-flex justify-content-between align-items-center">
     <div>
       <span class="station-index">{{ i + 1 }}.</span> {{ station }}
         <span *ngIf="isInterchange(station)" class="interchange-badge">Interchange</span>
     </div>
   </li>
-</ul>
+</ul> -->
+
+
+<table class="table" *ngIf="viewMode === 'line'">
+  <thead>
+    <tr>
+      <th colspan="2">Station</th>
+      <th title="Parking">🅿️</th>
+      <th title="Feeder Bus">🚌️</th>
+      <th title="ATM">🏧️</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let station of line.stations" (click)="onSelectStation(station)" style="cursor: pointer;">
+      <td width="5%" align="right">
+        <span style="color:#000080;">⇅</span><span style="color:#000080;">◉</span>
+      </td>
+      <td>
+        <!-- <a [href]="'https://yometro.com/' + station.slug" target="_blank" [title]="station.name + ' Metro Station'"> -->
+          {{ station }}
+        <!-- </a> -->
+        <!-- <span *ngIf="interchangeStationNames.includes(station)" class="attraction-distance">⨝ Interchange</span> -->
+    <span *ngIf="isInterchange(station)" class="interchange-badge">⨝ Interchange</span>
+        <!-- <span *ngIf="station.interchange" class="attraction-distance">⨝ Interchange</span> -->
+      </td>
+      <td><span [style.color]="station.parking ? 'green' : 'red'">{{ station.parking ? '✓' : '✕' }}</span></td>
+      <td><span [style.color]="station.feederBus ? 'green' : 'red'">{{ station.feederBus ? '✓' : '✕' }}</span></td>
+      <td><span [style.color]="station.atm ? 'green' : 'red'">{{ station.atm ? '✓' : '✕' }}</span></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Use the new metro station detail component -->
+<!-- Station View -->
+<app-metro-station-detail
+  *ngIf="viewMode === 'station'"
+  [station]="selectedStation"
+  [lineName]="line.line_name">
+</app-metro-station-detail>
+
+
 </div>
 </div>
