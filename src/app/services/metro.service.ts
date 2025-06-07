@@ -119,6 +119,7 @@ export class MetroService {
     direction: string;
     stations: string[];
     isInterchange?: boolean;
+    line_colour: string;
     color: string;
   }[] = [];
 
@@ -141,6 +142,7 @@ export class MetroService {
       line: startLine.name,
       direction: segmentStations[segmentStations.length - 1],
       stations: segmentStations,
+      line_colour: startLine.line_name,
       color: this.getLineColor(startLine.line_name)
     });
     return result;
@@ -158,6 +160,7 @@ export class MetroService {
     line: startLine.name,
     direction: segment1[segment1.length - 1],
     stations: segment1,
+    line_colour: startLine.line_name,
     color: this.getLineColor(startLine.line_name)
   });
 
@@ -166,6 +169,7 @@ export class MetroService {
     direction: segment2[segment2.length - 1],
     stations: segment2,
     isInterchange: true,
+    line_colour: endLine.line_name,
     color: this.getLineColor(endLine.line_name)
   });
 

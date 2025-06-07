@@ -10,6 +10,7 @@ export class MetroStationSearchRouteResultComponent {
     line: string;
     direction: string;
     stations: string[];
+    line_colour: string;
     color: string;
   }[] = [];
 
