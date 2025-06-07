@@ -1,0 +1,13 @@
+<div class="breadcrumb mb-3 custom-breadcrumb">
+  <a href="#" class="breadcrumb-link" (click)="goHome.emit()">
+    🚇 Metro Lines
+  </a>
+  <span class="breadcrumb-separator">›</span>
+
+  <a *ngIf="lineName" href="#" class="breadcrumb-link" (click)="backToLine.emit()">
+    {{ lineName }}
+  </a>
+  <span *ngIf="lineName" class="breadcrumb-separator">›</span>
+
+  <span *ngIf="stationName" class="breadcrumb-current">{{ stationName }}</span>
+</div>

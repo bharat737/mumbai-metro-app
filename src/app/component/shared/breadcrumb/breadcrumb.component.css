@@ -1,0 +1,26 @@
+.custom-breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+  color: #6c757d;
+}
+
+.breadcrumb-current {
+  font-weight: 600;
+  color: #212529;
+}

@@ -1,16 +1,12 @@
 <div class="container mt-4">
 
-   <div class="breadcrumb mb-3">
-        <a href="#" class="text-muted text-decoration-none" (click)="goBack()" *ngIf="selectedLine">
-            🚇 Metro Lines
-        </a>
-        <span *ngIf="!selectedLine" class="text-muted">🚇 Metro Lines</span>
+    <app-breadcrumb
+    [lineName]="selectedLine?.line_name"
+    [stationName]="selectedStation?.name"
+    (goHome)="onBackToHome()"
+    (backToLine)="onBackToLine()">
+    </app-breadcrumb>
 
-        <ng-container *ngIf="selectedLine">
-            <span class="mx-1 text-muted">›</span>
-            <span class="fw-semibold">{{ selectedLine }}</span>
-        </ng-container>
-</div>
 
 
   <!-- <h5 class="mb-3"><strong>🚇 Search Lines</strong></h5> -->
@@ -46,9 +42,17 @@
     </div>
     </div>
   </div>
-    <app-metro-line-detail
-    *ngIf="selectedLine"
-    [lineName]="selectedLine"
-    (back)="goBack()"
-    ></app-metro-line-detail>
+   <!-- Line detail (when a line is selected but no station is selected) -->
+<app-metro-line-detail
+  *ngIf="selectedLine && !selectedStation"
+  [line]="selectedLine"
+  (stationClick)="onStationClick($event)">
+</app-metro-line-detail>
+
+<!-- Station detail (when a station is selected) -->
+<app-metro-station-detail
+  *ngIf="selectedStation"
+  [station]="selectedStation"
+  [lineName]="selectedLine.line_name">
+</app-metro-station-detail>
 </div>

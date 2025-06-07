@@ -17,7 +17,8 @@ export class ByStationComponent implements OnInit {
   lines: any[] = [];
   filteredLines: any[] = [];
   searchQuery: string = '';
-  selectedLine: string | null = null;
+  selectedLine: any = null;
+  selectedStation: any = null;
 
   ngOnInit(): void {
     this.lines = (stationsData as any).lines;
@@ -87,12 +88,25 @@ getStatusColor(statusCode: string): string {
 
 onLineClick(line: any): void {
   if (line.status === 'AC') {
-    this.selectedLine = line.line_name;
+    this.selectedLine = line; // ✅ store full object
+    this.selectedStation = null;
   }
 }
 
 goBack(): void {
   this.selectedLine = null;
+}
+onBackToLine(): void {
+  this.selectedStation = null;
+}
+
+onBackToHome(): void {
+  this.selectedLine = null;
+  this.selectedStation = null;
+}
+
+onStationClick(station: any): void {
+  this.selectedStation = station;
 }
 
 }
