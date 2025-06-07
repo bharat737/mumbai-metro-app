@@ -18,11 +18,13 @@
 
     <button class="btn find-btn" (click)="onFindRoute()">Find Route</button>
 
-    <div *ngIf="routeDetails">
-      <h5 class="route-title">🧭 Route Options</h5>
-      <div class="route-card">
-        <pre class="m-0">{{ routeDetails }}</pre>
-      </div>
+    <div *ngIf="routeSegments.length > 0">
+        <h5 class="route-title">🧭 Route Options</h5>
+        <div class="route-card">
+          <app-metro-station-search-route-result
+            [routeSegments]="routeSegments">
+          </app-metro-station-search-route-result>
+        </div>
     </div>
   </div>
 

@@ -1,3 +1,4 @@
+// metro.component.ts
 import { Component, Input, OnChanges } from '@angular/core';
 import { MetroService } from '../../services/metro.service';
 
@@ -14,6 +15,8 @@ export class MetroComponent implements OnChanges {
   selectedCity: string = '';
   region: string = 'Maharashtra';
   activeTab: string = 'search';
+
+  routeSegments: any[] = [];
 
   @Input() cityName: string | undefined;
 
@@ -49,7 +52,7 @@ export class MetroComponent implements OnChanges {
     }
 
     if (this.startStation && this.endStation) {
-      this.routeDetails = this.metroService.findRoute(this.startStation, this.endStation);
+      this.routeSegments = this.metroService.getVisualRoute(this.startStation, this.endStation);
     } else {
       this.routeDetails = 'Please enter both start and end stations.';
     }

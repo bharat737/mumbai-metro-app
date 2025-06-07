@@ -19,9 +19,10 @@ import { FooterComponent } from './component/footer/footer.component';
 import { MetroLineDetailComponent } from './component/lineDetails/metro-line-detail/metro-line-detail.component';
 import { MetroStationDetailComponent } from './component/station-details/metro-station-detail/metro-station-detail.component';
 import { BreadcrumbComponent } from './component/shared/breadcrumb/breadcrumb.component';
+import { MetroStationSearchRouteResultComponent } from './component/shared/metro-station-search-route-result/metro-station-search-route-result.component';
 
 @NgModule({
-  declarations: [AppComponent, MetroComponent, TrainComponent, CityTransportSelectorComponent, AppHeaderComponent, AppSidebarComponent, TransportCardComponent, StationInputComponent, TransportTabBarComponent, ByStationComponent, FooterComponent, MetroLineDetailComponent, MetroStationDetailComponent, BreadcrumbComponent],
+  declarations: [AppComponent, MetroComponent, TrainComponent, CityTransportSelectorComponent, AppHeaderComponent, AppSidebarComponent, TransportCardComponent, StationInputComponent, TransportTabBarComponent, ByStationComponent, FooterComponent, MetroLineDetailComponent, MetroStationDetailComponent, BreadcrumbComponent, MetroStationSearchRouteResultComponent],
   imports: [BrowserModule, FormsModule,HttpClientModule],
   providers: [MetroService,MenuService],
   bootstrap: [AppComponent]

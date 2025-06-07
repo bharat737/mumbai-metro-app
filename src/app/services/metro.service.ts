@@ -37,40 +37,140 @@ export class MetroService {
   }
 
   getInterchanges(): any[] {
-  return this.interchanges;
-}
-
+    return this.interchanges;
+  }
 
   findRoute(start: string, end: string): string {
-    const visitedStations: Set<string> = new Set();
-    let output = '';
-    let count = 1;
+    const pathSegments: { line: string; direction: string; stations: string[] }[] = [];
 
-    // Check if start and end are on the same line
+    let foundStart = null;
+    let foundEnd = null;
+    let startLine = null;
+    let endLine = null;
+
     for (const line of this.lines) {
-      const startIdx = line.stations.indexOf(start);
-      const endIdx = line.stations.indexOf(end);
-      if (startIdx !== -1 && endIdx !== -1) {
-        const route = line.stations.slice(Math.min(startIdx, endIdx), Math.max(startIdx, endIdx) + 1);
-        const time = this.calculateTime(route.length);
-        return `${count++}: From ${start} to ${end} via ${line.name}:
-\t${route.join(' -> ')} (Time: ${time})\n`;
+      const stationNames = line.stations;
+      if (stationNames.includes(start)) {
+        foundStart = stationNames;
+        startLine = line;
+      }
+      if (stationNames.includes(end)) {
+        foundEnd = stationNames;
+        endLine = line;
       }
     }
 
-    // Only check transfers if not on same line
-    const transferRoutes = this.getTransferRoutes(start, end, visitedStations);
-    for (const route of transferRoutes) {
-      output += `${count++}: From ${start} to ${end} using transfer at ${route.interchange}:
-`;
-      output += `\tStep 1: Go from ${start} to ${route.interchange}\n`;
-      output += `\tStep 2: Change to ${route.lines.join(' and ')} at ${route.interchange}\n`;
-      output += `\tStep 3: Continue to ${end}\n`;
-      output += `\tRoute: ${route.path.join(' -> ')} (Time: ${this.calculateTime(route.path.length)})\n\n`;
+    if (!startLine || !endLine) return 'No route found between selected stations.';
+
+    // Same line
+    if (startLine.name === endLine.name) {
+      const stations = startLine.stations;
+      const startIndex = stations.indexOf(start);
+      const endIndex = stations.indexOf(end);
+      const segmentStations =
+        startIndex < endIndex
+          ? stations.slice(startIndex, endIndex + 1)
+          : stations.slice(endIndex, startIndex + 1).reverse();
+
+      return `Trip starts ☞\n${startLine.name} Platform 0 Towards ${segmentStations[segmentStations.length - 1]}\n` +
+        segmentStations.map(s => `◉ ${s}`).join('\n') +
+        `\nTrip ends 🙏`;
     }
 
-    return output.trim() || 'No route found between selected stations.';
+    // Interchange route
+    const commonStations = startLine.stations.filter(s => endLine!.stations.includes(s));
+
+    if (commonStations.length === 0) return 'No route found between selected stations.';
+
+    const interchange = commonStations[0];
+    const startStations = startLine.stations;
+    const endStations = endLine.stations;
+
+    const startIndex = startStations.indexOf(start);
+    const interchangeIndexStart = startStations.indexOf(interchange);
+    const endIndex = endStations.indexOf(end);
+    const interchangeIndexEnd = endStations.indexOf(interchange);
+
+    const segment1 =
+      startIndex < interchangeIndexStart
+        ? startStations.slice(startIndex, interchangeIndexStart + 1)
+        : startStations.slice(interchangeIndexStart, startIndex + 1).reverse();
+
+    const segment2 =
+      interchangeIndexEnd < endIndex
+        ? endStations.slice(interchangeIndexEnd, endIndex + 1)
+        : endStations.slice(endIndex, interchangeIndexEnd + 1).reverse();
+
+    return `Trip starts ☞\n${startLine.name} Platform 0 Towards ${segment1[segment1.length - 1]}\n` +
+      segment1.map(s => `◉ ${s}`).join('\n') +
+      `\nChange here ☞\n${endLine.name} Platform 0 Towards ${segment2[segment2.length - 1]}\n` +
+      segment2.map(s => `◉ ${s}`).join('\n') +
+      `\nTrip ends 🙏`;
   }
+
+  getVisualRoute(start: string, end: string): {
+  line: string;
+  direction: string;
+  stations: string[];
+  isInterchange?: boolean;
+}[] {
+  let result: {
+    line: string;
+    direction: string;
+    stations: string[];
+    isInterchange?: boolean;
+    color: string;
+  }[] = [];
+
+  const startLine = this.lines.find(line => line.stations.includes(start));
+  const endLine = this.lines.find(line => line.stations.includes(end));
+
+  if (!startLine || !endLine) return [];
+
+  // Case 1: Both on same line
+  if (startLine.name === endLine.name) {
+    const stations = startLine.stations;
+    const startIndex = stations.indexOf(start);
+    const endIndex = stations.indexOf(end);
+    const segmentStations =
+      startIndex < endIndex
+        ? stations.slice(startIndex, endIndex + 1)
+        : stations.slice(endIndex, startIndex + 1).reverse();
+
+    result.push({
+      line: startLine.name,
+      direction: segmentStations[segmentStations.length - 1],
+      stations: segmentStations,
+      color: this.getLineColor(startLine.line_name)
+    });
+    return result;
+  }
+
+  // Case 2: With Interchange
+  const commonStations = startLine.stations.filter(st => endLine.stations.includes(st));
+  if (!commonStations.length) return [];
+
+  const interchange = commonStations[0]; // first match
+  const segment1 = this.getRouteSegment(start, interchange);
+  const segment2 = this.getRouteSegment(interchange, end);
+
+  result.push({
+    line: startLine.name,
+    direction: segment1[segment1.length - 1],
+    stations: segment1,
+    color: this.getLineColor(startLine.line_name)
+  });
+
+  result.push({
+    line: endLine.name,
+    direction: segment2[segment2.length - 1],
+    stations: segment2,
+    isInterchange: true,
+    color: this.getLineColor(startLine.line_name)
+  });
+
+  return result;
+}
 
   getLines(station: string): string[] {
     return this.lines
@@ -138,26 +238,24 @@ export class MetroService {
   }
 
   getLineByLineName(lineName: string): any {
-  return this.lines.find(l => l.line_name === lineName);
-}
+    return this.lines.find(l => l.line_name === lineName);
+  }
 
-getInterchangeStations(): string[] {
-  return this.interchanges.map(i => i.station);
-}
+  getInterchangeStations(): string[] {
+    return this.interchanges.map(i => i.station);
+  }
 
-getLineColor(lineName: string): string {
-  const colorMap: { [key: string]: string } = {
-    'Blue Line': '#0000FF',
-    'Yello Line': '#FFA500',
-    'Yellow Line': '#FFD700',
-    'Green Line': '#008000',
-    'Orange Line': '#FF8C00',
-    'Red Line': '#FF0000',
-    'Pink Line': '#FF69B4',
-    'Aqua Line': '#00FFFF'
-  };
-  return colorMap[lineName] || '#999'; // default gray if unknown
-}
-
-
+  getLineColor(lineName: string): string {
+    const colorMap: { [key: string]: string } = {
+      'Blue Line': '#0000FF',
+      'Yello Line': '#FFA500',
+      'Yellow Line': '#FFD700',
+      'Green Line': '#008000',
+      'Orange Line': '#FF8C00',
+      'Red Line': '#FF0000',
+      'Pink Line': '#FF69B4',
+      'Aqua Line': '#00FFFF'
+    };
+    return colorMap[lineName] || '#999'; // default gray if unknown
+  }
 }
