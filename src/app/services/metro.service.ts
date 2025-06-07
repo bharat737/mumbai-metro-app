@@ -166,7 +166,7 @@ export class MetroService {
     direction: segment2[segment2.length - 1],
     stations: segment2,
     isInterchange: true,
-    color: this.getLineColor(startLine.line_name)
+    color: this.getLineColor(endLine.line_name)
   });
 
   return result;
