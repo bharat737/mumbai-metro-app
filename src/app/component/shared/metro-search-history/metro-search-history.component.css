@@ -1,0 +1,27 @@
+/* metro-search-history.component.css */
+.search-history {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f4f4f4;
+  border-radius: 0.5rem;
+}
+
+.search-history h5 {
+  margin-bottom: 0.5rem;
+}
+
+.search-history ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.search-history li {
+  cursor: pointer;
+  padding: 0.3rem;
+  border-bottom: 1px solid #ccc;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.search-history li:hover {
+  background-color: #e0e0e0;
+}

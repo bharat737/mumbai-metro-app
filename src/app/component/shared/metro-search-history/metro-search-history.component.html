@@ -1,0 +1,8 @@
+<div *ngIf="filteredHistory.length > 0">
+  <h5 class="history-title">🔁 Recent Searches</h5>
+  <ul class="history-list">
+    <li *ngFor="let item of filteredHistory" (click)="onSelect(item)">
+      {{ item.start }} → {{ item.end }}
+    </li>
+  </ul>
+</div>

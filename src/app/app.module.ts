@@ -20,9 +20,10 @@ import { MetroLineDetailComponent } from './component/lineDetails/metro-line-det
 import { MetroStationDetailComponent } from './component/station-details/metro-station-detail/metro-station-detail.component';
 import { BreadcrumbComponent } from './component/shared/breadcrumb/breadcrumb.component';
 import { MetroStationSearchRouteResultComponent } from './component/shared/metro-station-search-route-result/metro-station-search-route-result.component';
+import { MetroSearchHistoryComponent } from './component/shared/metro-search-history/metro-search-history.component';
 
 @NgModule({
-  declarations: [AppComponent, MetroComponent, TrainComponent, CityTransportSelectorComponent, AppHeaderComponent, AppSidebarComponent, TransportCardComponent, StationInputComponent, TransportTabBarComponent, ByStationComponent, FooterComponent, MetroLineDetailComponent, MetroStationDetailComponent, BreadcrumbComponent, MetroStationSearchRouteResultComponent],
+  declarations: [AppComponent, MetroComponent, TrainComponent, CityTransportSelectorComponent, AppHeaderComponent, AppSidebarComponent, TransportCardComponent, StationInputComponent, TransportTabBarComponent, ByStationComponent, FooterComponent, MetroLineDetailComponent, MetroStationDetailComponent, BreadcrumbComponent, MetroStationSearchRouteResultComponent, MetroSearchHistoryComponent],
   imports: [BrowserModule, FormsModule,HttpClientModule],
   providers: [MetroService,MenuService],
   bootstrap: [AppComponent]

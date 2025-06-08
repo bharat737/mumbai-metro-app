@@ -8,6 +8,12 @@
 
   <!-- Search Destination Tab -->
   <div *ngIf="activeTab === 'search' && stations.length > 0">
+         <!-- Show history before route -->
+  <app-metro-search-history
+    [city]="selectedCity"
+    [history]="searchHistory"
+    (onSearchSelected)="onHistorySelected($event)"
+  ></app-metro-search-history>
     <app-station-input
       [stations]="stations"
       [start]="startStation"
@@ -17,6 +23,7 @@
     ></app-station-input>
 
     <button class="btn find-btn" (click)="onFindRoute()">Find Route</button>
+
 
     <div *ngIf="loadSearchResult">
         <h5 class="route-title">🧭 Route Options</h5>

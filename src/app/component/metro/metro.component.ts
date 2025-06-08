@@ -18,12 +18,17 @@ export class MetroComponent implements OnChanges {
   region: string = 'Maharashtra';
   activeTab: string = 'search';
   errorMessages : string = '';
+   searchHistory: { start: string; end: string; city: string }[] = [];
 
   routeSegments: any[] = [];
 
   @Input() cityName: string | undefined;
 
   constructor(private metroService: MetroService) {}
+
+  ngOnInit(): void {
+  this.loadSearchHistory();
+  }
 
   ngOnChanges(): void {
     if (this.cityName) {
@@ -32,6 +37,13 @@ export class MetroComponent implements OnChanges {
         this.stations = this.metroService.getAllStations();
       });
     }
+  }
+
+  onHistorySelected(item: { start: string; end: string; city: string }) {
+    this.startStation = item.start;
+    this.endStation = item.end;
+    this.selectedCity = item.city;
+    this.onFindRoute();
   }
 
   onRegionSelected(region: string): void {
@@ -64,9 +76,49 @@ export class MetroComponent implements OnChanges {
       this.routeSegments = this.metroService.getVisualRoute(this.startStation, this.endStation) || [];
       if (this.routeSegments.length === 0) {
         this.errorMessages = ErrorMessages.NO_ROUTE_FOUND;
+      } else {
+        this.errorMessages = '';
+        // this.routeDetails = `Route from ${this.startStation} to ${this.endStation}`;
+         this.saveSearchToHistory(this.startStation, this.endStation, this.selectedCity);
+        
+        this.searchHistory.push({ start: this.startStation, end: this.endStation, city: this.selectedCity });
+
+        // optional: prevent duplicates
+          this.searchHistory = this.searchHistory.filter(
+            (item, index, self) =>
+              index === self.findIndex(t => t.start === item.start && t.end === item.end && t.city === item.city)
+          );
       }
+
     } else {
       this.errorMessages = ErrorMessages.MISSING_STATIONS;
     }
   }
+
+  saveSearchToHistory(start: string, end: string, city: string): void {
+  const newEntry = { start, end, city };
+
+  // Load existing
+  const existing = JSON.parse(localStorage.getItem('metroSearchHistory') || '[]');
+
+  // Filter out duplicate
+  const filtered = existing.filter((entry: any) =>
+    !(entry.start === start && entry.end === end && entry.city === city)
+  );
+
+  // Add new at start and keep max 2
+  const updated = [newEntry, ...filtered].slice(0, 2);
+
+  // Save to localStorage and update variable
+  localStorage.setItem('metroSearchHistory', JSON.stringify(updated));
+  this.searchHistory = updated;
 }
+
+loadSearchHistory(): void {
+  const stored = JSON.parse(localStorage.getItem('metroSearchHistory') || '[]');
+  this.searchHistory = stored;
+}
+}
+
+
+
