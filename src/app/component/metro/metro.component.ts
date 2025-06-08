@@ -2,6 +2,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { MetroService } from '../../services/metro.service';
 import { ErrorMessages } from '../../constant/error.messages';
+import { FEATURE_FLAGS } from '../../constant/feature-flags';
 
 @Component({
   selector: 'app-metro',
@@ -18,7 +19,10 @@ export class MetroComponent implements OnChanges {
   region: string = 'Maharashtra';
   activeTab: string = 'search';
   errorMessages : string = '';
-   searchHistory: { start: string; end: string; city: string }[] = [];
+  searchHistory: { start: string; end: string; city: string }[] = [];
+
+  // This flag is used to conditionally show the history section in the template
+  showHistory = FEATURE_FLAGS.ENABLE_METRO_HISTORY === 'Y';
 
   routeSegments: any[] = [];
 

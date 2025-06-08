@@ -10,6 +10,7 @@
   <div *ngIf="activeTab === 'search' && stations.length > 0">
          <!-- Show history before route -->
   <app-metro-search-history
+   *ngIf="showHistory"
     [city]="selectedCity"
     [history]="searchHistory"
     (onSearchSelected)="onHistorySelected($event)"

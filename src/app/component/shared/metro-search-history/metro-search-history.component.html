@@ -1,8 +1,20 @@
-<div *ngIf="filteredHistory.length > 0">
-  <h5 class="history-title">🔁 Recent Searches</h5>
-  <ul class="history-list">
-    <li *ngFor="let item of filteredHistory" (click)="onSelect(item)">
-      {{ item.start }} → {{ item.end }}
-    </li>
-  </ul>
+<div *ngIf="filteredHistory.length > 0" class="history-container">
+  <div class="history-header">
+    <h5>Recent Searches</h5>
+    <!-- <a class="view-all-link" (click)="viewAll()">View All</a> -->
+  </div>
+
+  <div class="history-cards">
+    <div *ngFor="let item of filteredHistory" class="history-card" (click)="onSelect(item)">
+      <div class="station-row">
+        <span class="station-code">{{ item.start }}</span>
+        <span class="arrow">→</span>
+        <span class="station-code">{{ item.end }}</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-label">City</span>
+        <span class="meta-value">{{ item.city | titlecase }}</span>
+      </div>
+    </div>
+  </div>
 </div>
