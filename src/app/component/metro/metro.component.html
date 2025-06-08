@@ -18,11 +18,12 @@
 
     <button class="btn find-btn" (click)="onFindRoute()">Find Route</button>
 
-    <div *ngIf="routeSegments.length > 0">
+    <div *ngIf="loadSearchResult">
         <h5 class="route-title">🧭 Route Options</h5>
         <div class="route-card">
           <app-metro-station-search-route-result
-            [routeSegments]="routeSegments">
+            [routeSegments]="routeSegments"
+            [errorMessages]="errorMessages">
           </app-metro-station-search-route-result>
         </div>
     </div>

@@ -1,6 +1,7 @@
 // metro.component.ts
 import { Component, Input, OnChanges } from '@angular/core';
 import { MetroService } from '../../services/metro.service';
+import { ErrorMessages } from '../../constant/error.messages';
 
 @Component({
   selector: 'app-metro',
@@ -9,12 +10,14 @@ import { MetroService } from '../../services/metro.service';
 })
 export class MetroComponent implements OnChanges {
   startStation: string = '';
+  loadSearchResult: boolean = false;
   endStation: string = '';
   routeDetails: string = '';
   stations: string[] = [];
   selectedCity: string = '';
   region: string = 'Maharashtra';
   activeTab: string = 'search';
+  errorMessages : string = '';
 
   routeSegments: any[] = [];
 
@@ -46,15 +49,24 @@ export class MetroComponent implements OnChanges {
   }
 
   onFindRoute(): void {
+    this.loadSearchResult = true;
+
+     if (!this.startStation || !this.endStation) {
+    this.errorMessages = ErrorMessages.MISSING_STATIONS;
+    return;
+  }
     if (this.startStation === this.endStation) {
-      this.routeDetails = 'Start and End stations cannot be the same.';
+      this.errorMessages = ErrorMessages.SAME_START_END;;
       return;
     }
 
     if (this.startStation && this.endStation) {
-      this.routeSegments = this.metroService.getVisualRoute(this.startStation, this.endStation);
+      this.routeSegments = this.metroService.getVisualRoute(this.startStation, this.endStation) || [];
+      if (this.routeSegments.length === 0) {
+        this.errorMessages = ErrorMessages.NO_ROUTE_FOUND;
+      }
     } else {
-      this.routeDetails = 'Please enter both start and end stations.';
+      this.errorMessages = ErrorMessages.MISSING_STATIONS;
     }
   }
 }

@@ -13,7 +13,7 @@ export class MetroStationSearchRouteResultComponent {
     line_colour: string;
     color: string;
   }[] = [];
-
+  @Input() errorMessages: any;
   getLineColor(line: string): string {
     const colorMap: any = {
       'Blue Line': '#0000ff',

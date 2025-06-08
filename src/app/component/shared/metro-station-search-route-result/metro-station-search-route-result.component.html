@@ -1,9 +1,10 @@
 
 <div style="line-height:1;">
   <!-- No route found message -->
-  <div *ngIf="!routeSegments?.length" class="no-route-msg">
-    🚫 No route available between selected stations.
-  </div>
+  <div *ngIf="routeSegments && routeSegments.length === 0" class="no-route-msg">
+   {{ errorMessages }}
+</div>
+  
 
   <!-- If route exists, show segments -->
   <ng-container *ngIf="routeSegments?.length">
