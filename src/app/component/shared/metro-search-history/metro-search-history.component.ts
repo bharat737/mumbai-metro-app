@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class MetroSearchHistoryComponent {
   @Input() city: string = '';
   @Output() onSearchSelected = new EventEmitter<{ start: string; end: string; city: string }>();
-  showHistoryList: boolean = true;
+  showHistoryList: boolean = false;
   @Input() history: { start: string; end: string; city: string }[] = [];
 
   get filteredHistory() {

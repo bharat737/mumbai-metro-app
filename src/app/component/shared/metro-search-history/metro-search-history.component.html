@@ -1,10 +1,11 @@
 <div *ngIf="filteredHistory.length > 0" class="history-container">
-  <div class="history-header">
+  <div class="history-header" (click)="toggleHistory()">
     <h5>Recent Searches</h5>
+    <span class="toggle-icon">{{ showHistoryList ? '▲' : '▼' }}</span>
     <!-- <a class="view-all-link" (click)="viewAll()">View All</a> -->
   </div>
 
-  <div class="history-cards">
+  <div class="history-cards" *ngIf="showHistoryList" >
     <div *ngFor="let item of filteredHistory" class="history-card" (click)="onSelect(item)">
       <div class="station-row">
         <span class="station-code">{{ item.start }}</span>
