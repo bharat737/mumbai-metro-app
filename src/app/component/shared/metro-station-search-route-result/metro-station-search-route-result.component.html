@@ -1,0 +1,30 @@
+
+<div style="line-height:1;">
+  <!-- No route found message -->
+  <div *ngIf="routeSegments && routeSegments.length === 0" class="no-route-msg">
+   {{ errorMessages }}
+</div>
+  
+
+  <!-- If route exists, show segments -->
+  <ng-container *ngIf="routeSegments?.length">
+    <ng-container *ngFor="let segment of routeSegments; let i = index">
+      <div class="addinfoLeft">
+        <div *ngIf="i === 0" class="tripstart">Trip starts&nbsp;☞</div>
+        <div *ngIf="i > 0" class="changetrain">Change here&nbsp;☞</div>
+      </div>
+      <div class="addinfoRight">
+        <span class="line-color-box" [ngStyle]="{ backgroundColor: segment.color }"></span>
+        {{ segment.line }} ({{segment.line_colour}}) Platform 0 Towards {{ segment.direction }}
+    </div>
+
+      <ng-container *ngFor="let station of segment.stations; let j = index">
+        <div class="stationblock1" [ngStyle]="{ color: segment.color}">
+          ◉ <a [href]="'https://yometro.com/' + slugify(station) + '-metro-station-140001'" target="_blank" title="{{ station }} Metro Station">{{ station }}</a>
+        </div>
+        <div *ngIf="j < segment.stations.length - 1" class="stationblock2" [ngStyle]="{ color: getLineColor(segment.color) }"></div>
+      </ng-container>
+    </ng-container>
+    <div class="tripend">Trip ends 🙏</div>
+  </ng-container>
+</div>

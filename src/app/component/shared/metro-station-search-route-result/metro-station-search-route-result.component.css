@@ -1,0 +1,52 @@
+.addinfoLeft {
+  float: left;
+  font-weight: bold;
+  color: #007bff;
+  margin-right: 10px;
+  padding: 6px 0;
+}
+
+.addinfoRight {
+  overflow: hidden;
+  font-weight: bold;
+  padding: 6px 0;
+  color: #555;
+}
+
+.tripstart, .changetrain, .tripend {
+  font-size: 16px;
+}
+
+.tripend {
+  clear: both;
+  padding-top: 10px;
+  font-weight: bold;
+  color: green;
+}
+
+.stationblock1 {
+  font-size: 16px;
+  padding: 4px 0;
+}
+
+.stationblock2 {
+  height: 10px;
+  border-left: 2px solid currentColor;
+  margin-left: 10px;
+}
+
+.no-route-msg {
+  text-align: center;
+  color: #d9534f;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.line-color-box {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
