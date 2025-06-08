@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import stationsData from '../../../../assets/data/metro/mumbai-metro.json';
 
 interface MetroLine {
@@ -20,20 +20,34 @@ export class ByStationComponent implements OnInit {
   selectedLine: any = null;
   selectedStation: any = null;
   searchedStation: string = '';
+  @Input() stations: string[] = []; // Already exists
+  filteredStationSuggestions: string[] = [];
 
   ngOnInit(): void {
     this.lines = (stationsData as any).lines;
     this.filteredLines = this.lines;
   }
 
-  onSearchChange(): void {
-    const query = this.searchQuery.toLowerCase();
-    this.filteredLines = this.lines.filter(line =>
-      line.stations.some((station: string) =>
-        station.toLowerCase().includes(query)
-      )
-    );
-  }
+//  onSearchChange(): void {
+//   const query = this.searchQuery.toLowerCase();
+
+//   this.filteredLines = this.lines.filter(line =>
+//     line.stations.some((station: string) =>
+//       station.toLowerCase().includes(query)
+//     )
+//   );
+
+//   this.filteredStationSuggestions = this.stations
+//     .filter(st => st.toLowerCase().includes(query))
+//     .slice(0, 5);
+// }
+
+onSearchChange(query: string): void {
+  this.searchQuery = query;
+  this.filteredStationSuggestions = this.stations
+    .filter(s => s.toLowerCase().includes(query.toLowerCase()));
+}
+
 
   showLineDetails(line: any): void {
     alert(`Line: ${line.name}\nStations: ${line.stations.join(' -> ')}`);
@@ -172,6 +186,15 @@ getMatchingStations(line: any): string[] {
   return line.stations.filter((st: string) =>
     st.toLowerCase().includes(this.searchedStation.toLowerCase())
   );
+}
+
+onStationSuggestionClick(station: string): void {
+  this.searchQuery = station;
+  this.filteredStationSuggestions = [];
+  // Set searchedStation and refresh results
+  this.searchedStation = station;
+  // this.onSearchChange(station);
+
 }
 
 }

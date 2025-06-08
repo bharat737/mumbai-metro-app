@@ -96,3 +96,14 @@
 .breadcrumb {
   font-size: 0.95rem;
 }
+
+
+.station-suggestions {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  z-index: 10;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+}
