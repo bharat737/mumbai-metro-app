@@ -8,7 +8,7 @@
         "Versova",
         "D. N. Nagar",
         "Azad Nagar",
-        "Andheri",
+        "Andheri (East)",
         "Western Express Highway",
         "Chakala",
         "Airport Road",
@@ -165,6 +165,7 @@
       "stations": [
         "Gundavali",
         "Mogra",
+        "Andheri (East)",
         "Jogeshwari(East)",
         "Goregaon(East)",
         "Aarey",
@@ -218,9 +219,8 @@
       ]
     },
     {
-      "station": "Andheri",
+      "station": "Andheri (East)",
       "lines": [
-        "Line 1",
         "Mumbai Metro Line 1",
         "Mumbai Metro Line 7",
         "Western Railway"
