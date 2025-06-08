@@ -11,13 +11,13 @@
 }
 
 .metro-line-name {
-  font-size: 1.1rem;
+  font-size: 12px;
   font-weight: 600;
 }
 
 .metro-line-status {
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 12px;
 }
 
 .metro-line-status.ac::after {
@@ -45,7 +45,7 @@
 }
 
 .metro-line-terminals {
-  font-size: 0.95rem;
+  font-size: 13px;
   font-weight: 500;
   color: #007bff;
 }
@@ -95,4 +95,15 @@
 
 .breadcrumb {
   font-size: 0.95rem;
+}
+
+
+.station-suggestions {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  z-index: 10;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
 }
