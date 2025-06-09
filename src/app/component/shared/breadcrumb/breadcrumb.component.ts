@@ -11,5 +11,7 @@ export class BreadcrumbComponent {
 
   @Output() goHome = new EventEmitter<void>();
   @Output() backToLine = new EventEmitter<void>();
+  // @Input() direction?: { from: string; to: string; mode: string };
+  // @Output() backToSearch = new EventEmitter<void>();
  
 }

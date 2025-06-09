@@ -58,12 +58,21 @@
             <ng-container *ngFor="let matchStation of getMatchingStations(line)">
               <ng-container *ngIf="getDirection(line.stations, matchStation, 'forward') as forward">
                 <div *ngIf="forward && forward !== matchStation">
-                  ➡️ Towards: {{ matchStation }} → {{ forward }}
+                  <!-- ➡️ Towards: {{ matchStation }} → {{ forward }} -->
+                   <a href="#" (click)="showRouteTimings(matchStation, forward, 'metro')">
+                    ➡️ Towards: {{ matchStation }} → {{ forward }}
+                  </a>
+
                 </div>
               </ng-container>
               <ng-container *ngIf="getDirection(line.stations, matchStation, 'backward') as backward">
                 <div *ngIf="backward && backward !== matchStation">
-                  ⬅️ Towards: {{ matchStation }} → {{ backward }}
+                  <!-- ⬅️ Towards: {{ matchStation }} → {{ backward }} -->
+
+                  <!-- Backward direction -->
+                  <a href="#" (click)="showRouteTimings(matchStation, backward, 'metro')">
+                    ⬅️ Towards: {{ matchStation }} → {{ backward }}
+                  </a>
                 </div>
               </ng-container>
             </ng-container>
@@ -76,6 +85,13 @@
       </div>
     </div>
   </div>
+
+  <app-route-timings
+  *ngIf="selectedDirection"
+  [from]="selectedDirection.from"
+  [to]="selectedDirection.to"
+  (back)="selectedDirection = null">
+</app-route-timings>
 
   <app-metro-line-detail
     *ngIf="selectedLine && !selectedStation"

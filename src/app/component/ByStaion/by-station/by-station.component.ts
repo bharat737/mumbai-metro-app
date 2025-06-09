@@ -24,6 +24,11 @@ export class ByStationComponent implements OnInit {
   @Input() stations: string[] = []; // Already exists
   filteredStationSuggestions: string[] = [];
 
+  // in parent component.ts
+  // selectedDirection: { from: string; to: string; mode: 'metro' | 'train' } | null = null;
+  selectedDirection: { from: string; to: string; mode: string } | null = null;
+
+
   ngOnInit(): void {
     this.lines = (stationsData as any).lines;
     this.filteredLines = this.lines;
@@ -198,4 +203,10 @@ onStationSuggestionClick(station: string): void {
 
 }
 
+showRouteTimings(from: string, to: string, mode: string) {
+  this.selectedDirection = { from, to, mode };
+  // this.searchQuery = '';
+  // this.selectedLine = null;
+  // this.selectedStation = null;
+}
 }
