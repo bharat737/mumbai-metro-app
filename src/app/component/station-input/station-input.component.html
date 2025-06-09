@@ -1,26 +1,46 @@
 <div class="station-wrapper">
-  <div>
+  <div class="metro-search position-relative">
     <div class="label">Start Station:</div>
     <input
-      list="stations"
-      class="form-control"
-      [value]="start"
-      #startInput
-      (input)="onStartChange(startInput.value)"
+      type="text"
+      [(ngModel)]="start"
+      (input)="onStartInputChange()"
       placeholder="Enter start station"
+      class="form-control"
     />
+
+     <div *ngIf="startSuggestions.length" class="station-suggestions">
+      <ul class="list-group">
+        <li
+          class="list-group-item list-group-item-action"
+          *ngFor="let suggestion of startSuggestions"
+          (click)="selectStartStation(suggestion)">
+          {{ suggestion }}
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <div>
+  <div class="metro-search position-relative">
     <div class="label">End Station:</div>
     <input
-      list="stations"
-      class="form-control"
-      [value]="end"
-      #endInput
-      (input)="onEndChange(endInput.value)"
+      type="text"
+      [(ngModel)]="end"
+      (input)="onEndInputChange()"
       placeholder="Enter end station"
+      class="form-control"
     />
+
+     <div *ngIf="endSuggestions.length" class="station-suggestions">
+      <ul class="list-group">
+        <li
+          class="list-group-item list-group-item-action"
+          *ngFor="let suggestion of endSuggestions"
+          (click)="selectEndStation(suggestion)">
+          {{ suggestion }}
+        </li>
+      </ul>
+    </div>
 
     <datalist id="stations">
       <option *ngFor="let station of stations" [value]="station"></option>

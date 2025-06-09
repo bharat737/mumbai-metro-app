@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import stationsData from '../../../../assets/data/metro/mumbai-metro.json';
+import { MIN_SEARCH_LENGTH,AC,AP} from 'src/app/constant/app.constants';
 
 interface MetroLine {
   name: string;
@@ -69,7 +70,7 @@ onSearchChange(query: string): void {
   filteredLineFilter(): MetroLine[] {
      this.searchedStation = this.searchQuery.trim();
    // Show all lines if search is empty or too short
-  if (!this.searchedStation || this.searchedStation.length < 3) {
+  if (!this.searchedStation || this.searchedStation.length < MIN_SEARCH_LENGTH) {
     return this.lines;
   }
   // if (!this.searchQuery) return this.lines;
