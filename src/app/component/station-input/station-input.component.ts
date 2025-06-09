@@ -14,11 +14,30 @@ export class StationInputComponent {
   @Output() startChange = new EventEmitter<string>();
   @Output() endChange = new EventEmitter<string>();
 
-  onStartChange(value: string) {
-    this.startChange.emit(value);
+  startSuggestions: string[] = [];
+  endSuggestions: string[] = [];
+
+  onStartInputChange(): void {
+    this.startSuggestions = this.stations.filter(st =>
+      st.toLowerCase().includes(this.start.toLowerCase())
+    );
   }
 
-  onEndChange(value: string) {
-    this.endChange.emit(value);
+  onEndInputChange(): void {
+    this.endSuggestions = this.stations.filter(st =>
+      st.toLowerCase().includes(this.end.toLowerCase())
+    );
+  }
+
+  selectStartStation(station: string): void {
+    this.start = station; 
+    this.startSuggestions = [];
+    this.startChange.emit(station);
+  }
+
+  selectEndStation(station: string): void {
+    this.end = station; 
+    this.endSuggestions = [];
+    this.endChange.emit(station);
   }
 }
