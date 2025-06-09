@@ -9,7 +9,8 @@
   <div class="metro-search position-relative" *ngIf="!selectedLine">
     <input
       type="text"
-      placeholder="Search by station..."
+      placeholder="You are at..."
+      [(ngModel)]="searchQuery"
       [value]="searchQuery"
       #searchInput
      (input)="onSearchChange(searchInput.value)"
@@ -40,7 +41,7 @@
           <span [style.color]="getLineColor(line.line_name)">◙</span>
           <ng-container *ngIf="line.status === 'AC'; else plainLineName">
             <a href="#" (click)="onLineClick(line)" class="text-decoration-none text-dark">
-              {{ line.line_name }}
+              {{ line.line_name }} ( {{ line.name }})
             </a>
           </ng-container>
           <ng-template #plainLineName>

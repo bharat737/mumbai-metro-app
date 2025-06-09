@@ -1,8 +1,8 @@
 .station-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 16px 0;
+  gap: 0px;
+  padding: 0px 0;
   max-width: 400px;
   margin: auto;
 }
@@ -18,4 +18,17 @@ input.form-control {
   border-radius: 6px;
   font-size: 15px;
   width: 100%;
+}
+
+.metro-search {
+  margin-bottom: 1.5rem;
+}
+
+.metro-search input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
