@@ -4,10 +4,20 @@
   </a>
   <span class="breadcrumb-separator">›</span>
 
-  <a *ngIf="lineName" href="#" class="breadcrumb-link" (click)="backToLine.emit()">
-    {{ lineName }}
-  </a>
-  <span *ngIf="lineName" class="breadcrumb-separator">›</span>
+   <!-- Case 2: Direction view -->
+  <ng-container *ngIf="direction">
+    <span class="breadcrumb-current">
+      {{ direction.from }} → {{ direction.to }}
+    </span>
+  </ng-container>
 
-  <span *ngIf="stationName" class="breadcrumb-current">{{ stationName }}</span>
+ <!-- Case 1: Line > Station view -->
+  <ng-container *ngIf="!direction">
+    <a *ngIf="lineName" href="#" class="breadcrumb-link" (click)="backToLine.emit()">
+      {{ lineName }}
+    </a>
+    <span *ngIf="lineName" class="breadcrumb-separator">›</span>
+
+    <span *ngIf="stationName" class="breadcrumb-current">{{ stationName }}</span>
+  </ng-container>
 </div>

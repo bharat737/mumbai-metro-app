@@ -19,6 +19,7 @@ export class ByStationComponent implements OnInit {
   filteredLines: any[] = [];
   searchQuery: string = '';
   selectedLine: any = null;
+  // selectedDirection: any = null;
   selectedStation: any = null;
   searchedStation: string = '';
   @Input() stations: string[] = []; // Already exists
@@ -116,6 +117,7 @@ onLineClick(line: any): void {
   if (line.status === 'AC') {
     this.selectedLine = line; // ✅ store full object
     this.selectedStation = null;
+     this.selectedDirection = null; // sets breadcrumb to line only
   }
 }
 
@@ -129,6 +131,7 @@ onBackToLine(): void {
 onBackToHome(): void {
   this.selectedLine = null;
   this.selectedStation = null;
+  this.selectedDirection = null; 
 }
 
 onStationClick(station: any): void {
@@ -204,9 +207,8 @@ onStationSuggestionClick(station: string): void {
 }
 
 showRouteTimings(from: string, to: string, mode: string) {
-  this.selectedDirection = { from, to, mode };
-  // this.searchQuery = '';
-  // this.selectedLine = null;
-  // this.selectedStation = null;
+  this.selectedLine = null;
+  this.selectedStation = null;
+  this.selectedDirection = { from, to, mode }; // sets breadcrumb to A → B
 }
 }

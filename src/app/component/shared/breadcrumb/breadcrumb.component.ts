@@ -8,10 +8,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class BreadcrumbComponent {
   @Input() lineName!: string;
   @Input() stationName?: string;
-
+  @Input() direction: any;
   @Output() goHome = new EventEmitter<void>();
   @Output() backToLine = new EventEmitter<void>();
-  // @Input() direction?: { from: string; to: string; mode: string };
-  // @Output() backToSearch = new EventEmitter<void>();
  
 }
