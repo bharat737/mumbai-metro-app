@@ -19,29 +19,21 @@ export class ByStationComponent implements OnInit {
   filteredLines: any[] = [];
   searchQuery: string = '';
   selectedLine: any = null;
+  // selectedDirection: any = null;
   selectedStation: any = null;
   searchedStation: string = '';
   @Input() stations: string[] = []; // Already exists
   filteredStationSuggestions: string[] = [];
 
+  // in parent component.ts
+  // selectedDirection: { from: string; to: string; mode: 'metro' | 'train' } | null = null;
+  selectedDirection: { from: string; to: string; mode: string } | null = null;
+
+
   ngOnInit(): void {
     this.lines = (stationsData as any).lines;
     this.filteredLines = this.lines;
   }
-
-//  onSearchChange(): void {
-//   const query = this.searchQuery.toLowerCase();
-
-//   this.filteredLines = this.lines.filter(line =>
-//     line.stations.some((station: string) =>
-//       station.toLowerCase().includes(query)
-//     )
-//   );
-
-//   this.filteredStationSuggestions = this.stations
-//     .filter(st => st.toLowerCase().includes(query))
-//     .slice(0, 5);
-// }
 
 onSearchChange(query: string): void {
   this.searchQuery = query;
@@ -111,6 +103,7 @@ onLineClick(line: any): void {
   if (line.status === 'AC') {
     this.selectedLine = line; // ✅ store full object
     this.selectedStation = null;
+     this.selectedDirection = null; // sets breadcrumb to line only
   }
 }
 
@@ -124,21 +117,12 @@ onBackToLine(): void {
 onBackToHome(): void {
   this.selectedLine = null;
   this.selectedStation = null;
+  this.selectedDirection = null; 
 }
 
 onStationClick(station: any): void {
   this.selectedStation = station;
 }
-// getDirection(stations: string[], fromQuery: string, direction: 'forward' | 'backward'): string | null {
-//   const index = stations.findIndex(s =>
-//     s.toLowerCase().includes(fromQuery.toLowerCase())
-//   );
-//   if (index === -1) return null;
-
-//   return direction === 'forward'
-//     ? stations[stations.length - 1]
-//     : stations[0];
-// }
 
 getDirection(stations: string[], fromQuery: string, direction: 'forward' | 'backward'): string | null {
   const index = stations.findIndex(s =>
@@ -198,4 +182,9 @@ onStationSuggestionClick(station: string): void {
 
 }
 
+showRouteTimings(from: string, to: string, mode: string) {
+  this.selectedLine = null;
+  this.selectedStation = null;
+  this.selectedDirection = { from, to, mode }; // sets breadcrumb to A → B
+}
 }
