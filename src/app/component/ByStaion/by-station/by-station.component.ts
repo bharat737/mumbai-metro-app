@@ -35,20 +35,6 @@ export class ByStationComponent implements OnInit {
     this.filteredLines = this.lines;
   }
 
-//  onSearchChange(): void {
-//   const query = this.searchQuery.toLowerCase();
-
-//   this.filteredLines = this.lines.filter(line =>
-//     line.stations.some((station: string) =>
-//       station.toLowerCase().includes(query)
-//     )
-//   );
-
-//   this.filteredStationSuggestions = this.stations
-//     .filter(st => st.toLowerCase().includes(query))
-//     .slice(0, 5);
-// }
-
 onSearchChange(query: string): void {
   this.searchQuery = query;
   this.filteredStationSuggestions = this.stations
@@ -137,16 +123,6 @@ onBackToHome(): void {
 onStationClick(station: any): void {
   this.selectedStation = station;
 }
-// getDirection(stations: string[], fromQuery: string, direction: 'forward' | 'backward'): string | null {
-//   const index = stations.findIndex(s =>
-//     s.toLowerCase().includes(fromQuery.toLowerCase())
-//   );
-//   if (index === -1) return null;
-
-//   return direction === 'forward'
-//     ? stations[stations.length - 1]
-//     : stations[0];
-// }
 
 getDirection(stations: string[], fromQuery: string, direction: 'forward' | 'backward'): string | null {
   const index = stations.findIndex(s =>
