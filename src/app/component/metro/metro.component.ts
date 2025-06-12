@@ -39,6 +39,7 @@ export class MetroComponent implements OnChanges {
       this.selectedCity = this.cityName.toLowerCase();
       this.metroService.loadCityData(this.selectedCity).then(() => {
         this.stations = this.metroService.getAllStations();
+        console.log('Stations loaded for city:', this.selectedCity, this.stations);
       });
     }
   }

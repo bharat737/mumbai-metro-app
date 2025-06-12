@@ -1,0 +1,10 @@
+.route-timings-card .list-group-item {
+  border: none;
+  padding: 10px 0;
+}
+
+.timing-item {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background-color: #fff;
+}
