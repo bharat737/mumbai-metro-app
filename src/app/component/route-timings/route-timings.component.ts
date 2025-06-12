@@ -12,7 +12,11 @@ export class RouteTimingsComponent implements OnInit {
   @Output() back = new EventEmitter<void>();
 
   routeTitle: string = '';
-  timings: { start: string; arrivalAtMid?: string }[] = [];
+  timings: {
+  start: string;
+  arrivalAtMid?: string;
+  allStationTime: { [station: string]: string };
+  }[] = [];
   platform: number = 0;
   directionFrom: string = '';
   directionTo: string = '';
@@ -48,18 +52,15 @@ export class RouteTimingsComponent implements OnInit {
     if (!direction) return;
 
     const frequency = direction.frequency_mins['weekday'];
-    this.timings = this.metroService.generateTimingsForDirection(this.from,direction.start_time, frequency,allStations);
-
+    this.timings = this.metroService.generateTimingsForDirection(
+        this.from,
+        allStations,
+        direction.start_time,
+        frequency
+    );
     this.platform = this.metroService.getRouteSummary(routeLine.line_name, direction.from, direction.to, 'weekday')?.platform || 0;
     this.directionFrom = direction.from;
     this.directionTo = direction.to;
-    const arrivalAtMidStation = this.metroService.getArrivalTimeAtStation(
-    routeLine.line_name,
-    this.directionFrom,
-    this.directionTo,
-    this.from, // this.from = mid-station clicked
-    'weekday'
-  );
 
     this.routeTitle = `Timings ${this.directionFrom} → ${this.directionTo} (Platform ${this.platform})`;
   }

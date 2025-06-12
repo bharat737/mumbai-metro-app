@@ -371,46 +371,66 @@ getLineByStations(from: string, to: string): any {
 
 generateTimingsForDirection(
   searchStation: string,
+  allStations: { name: string; interval_from_previous: number }[],
   startTime: string,
   frequency: number,
-  allStations: any[],
   endTime: string = '23:30'
-): { start: string, arrivalAtMid?: string }[] {
-  const result: { start: string, arrivalAtMid?: string }[] = [];
+): {
+  start: string;
+  arrivalAtMid?: string;
+  allStationTime: { [station: string]: string };
+}[] {
+  const result: {
+    start: string;
+    arrivalAtMid?: string;
+    allStationTime: { [station: string]: string };
+  }[] = [];
 
   const [startH, startM] = startTime.split(':').map(Number);
   const [endH, endM] = endTime.split(':').map(Number);
 
-  const startMinutes = startH * 60 + startM;
+  let currentStart = startH * 60 + startM;
   const endMinutes = endH * 60 + endM;
 
-  // Calculate time from start to searchStation
-  let totalIntervalToSearch = 0;
-  for (const station of allStations) {
-    if (station.name === searchStation) break;
-    totalIntervalToSearch += station.interval_from_previous || 0;
-  }
+  while (currentStart <= endMinutes) {
+    let runningTime = currentStart;
+    const allStationTime: { [station: string]: string } = {};
+    let arrivalAtMid: string | undefined;
 
-  let currentMinutes = startMinutes;
+    for (let i = 0; i < allStations.length; i++) {
+    const station = allStations[i];
 
-  while (currentMinutes <= endMinutes) {
-    const hh = Math.floor(currentMinutes / 60).toString().padStart(2, '0');
-    const mm = (currentMinutes % 60).toString().padStart(2, '0');
-    const start = `${hh}:${mm}`;
+    // Record time before incrementing
+    const hh = Math.floor(runningTime / 60).toString().padStart(2, '0');
+    const mm = (runningTime % 60).toString().padStart(2, '0');
+    allStationTime[station.name] = `${hh}:${mm}`;
 
-    // Calculate arrival at mid-station
-    const arrivalMinutes = currentMinutes + totalIntervalToSearch;
-    const ah = Math.floor(arrivalMinutes / 60).toString().padStart(2, '0');
-    const am = (arrivalMinutes % 60).toString().padStart(2, '0');
-    const arrivalAtMid = `${ah}:${am}`;
+    if (station.name === searchStation) {
+      arrivalAtMid = `${hh}:${mm}`;
+    }
 
-    result.push({ start, arrivalAtMid });
+    // Add interval after recording current station's time
+    if (i < allStations.length - 1) {
+      const nextStation = allStations[i + 1];
+      runningTime += nextStation.interval_from_previous || 0;
+    }
+}
 
-    currentMinutes += frequency;
+
+    const hh = Math.floor(currentStart / 60).toString().padStart(2, '0');
+    const mm = (currentStart % 60).toString().padStart(2, '0');
+    result.push({
+      start: `${hh}:${mm}`,
+      arrivalAtMid,
+      allStationTime
+    });
+
+    currentStart += frequency;
   }
 
   return result;
 }
+
 
 
 getArrivalTimeAtStation(lineName: string, directionFrom: string, directionTo: string, targetStation: string, day: 'weekday' | 'saturday' | 'sunday' | 'holiday'): string | null {
