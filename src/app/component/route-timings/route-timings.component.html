@@ -1,5 +1,5 @@
 <div class="route-timings-card shadow-sm p-3 mb-3 bg-light rounded">
-  <h5 class="mb-3 text-primary">🟢 Timings</h5>
+  <h5 class="mb-3 text-primary">🟢 Timings ({{ directionFrom }} → {{ directionTo }})</h5>
 
   <div *ngIf="timings.length > 0; else noTimings">
     <ul class="list-group">
@@ -8,9 +8,17 @@
         *ngFor="let time of timings"
       >
         <div>
-          <div class="fw-bold fs-5">{{ time }}</div>
-          <div class="text-muted">{{ directionFrom }} → {{ directionTo }}</div>
+          <div class="fw-bold fs-5">{{ time.start }}</div>
+           <div class="text-muted">{{ directionFrom }}</div>
+          <!-- <div class="text-muted">{{ directionFrom }} → {{ directionTo }}</div> -->
         </div>
+        <div>
+         <div class="fw-bold fs-5">{{ time.arrivalAtMid }}</div>
+           <div class="text-muted">{{ from }}</div>
+          <!-- <div class="text-muted">{{ directionFrom }} → {{ directionTo }}</div> -->
+        </div>
+        
+
         <span class="badge bg-secondary align-self-center">Platform {{ platform }}</span>
       </li>
     </ul>

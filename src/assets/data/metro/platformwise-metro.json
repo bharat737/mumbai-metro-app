@@ -8,7 +8,8 @@
         {
           "from": "Versova",
           "to": "Ghatkopar",
-          "start_time": "05:35",
+          "start_time": "05:30",
+          "end_time": "23:30",
           "frequency_mins": {
             "weekday": 10,
             "saturday": 8,
@@ -19,7 +20,8 @@
         {
           "from": "Ghatkopar",
           "to": "Versova",
-          "start_time": "05:40",
+          "start_time": "05:30",
+          "end_time": "23:45",
           "frequency_mins": {
             "weekday": 10,
             "saturday": 8,
@@ -40,7 +42,7 @@
         },
         {
           "name": "D. N. Nagar",
-          "interval_from_previous": 2,
+          "interval_from_previous": 1,
           "platforms": {
             "to": {
               "Ghatkopar": 1,
@@ -180,6 +182,7 @@
           "from": "ESIC Nagar",
           "to": "Mandale Metro",
           "start_time": "05:45",
+          "end_time": "23:30",
           "frequency_mins": {
             "weekday": 8,
             "saturday": 8,
@@ -191,6 +194,7 @@
           "from": "Mandale Metro",
           "to": "ESIC Nagar",
           "start_time": "05:50",
+          "end_time": "23:30",
           "frequency_mins": {
             "weekday": 8,
             "saturday": 8,

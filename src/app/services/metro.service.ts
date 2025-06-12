@@ -369,23 +369,91 @@ getLineByStations(from: string, to: string): any {
   );
 }
 
-generateTimingsForDirection(startTime: string, frequency: number, endTime: string = '23:30'): string[] {
-  const result: string[] = [];
-  
+generateTimingsForDirection(
+  searchStation: string,
+  startTime: string,
+  frequency: number,
+  allStations: any[],
+  endTime: string = '23:30'
+): { start: string, arrivalAtMid?: string }[] {
+  const result: { start: string, arrivalAtMid?: string }[] = [];
+
   const [startH, startM] = startTime.split(':').map(Number);
   const [endH, endM] = endTime.split(':').map(Number);
 
-  let currentMinutes = startH * 60 + startM;
+  const startMinutes = startH * 60 + startM;
   const endMinutes = endH * 60 + endM;
+
+  // Calculate time from start to searchStation
+  let totalIntervalToSearch = 0;
+  for (const station of allStations) {
+    if (station.name === searchStation) break;
+    totalIntervalToSearch += station.interval_from_previous || 0;
+  }
+
+  let currentMinutes = startMinutes;
 
   while (currentMinutes <= endMinutes) {
     const hh = Math.floor(currentMinutes / 60).toString().padStart(2, '0');
     const mm = (currentMinutes % 60).toString().padStart(2, '0');
-    result.push(`${hh}:${mm}`);
+    const start = `${hh}:${mm}`;
+
+    // Calculate arrival at mid-station
+    const arrivalMinutes = currentMinutes + totalIntervalToSearch;
+    const ah = Math.floor(arrivalMinutes / 60).toString().padStart(2, '0');
+    const am = (arrivalMinutes % 60).toString().padStart(2, '0');
+    const arrivalAtMid = `${ah}:${am}`;
+
+    result.push({ start, arrivalAtMid });
+
     currentMinutes += frequency;
   }
 
   return result;
+}
+
+
+getArrivalTimeAtStation(lineName: string, directionFrom: string, directionTo: string, targetStation: string, day: 'weekday' | 'saturday' | 'sunday' | 'holiday'): string | null {
+  const line = this.lines.find(l => l.line_name === lineName) as any;
+  if (!line) return null;
+
+  const direction = line.directions?.find((d: any) => d.from === directionFrom && d.to === directionTo);
+  if (!direction) return null;
+
+  const stations = line.stations as any[];
+  const startIndex = stations.findIndex((s: any) => s.name === direction.from);
+  const endIndex = stations.findIndex((s: any) => s.name === direction.to);
+  const targetIndex = stations.findIndex((s: any) => s.name === targetStation);
+
+  if (startIndex === -1 || endIndex === -1 || targetIndex === -1) return null;
+
+  const inDirection = startIndex < endIndex;
+  const segment = inDirection
+    ? stations.slice(startIndex, targetIndex + 1)
+    : stations.slice(targetIndex, startIndex + 1).reverse();
+
+  let minutesOffset = 0;
+  for (let i = 1; i < segment.length; i++) {
+    minutesOffset += segment[i].interval_from_previous || 0;
+  }
+
+  const [startHour, startMin] = direction.start_time.split(':').map(Number);
+  const totalMinutes = startHour * 60 + startMin + minutesOffset;
+
+  const hh = String(Math.floor(totalMinutes / 60)).padStart(2, '0');
+  const mm = String(totalMinutes % 60).padStart(2, '0');
+
+  return `${hh}:${mm}`;
+}
+
+reverseIfNeeded(toStation: string, stations: any[]): any[] {
+  if (stations.length === 0) return stations;
+
+  if (toStation === stations[0].name) {
+    return [...stations].reverse(); // Reverse and return a new array
+  }
+
+  return stations;
 }
 
 }
