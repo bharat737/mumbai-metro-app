@@ -40,7 +40,10 @@
   <!-- By Station Tab -->
   <div *ngIf="activeTab === 'station'">
     <!-- <p class="text-muted text-center">We're working on station-wise browsing.</p> -->
-      <app-by-station  [stations]="stations"></app-by-station>
+      <app-by-station  
+      [allstations]="stations"
+      [alllines]="lines"
+      [interchanges]="interchanges"></app-by-station>
   </div>
 
   <!-- Fare Tab -->

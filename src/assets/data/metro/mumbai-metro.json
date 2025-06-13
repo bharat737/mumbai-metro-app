@@ -4,215 +4,1199 @@
       "name": "Mumbai Metro Line 1",
       "line_name": "Blue Line",
       "status": "AC",
+      "directions": [
+        {
+          "from": "Versova",
+          "to": "Ghatkopar",
+          "start_time": "05:30",
+          "end_time": "23:30",
+          "frequency_mins": {
+            "weekday": 10,
+            "saturday": 8,
+            "sunday": 12,
+            "holiday": 12
+          }
+        },
+        {
+          "from": "Ghatkopar",
+          "to": "Versova",
+          "start_time": "05:30",
+          "end_time": "23:45",
+          "frequency_mins": {
+            "weekday": 10,
+            "saturday": 8,
+            "sunday": 12,
+            "holiday": 12
+          }
+        }
+      ],
       "stations": [
-        "Versova",
-        "D. N. Nagar",
-        "Azad Nagar",
-        "Andheri (East)",
-        "Western Express Highway",
-        "Chakala",
-        "Airport Road",
-        "Marol Naka",
-        "Sakinaka",
-        "Asalpha Road",
-        "Jagruti Nagar",
-        "Ghatkopar"
+        {
+          "name": "Versova",
+          "interval_from_previous": 0,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1
+            }
+          }
+        },
+        {
+          "name": "DN Nagar",
+          "interval_from_previous": 1,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1,
+              "Versova": 2
+            }
+          }
+        },
+        {
+          "name": "Azad Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1,
+              "Versova": 2
+            }
+          }
+        },
+        {
+          "name": "Andheri (East)",
+          "interval_from_previous": 4,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1,
+              "Versova": 2
+            }
+          }
+        },
+        {
+          "name": "Western Express Highway",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1,
+              "Versova": 2
+            }
+          }
+        },
+        {
+          "name": "Chakala",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1,
+              "Versova": 2
+            }
+          }
+        },
+        {
+          "name": "Airport Road",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1,
+              "Versova": 2
+            }
+          }
+        },
+        {
+          "name": "Marol Naka",
+          "interval_from_previous": 1,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1,
+              "Versova": 2
+            }
+          }
+        },
+        {
+          "name": "Sakinaka",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1,
+              "Versova": 2
+            }
+          }
+        },
+        {
+          "name": "Asalpha Road",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1,
+              "Versova": 2
+            }
+          }
+        },
+        {
+          "name": "Jagruti Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Ghatkopar": 1,
+              "Versova": 2
+            }
+          }
+        },
+        {
+          "name": "Ghatkopar",
+          "interval_from_previous": 3,
+          "platforms": {
+            "to": {
+              "Versova": 2
+            }
+          }
+        }
       ]
     },
     {
       "name": "Mumbai Metro Line 2A",
-      "line_name": "Yello Line",
+      "line_name": "Yellow Line",
       "status": "AC",
+      "directions": [
+        {
+          "from": "Dahisar (East)",
+          "to": "DN Nagar",
+          "start_time": "05:45",
+          "end_time": "23:30",
+          "frequency_mins": {
+            "weekday": 8,
+            "saturday": 8,
+            "sunday": 12,
+            "holiday": 12
+          }
+        },
+        {
+          "from": "DN Nagar",
+          "to": "Dahisar (East)",
+          "start_time": "05:50",
+          "end_time": "23:30",
+          "frequency_mins": {
+            "weekday": 8,
+            "saturday": 8,
+            "sunday": 12,
+            "holiday": 12
+          }
+        }
+      ],
       "stations": [
-        "Dahisar(East)",
-        "Anand Nagar",
-        "Kandarpada",
-        "Mandapeshwar-I C Colony",
-        "Eksar",
-        "Borivali(West)",
-        "Pahadi Eksar",
-        "Kandivali(West)",
-        "Dahanukarwadi",
-        "Valnai",
-        "Malad(West)",
-        "Lower Malad",
-        "Pahadi Goregaon",
-        "Goregaon (West)",
-        "Oshiwara",
-        "Lower Oshiwara",
-        "Andheri (West)"
+        {
+          "name": "Dahisar (East)",
+          "interval_from_previous": 0,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3
+            }
+          }
+        },
+        {
+          "name": "Anand Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Kandarpada",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Mandapeshwar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Eksar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Borivali (West)",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Pahadi Eksar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Kandivali (West)",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Dahanukarwadi",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Valnai",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Malad (West)",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Lower Malad",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Goregaon (West)",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Oshiwara",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "DN Nagar": 3,
+              "Dahisar (East) Metro": 2
+            }
+          }
+        },
+        {
+          "name": "DN Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Dahisar (East) Metro": 2
+            }
+          }
+        }
       ]
     },
     {
       "name": "Mumbai Metro Line 2B",
-      "line_name": "Yello Line",
+      "line_name": "Yellow Line",
       "status": "AC",
+      "directions": [
+        {
+          "from": "ESIC Nagar",
+          "to": "Mandale Metro",
+          "start_time": "05:45",
+          "end_time": "23:30",
+          "frequency_mins": {
+            "weekday": 8,
+            "saturday": 8,
+            "sunday": 12,
+            "holiday": 12
+          }
+        },
+        {
+          "from": "Mandale Metro",
+          "to": "ESIC Nagar",
+          "start_time": "05:50",
+          "end_time": "23:30",
+          "frequency_mins": {
+            "weekday": 8,
+            "saturday": 8,
+            "sunday": 12,
+            "holiday": 12
+          }
+        }
+      ],
       "stations": [
-        "ESIC Nagar",
-        "Prem Nagar",
-        "Indira Nagar",
-        "Nanavati Hospital",
-        "Khira Nagar",
-        "Saraswat Nagar",
-        "National College",
-        "Bandra Metro",
-        "Income Tax office",
-        "ILFS",
-        "MTNL Metro",
-        "SG Barve Marg",
-        "Kurla(E)",
-        "EEH",
-        "Chembur",
-        "Diamond Garden",
-        "Shivaji Chowk",
-        "BSNL Metro",
-        "Mankhurd",
-        "Mandale Metro"
+        {
+          "name": "ESIC Nagar",
+          "interval_from_previous": 0,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1
+            }
+          }
+        },
+        {
+          "name": "Prem Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Indira Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Nanavati Hospital",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Khira Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Saraswat Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "National College",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Bandra Metro",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Income Tax Office",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "ILFS",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "MTNL Metro",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "SG Barve Marg",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Kurla(E)",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "EEH",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Chembur",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Diamond Garden",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Shivaji Chowk",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "BSNL Metro",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Mankhurd",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Mandale Metro": 1,
+              "ESIC Nagar": 2
+            }
+          }
+        },
+        {
+          "name": "Mandale Metro",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "ESIC Nagar": 2
+            }
+          }
+        }
       ]
     },
     {
       "name": "Mumbai Metro Line 4",
       "line_name": "Green Line",
-      "status": "AP",
-      "stations": [
-        "Bhakti Park Metro",
-        "Wadala TT",
-        "Anik Nagar Bus Depot",
-        "Siddharth Colony",
-        "Garodia Nagar",
-        "Pant Nagar",
-        "Laxmi Nagar",
-        "Shreyes Cinema",
-        "Godrej Company",
-        "Vikhroli Metro",
-        "Surya Nagar",
-        "Gandhi Nagar",
-        "Naval Housing",
-        "BhandupMahapalika",
-        "Bhandup Metro",
-        "Shangrila",
-        "Sonapur",
-        "Mulund Fire Station",
-        "Mulund Naka",
-        "Thane Teen Haath Naka",
-        "RTO Thane",
-        "Mahapalika Marg",
-        "Cadbury Junction",
-        "Majiwada",
-        "Kapurbawdi",
-        "Manpada",
-        "Tikuji-Ni-Wadi",
-        "DongariPada",
-        "Vijay Garden",
-        "Kasarvadavali"
-      ]
-    },
-    {
-      "name": "Mumbai Metro Line 4A",
-      "line_name": "Green Line",
-      "status": "AC",
-      "stations": [
-        "Kasarvadavali",
-        "Gaimukh"
-      ]
-    },
-    {
-      "name": "Mumbai Metro Line 5",
-      "line_name": "Orange Line",
       "status": "UC",
+      "directions": [
+        {
+          "from": "Bhakti Park Metro",
+          "to": "Kasarvadavali",
+          "start_time": "05:45",
+          "end_time": "23:15",
+          "frequency_mins": {
+            "weekday": 10,
+            "saturday": 10,
+            "sunday": 12,
+            "holiday": 12
+          }
+        },
+        {
+          "from": "Kasarvadavali",
+          "to": "Bhakti Park Metro",
+          "start_time": "05:45",
+          "end_time": "23:15",
+          "frequency_mins": {
+            "weekday": 10,
+            "saturday": 10,
+            "sunday": 12,
+            "holiday": 12
+          }
+        }
+      ],
       "stations": [
-        "Balkum Naka",
-        "Kasheli",
-        "Kalher",
-        "Purna",
-        "Anjurphata",
-        "Dhamankar Naka",
-        "Bhiwandi",
-        "Gopal Nagar",
-        "Temghar",
-        "Rajnouli",
-        "Gove Gaon",
-        "Kon Gaon",
-        "Lal Chowki",
-        "Kalyan Station",
-        "Kalyan APMC"
+        {
+          "name": "Bhakti Park Metro",
+          "interval_from_previous": 0,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1
+            }
+          }
+        },
+        {
+          "name": "Wadala TT",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Anik Nagar Bus Depot",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Siddharth Colony",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Garodia Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Pant Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Laxmi Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Shreyes Cinema",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Godrej Company",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Vikhroli Metro",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Surya Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Gandhi Nagar",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Naval Housing",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "BhandupMahapalika",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Bhandup Metro",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Shangrila",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Sonapur",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Mulund Fire Station",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Mulund Naka",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Thane Teen Haath Naka",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "RTO Thane",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Mahapalika Marg",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Cadbury Junction",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Majiwada",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Kapurbawdi",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Manpada",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Tikuji-Ni-Wadi",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "DongariPada",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Vijay Garden",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Kasarvadavali": 1,
+              "Bhakti Park Metro": 2
+            }
+          }
+        },
+        {
+          "name": "Kasarvadavali",
+          "interval_from_previous": 2,
+          "platforms": {
+            "to": {
+              "Bhakti Park Metro": 2
+            }
+          }
+        }
       ]
     },
     {
-      "name": "Mumbai Metro Line 6",
-      "line_name": "Pink Line",
-      "status": "UC",
-      "stations": [
-        "Swami Samarth Nagar",
-        "Adarsh Nagar",
-        "Jogeshwari (W)",
-        "JVLR",
-        "Shyam Nagar",
-        "Maha kali Caves",
-        "SEEPZ Village",
-        "Saki Vihar Road",
-        "Rambaug",
-        "Powai Lake",
-        "IIT, Powai",
-        "Kanjur Marg (W)",
-        "Vikhroli (EEH)"
-      ]
+  "name": "Mumbai Metro Line 4A",
+  "line_name": "Green Line",
+  "status": "UC",
+  "directions": [
+    {
+      "from": "Kasarvadavali",
+      "to": "Gaimukh",
+      "start_time": "05:45",
+      "end_time": "23:15",
+      "frequency_mins": {
+        "weekday": 10,
+        "saturday": 10,
+        "sunday": 12,
+        "holiday": 12
+      }
     },
     {
-      "name": "Mumbai Metro Line 7",
-      "line_name": "Pink Line",
-      "status": "UC",
-      "stations": [
-        "Gundavali",
-        "Mogra",
-        "Andheri (East)",
-        "Jogeshwari(East)",
-        "Goregaon(East)",
-        "Aarey",
-        "Dindoshi",
-        "Kurar",
-        "Akurli",
-        "Poisar",
-        "Magathane",
-        "Devipada",
-        "Rashtriya Udyan",
-        "Ovaripada"
-      ]
-    },
-    {
-      "name": "Mumbai Metro Line 9",
-      "line_name": "Pink Line",
-      "status": "UC",
-      "stations": [
-        "Dahisar(East)",
-        "Pandhurang Wadi",
-        "Miragaon",
-        "Kashigaon",
-        "Sai Baba Nagar",
-        "Meditiya Nagar",
-        "Shahid Bhagat Singh Garden",
-        "Subhash Chandra Bose Stadium",
-        "Airport Colony",
-        "CSIA"
-      ]
-    },
-    {
-      "name": "Mumbai Metro Line 7A",
-      "line_name": "Red Line",
-      "status": "AC",
-      "stations": [
-        "Andheri (East)",
-        "Airport Colony",
-        "CSIA"
-      ]
+      "from": "Gaimukh",
+      "to": "Kasarvadavali",
+      "start_time": "05:45",
+      "end_time": "23:15",
+      "frequency_mins": {
+        "weekday": 10,
+        "saturday": 10,
+        "sunday": 12,
+        "holiday": 12
+      }
     }
+  ],
+  "stations": [
+    {
+      "name": "Kasarvadavali",
+      "interval_from_previous": 0,
+      "platforms": {
+        "to": {
+          "Gaimukh": 1
+        }
+      }
+    },
+    {
+      "name": "Gaimukh",
+      "interval_from_previous": 2,
+      "platforms": {
+        "to": {
+          "Kasarvadavali": 2
+        }
+      }
+    }
+  ]
+},{
+  "name": "Mumbai Metro Line 5",
+  "line_name": "Orange Line",
+  "status": "UC",
+  "directions": [
+    {
+      "from": "Thane",
+      "to": "Kalyan",
+      "start_time": "05:45",
+      "end_time": "23:15",
+      "frequency_mins": {
+        "weekday": 10,
+        "saturday": 10,
+        "sunday": 12,
+        "holiday": 12
+      }
+    },
+    {
+      "from": "Kalyan",
+      "to": "Thane",
+      "start_time": "05:45",
+      "end_time": "23:15",
+      "frequency_mins": {
+        "weekday": 10,
+        "saturday": 10,
+        "sunday": 12,
+        "holiday": 12
+      }
+    }
+  ],
+  "stations": [
+    {
+      "name": "Thane",
+      "interval_from_previous": 0,
+      "platforms": {
+        "to": {
+          "Kalyan": 1
+        }
+      }
+    },
+    {
+      "name": "RTO Thane",
+      "interval_from_previous": 2,
+      "platforms": {
+        "to": {
+          "Kalyan": 1,
+          "Thane": 2
+        }
+      }
+    },
+    {
+      "name": "Balkum",
+      "interval_from_previous": 2,
+      "platforms": {
+        "to": {
+          "Kalyan": 1,
+          "Thane": 2
+        }
+      }
+    },
+    {
+      "name": "Kalher",
+      "interval_from_previous": 3,
+      "platforms": {
+        "to": {
+          "Kalyan": 1,
+          "Thane": 2
+        }
+      }
+    },
+    {
+      "name": "Kasheli",
+      "interval_from_previous": 2,
+      "platforms": {
+        "to": {
+          "Kalyan": 1,
+          "Thane": 2
+        }
+      }
+    },
+    {
+      "name": "Bhiwandi",
+      "interval_from_previous": 3,
+      "platforms": {
+        "to": {
+          "Kalyan": 1,
+          "Thane": 2
+        }
+      }
+    },
+    {
+      "name": "Rajnouli Village",
+      "interval_from_previous": 2,
+      "platforms": {
+        "to": {
+          "Kalyan": 1,
+          "Thane": 2
+        }
+      }
+    },
+    {
+      "name": "Temghar",
+      "interval_from_previous": 2,
+      "platforms": {
+        "to": {
+          "Kalyan": 1,
+          "Thane": 2
+        }
+      }
+    },
+    {
+      "name": "Govegaon MIDC",
+      "interval_from_previous": 3,
+      "platforms": {
+        "to": {
+          "Kalyan": 1,
+          "Thane": 2
+        }
+      }
+    },
+    {
+      "name": "Kalyan",
+      "interval_from_previous": 3,
+      "platforms": {
+        "to": {
+          "Thane": 2
+        }
+      }
+    }
+  ]
+},{
+  "name": "Mumbai Metro Line 6",
+  "line_name": "Pink Line",
+  "status": "UC",
+  "directions": [
+    {
+      "from": "Swami Samarth Nagar",
+      "to": "Vikhroli",
+      "start_time": "06:00",
+      "end_time": "22:30",
+      "frequency_mins": {
+        "weekday": 10,
+        "saturday": 10,
+        "sunday": 12,
+        "holiday": 12
+      }
+    },
+    {
+      "from": "Vikhroli",
+      "to": "Swami Samarth Nagar",
+      "start_time": "06:00",
+      "end_time": "22:30",
+      "frequency_mins": {
+        "weekday": 10,
+        "saturday": 10,
+        "sunday": 12,
+        "holiday": 12
+      }
+    }
+  ],
+  "stations": [
+    { "name": "Swami Samarth Nagar", "interval_from_previous": 0, "platforms": { "to": { "Vikhroli": 1 } } },
+    { "name": "Adarsh Nagar", "interval_from_previous": 2, "platforms": { "to": { "Vikhroli": 1, "Swami Samarth Nagar": 2 } } },
+    { "name": "Jogeshwari", "interval_from_previous": 2, "platforms": { "to": { "Vikhroli": 1, "Swami Samarth Nagar": 2 } } },
+    { "name": "JVLR", "interval_from_previous": 2, "platforms": { "to": { "Vikhroli": 1, "Swami Samarth Nagar": 2 } } },
+    { "name": "Shyam Nagar", "interval_from_previous": 2, "platforms": { "to": { "Vikhroli": 1, "Swami Samarth Nagar": 2 } } },
+    { "name": "Powai Lake", "interval_from_previous": 2, "platforms": { "to": { "Vikhroli": 1, "Swami Samarth Nagar": 2 } } },
+    { "name": "IIT Powai", "interval_from_previous": 2, "platforms": { "to": { "Vikhroli": 1, "Swami Samarth Nagar": 2 } } },
+    { "name": "Kanjurmarg West", "interval_from_previous": 2, "platforms": { "to": { "Vikhroli": 1, "Swami Samarth Nagar": 2 } } },
+    { "name": "Vikhroli", "interval_from_previous": 2, "platforms": { "to": { "Swami Samarth Nagar": 2 } } }
+  ]
+},{
+  "name": "Mumbai Metro Line 7",
+  "line_name": "Red Line",
+  "status": "AC",
+  "directions": [
+    {
+      "from": "Dahisar East",
+      "to": "Gundavali",
+      "start_time": "05:30",
+      "end_time": "23:00",
+      "frequency_mins": {
+        "weekday": 7,
+        "saturday": 7,
+        "sunday": 10,
+        "holiday": 10
+      }
+    },
+    {
+      "from": "Gundavali",
+      "to": "Dahisar East",
+      "start_time": "05:30",
+      "end_time": "23:00",
+      "frequency_mins": {
+        "weekday": 7,
+        "saturday": 7,
+        "sunday": 10,
+        "holiday": 10
+      }
+    }
+  ],
+  "stations": [
+    { "name": "Dahisar East", "interval_from_previous": 0, "platforms": { "to": { "Gundavali": 1 } } },
+    { "name": "Ovaripada", "interval_from_previous": 2, "platforms": { "to": { "Gundavali": 1, "Dahisar East": 2 } } },
+    { "name": "Rashtriya Udyan", "interval_from_previous": 2, "platforms": { "to": { "Gundavali": 1, "Dahisar East": 2 } } },
+    { "name": "Borivali East", "interval_from_previous": 2, "platforms": { "to": { "Gundavali": 1, "Dahisar East": 2 } } },
+    { "name": "Shimpoli", "interval_from_previous": 2, "platforms": { "to": { "Gundavali": 1, "Dahisar East": 2 } } },
+    { "name": "Kandarpada", "interval_from_previous": 2, "platforms": { "to": { "Gundavali": 1, "Dahisar East": 2 } } },
+    { "name": "Goregaon East", "interval_from_previous": 2, "platforms": { "to": { "Gundavali": 1, "Dahisar East": 2 } } },
+    { "name": "Gundavali", "interval_from_previous": 2, "platforms": { "to": { "Dahisar East": 2 } } }
+  ]
+},{
+  "name": "Mumbai Metro Line 7A",
+  "line_name": "Red Line",
+  "status": "UC",
+  "directions": [
+    {
+      "from": "Gundavali",
+      "to": "CSIA Terminal 2",
+      "start_time": "06:00",
+      "end_time": "22:30",
+      "frequency_mins": {
+        "weekday": 8,
+        "saturday": 8,
+        "sunday": 12,
+        "holiday": 12
+      }
+    },
+    {
+      "from": "CSIA Terminal 2",
+      "to": "Gundavali",
+      "start_time": "06:00",
+      "end_time": "22:30",
+      "frequency_mins": {
+        "weekday": 8,
+        "saturday": 8,
+        "sunday": 12,
+        "holiday": 12
+      }
+    }
+  ],
+  "stations": [
+    { "name": "Gundavali", "interval_from_previous": 0, "platforms": { "to": { "CSIA Terminal 2": 1 } } },
+    { "name": "Andheri (East)", "interval_from_previous": 2, "platforms": { "to": { "CSIA Terminal 2": 1, "Gundavali": 2 } } },
+    { "name": "CSIA Terminal 2", "interval_from_previous": 3, "platforms": { "to": { "Gundavali": 2 } } }
+  ]
+}
   ],
   "interchanges": [
     {
-      "station": "D. N. Nagar",
+      "station": "DN Nagar",
       "lines": [
-        "Line 1",
-        "Metro Line 2",
+        "Mumbai Metro Line 2",
         "Mumbai Metro Line 1",
         "Mumbai Metro Line 2A",
         "Mumbai Metro Line 2B"
@@ -229,7 +1213,7 @@
     {
       "station": "Marol Naka",
       "lines": [
-        "Metro Line 3",
+        "Mumbai Metro Line 3",
         "Mumbai Metro Line 1"
       ]
     },
@@ -243,14 +1227,14 @@
     {
       "station": "Shastri Nagar",
       "lines": [
-        "Line 6",
+        "Mumbai Metro Line 6",
         "Mumbai Metro Line 2A"
       ]
     },
     {
       "station": "Dahisar(East)",
       "lines": [
-        "Line 7",
+        "Mumbai Metro Line 7",
         "Mumbai Metro Line 2A",
         "Mumbai Metro Line 7"
       ]
@@ -265,14 +1249,14 @@
     {
       "station": "ITO junction",
       "lines": [
-        "Line 3",
+        "Mumbai Metro Line 3",
         "Mumbai Metro Line 2B"
       ]
     },
     {
       "station": "Kurla East",
       "lines": [
-        "Line 4",
+        "Mumbai Metro Line 4",
         "Mumbai Metro Line 2B"
       ]
     },
@@ -293,14 +1277,14 @@
     {
       "station": "Kasarvadavali",
       "lines": [
-        "Metro Line 4",
+        "Mumbai Metro Metro Line 4",
         "Mumbai Metro Line 4A"
       ]
     },
     {
       "station": "Gaimukh",
       "lines": [
-        "Metro Line 10",
+        "Mumbai Metro Metro Line 10",
         "Mumbai Metro Line 4A"
       ]
     },
@@ -314,21 +1298,21 @@
     {
       "station": "JVLR",
       "lines": [
-        "Line 7",
+        "Mumbai Metro Line 7",
         "Mumbai Metro Line 6"
       ]
     },
     {
       "station": "Arey Colony Area",
       "lines": [
-        "Line 3",
+        "Mumbai Metro Line 3",
         "Mumbai Metro Line 6"
       ]
     },
     {
       "station": "Kanjurmarg West",
       "lines": [
-        "Line 4",
+        "Mumbai Metro Line 4",
         "Mumbai Metro Line 6"
       ]
     },
@@ -349,7 +1333,7 @@
     {
       "station": "JVLR Jn.",
       "lines": [
-        "Line 6",
+        "Mumbai Metro Line 6",
         "Mumbai Metro Line 7"
       ]
     }

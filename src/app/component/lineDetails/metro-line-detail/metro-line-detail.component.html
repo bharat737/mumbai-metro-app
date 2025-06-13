@@ -74,7 +74,7 @@
               <span style="color:#000080;">⇅</span><span style="color:#000080;">◉</span>
             </td>
             <td>
-              {{ station }}
+              {{ station.name }}
               <span *ngIf="isInterchange(station)" class="interchange-badge">⨝ Interchange</span>
             </td>
             <td><span [style.color]="station.parking ? 'green' : 'red'">{{ station.parking ? '✓' : '✕' }}</span></td>

@@ -1,15 +1,127 @@
 {
   "lines": [
     {
-      "name": "Purple Line",
-      "stations": ["PCMC", "Sant Tukaram Nagar", "Kasarwadi", "Phugewadi", "Bopodi", "Shivaji Nagar"]
+      "name": "Pune Metro Line 1",
+      "line_name": "Purple Line",
+      "status": "AC",
+      "directions": [
+        {
+          "from": "PCMC",
+          "to": "Civil Court",
+          "start_time": "06:00",
+          "frequency_mins": {
+            "weekday": 10,
+            "saturday": 10,
+            "sunday": 12,
+            "holiday": 12
+          }
+        },
+        {
+          "from": "Civil Court",
+          "to": "PCMC",
+          "start_time": "06:10",
+          "frequency_mins": {
+            "weekday": 10,
+            "saturday": 10,
+            "sunday": 12,
+            "holiday": 12
+          }
+        }
+      ],
+      "stations": [
+        { "name": "PCMC", "interval_from_previous": 0, "platforms": { "to": { "Civil Court": 1 } } },
+        { "name": "Sant Tukaram Nagar", "interval_from_previous": 2, "platforms": { "to": { "PCMC": 2, "Civil Court": 1 } } },
+        { "name": "Kasarwadi", "interval_from_previous": 3, "platforms": { "to": { "PCMC": 2, "Civil Court": 1 } } },
+        { "name": "Phugewadi", "interval_from_previous": 2, "platforms": { "to": { "PCMC": 2, "Civil Court": 1 } } },
+        { "name": "Bopodi", "interval_from_previous": 3, "platforms": { "to": { "PCMC": 2, "Civil Court": 1 } } },
+        { "name": "Shivaji Nagar", "interval_from_previous": 2, "platforms": { "to": { "PCMC": 2, "Civil Court": 1 } } },
+        { "name": "Civil Court", "interval_from_previous": 3, "platforms": { "to": { "PCMC": 2 } } }
+      ]
     },
     {
-      "name": "Aqua Line",
-      "stations": ["Vanaz", "Garware College", "Deccan", "Shivaji Nagar"]
+      "name": "Pune Metro Line 2",
+      "line_name": "Aqua Line",
+      "status": "AC",
+      "directions": [
+        {
+          "from": "Vanaz",
+          "to": "Civil Court",
+          "start_time": "06:05",
+          "frequency_mins": {
+            "weekday": 10,
+            "saturday": 10,
+            "sunday": 12,
+            "holiday": 12
+          }
+        },
+        {
+          "from": "Civil Court",
+          "to": "Vanaz",
+          "start_time": "06:15",
+          "frequency_mins": {
+            "weekday": 10,
+            "saturday": 10,
+            "sunday": 12,
+            "holiday": 12
+          }
+        }
+      ],
+      "stations": [
+        { "name": "Vanaz", "interval_from_previous": 0, "platforms": { "to": { "Civil Court": 1 } } },
+        { "name": "Anand Nagar", "interval_from_previous": 3, "platforms": { "to": { "Vanaz": 2, "Civil Court": 1 } } },
+        { "name": "Ideal Colony", "interval_from_previous": 2, "platforms": { "to": { "Vanaz": 2, "Civil Court": 1 } } },
+        { "name": "Nal Stop", "interval_from_previous": 2, "platforms": { "to": { "Vanaz": 2, "Civil Court": 1 } } },
+        { "name": "Garware College", "interval_from_previous": 2, "platforms": { "to": { "Vanaz": 2, "Civil Court": 1 } } },
+        { "name": "Deccan Gymkhana", "interval_from_previous": 3, "platforms": { "to": { "Vanaz": 2, "Civil Court": 1 } } },
+        { "name": "Civil Court", "interval_from_previous": 2, "platforms": { "to": { "Vanaz": 2 } } }
+      ]
+    },
+    {
+      "name": "Pune Metro Line 3",
+      "line_name": "Red Line",
+      "status": "AC",
+      "directions": [
+        {
+          "from": "Hinjewadi Phase 3",
+          "to": "Shivaji Nagar",
+          "start_time": "06:10",
+          "frequency_mins": {
+            "weekday": 12,
+            "saturday": 12,
+            "sunday": 15,
+            "holiday": 15
+          }
+        },
+        {
+          "from": "Shivaji Nagar",
+          "to": "Hinjewadi Phase 3",
+          "start_time": "06:20",
+          "frequency_mins": {
+            "weekday": 12,
+            "saturday": 12,
+            "sunday": 15,
+            "holiday": 15
+          }
+        }
+      ],
+      "stations": [
+        { "name": "Hinjewadi Phase 3", "interval_from_previous": 0, "platforms": { "to": { "Shivaji Nagar": 1 } } },
+        { "name": "Wakad", "interval_from_previous": 3, "platforms": { "to": { "Hinjewadi Phase 3": 2, "Shivaji Nagar": 1 } } },
+        { "name": "Balewadi", "interval_from_previous": 4, "platforms": { "to": { "Hinjewadi Phase 3": 2, "Shivaji Nagar": 1 } } },
+        { "name": "Baner", "interval_from_previous": 3, "platforms": { "to": { "Hinjewadi Phase 3": 2, "Shivaji Nagar": 1 } } },
+        { "name": "Aundh", "interval_from_previous": 3, "platforms": { "to": { "Hinjewadi Phase 3": 2, "Shivaji Nagar": 1 } } },
+        { "name": "Shivaji Nagar", "interval_from_previous": 3, "platforms": { "to": { "Hinjewadi Phase 3": 2 } } }
+      ]
     }
   ],
   "interchanges": [
-    { "station": "Shivaji Nagar", "lines": ["Purple Line", "Aqua Line"] }
+    {
+      "station": "Civil Court",
+      "lines": ["Pune Metro Line 1", "Pune Metro Line 2"]
+    },
+    {
+      "station": "Shivaji Nagar",
+      "lines": ["Pune Metro Line 1", "Pune Metro Line 3"]
+    }
   ]
 }

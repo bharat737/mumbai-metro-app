@@ -28,6 +28,11 @@ export class MetroComponent implements OnChanges {
 
   @Input() cityName: string | undefined;
 
+  //shared variable to child component
+  lines: any[] = [];
+  interchanges: any[] = [];
+
+
   constructor(private metroService: MetroService) {}
 
   ngOnInit(): void {
@@ -39,6 +44,8 @@ export class MetroComponent implements OnChanges {
       this.selectedCity = this.cityName.toLowerCase();
       this.metroService.loadCityData(this.selectedCity).then(() => {
         this.stations = this.metroService.getAllStations();
+        this.lines = this.metroService.getAllLines();
+        this.interchanges = this.metroService.getInterchangeStations();
         console.log('Stations loaded for city:', this.selectedCity, this.stations);
       });
     }

@@ -1,40 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-interface Station {
-  name: string;
-  interval_from_previous?: number;
-  platforms?: {
-    to: {
-      [destination: string]: number;
-    };
-  };
-}
-
-interface Direction {
-  from: string;
-  to: string;
-  start_time: string;
-  frequency_mins: {
-    weekday: number;
-    saturday: number;
-    sunday: number;
-    holiday: number;
-  };
-}
-
-interface MetroLine {
-  name: string;
-  line_name: string;
-  status: 'AC' | 'AP' | 'UC';
-  stations: Station[];
-  directions?: Direction[];
-}
-
-interface Interchange {
-  station: string;
-  lines: string[];
-}
+import { MetroLine, Station, Direction,Interchange} from 'src/app/interface/metro.models';
 
 @Injectable({ providedIn: 'root' })
 export class MetroService {
@@ -43,13 +9,24 @@ export class MetroService {
 
   constructor(private http: HttpClient) {}
 
+  private cityFileMap: { [key: string]: string } = {
+    mumbai: 'mumbai-metro.json',
+    pune: 'pune-metro.json',
+    delhi: 'delhi-metro.json', // (add as needed)
+    bangalore: 'bangalore-metro.json'
+  };
+
   loadCityData(city: string): Promise<void> {
-    const file = city === 'mumbai' ? 'platformwise-metro.json' : 'pune-metro.json';
-    return this.http.get<any>(`assets/data/metro/${file}`).toPromise().then(data => {
-      this.lines = data.lines;
-      this.interchanges = data.interchanges || [];
-    });
+  const file = this.cityFileMap[city.toLowerCase()];
+  if (!file) {
+    return Promise.reject(`No metro data available for city: ${city}`);
   }
+
+  return this.http.get<any>(`assets/data/metro/${file}`).toPromise().then(data => {
+    this.lines = data.lines;
+    this.interchanges = data.interchanges || [];
+  });
+}
 
   getAllStations(): string[] {
   const stationSet = new Set<string>();
@@ -271,7 +248,10 @@ export class MetroService {
       'Orange Line': '#FF8C00',
       'Red Line': '#FF0000',
       'Pink Line': '#FF69B4',
-      'Aqua Line': '#00FFFF'
+      'Aqua Line': '#00FFFF',
+      'Purple Line': '#800080',
+      'Grey Line': '#808080',
+
     };
     return colorMap[lineName] || '#999';
   }

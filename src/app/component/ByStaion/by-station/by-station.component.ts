@@ -1,13 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import stationsData from '../../../../assets/data/metro/mumbai-metro.json';
 import { MIN_SEARCH_LENGTH,AC,AP} from 'src/app/constant/app.constants';
+import { MetroLine, Station, Direction,Interchange} from 'src/app/interface/metro.models';
+import { MetroService } from 'src/app/services/metro.service';
 
-interface MetroLine {
-  name: string;
-  line_name: string;
-  status: 'AC' | 'AP';
-  stations: string[];
-}
 
 @Component({
   selector: 'app-by-station',
@@ -22,23 +17,33 @@ export class ByStationComponent implements OnInit {
   // selectedDirection: any = null;
   selectedStation: any = null;
   searchedStation: string = '';
-  @Input() stations: string[] = []; // Already exists
   filteredStationSuggestions: string[] = [];
+
+  
 
   // in parent component.ts
   // selectedDirection: { from: string; to: string; mode: 'metro' | 'train' } | null = null;
   selectedDirection: { from: string; to: string; mode: string } | null = null;
 
+  //shared variable to child component
+  @Input() alllines: any[] = [];
+  @Input() interchanges: any[] = [];
+  @Input() allstations: string[] = []; // Already exists
+
+  constructor(private metroService: MetroService) {}
 
   ngOnInit(): void {
-    this.lines = (stationsData as any).lines;
+    this.lines = this.alllines;
     this.filteredLines = this.lines;
   }
 
 onSearchChange(query: string): void {
   this.searchQuery = query;
-  this.filteredStationSuggestions = this.stations
-    .filter(s => s.toLowerCase().includes(query.toLowerCase()));
+ this.filteredStationSuggestions = [...new Set(
+  this.allstations.filter(s =>
+    s.toLowerCase().includes(query.toLowerCase())
+  )
+)];
 }
 
 
@@ -47,31 +52,25 @@ onSearchChange(query: string): void {
   }
 
  getLineColor(name: string): string {
-    const colors: any = {
-      'Blue Line': '#0000ff',
-      'Yello Line': '#ffc107',
-      'Yellow Line': '#ffc107',
-      'Green Line': '#28a745',
-      'Red Line': '#dc3545',
-      'Orange Line': '#fd7e14',
-      'Pink Line': '#e83e8c'
-    };
-    return colors[name] || '#6c757d';
+    return this.metroService.getLineColor(name);
   }
 
-  filteredLineFilter(): MetroLine[] {
-     this.searchedStation = this.searchQuery.trim();
-   // Show all lines if search is empty or too short
+ filteredLineFilter(): MetroLine[] {
+  this.searchedStation = this.searchQuery.trim();
+
   if (!this.searchedStation || this.searchedStation.length < MIN_SEARCH_LENGTH) {
     return this.lines;
   }
-  // if (!this.searchQuery) return this.lines;
+
   return this.lines.filter(line =>
-    line.stations.some((station: string) =>
-      station.toLowerCase().includes(this.searchQuery.toLowerCase())
+    line.stations.some(
+      (station: any) =>
+        station.name &&
+        station.name.toLowerCase().includes(this.searchedStation.toLowerCase())
     )
   );
 }
+
 
 getFullStatus(statusCode: string): string {
   switch (statusCode) {
@@ -124,17 +123,16 @@ onStationClick(station: any): void {
   this.selectedStation = station;
 }
 
-getDirection(stations: string[], fromQuery: string, direction: 'forward' | 'backward'): string | null {
+getDirection(stations: Station[], fromQuery: string, direction: 'forward' | 'backward'): string | null {
   const index = stations.findIndex(s =>
-    s.toLowerCase().includes(fromQuery.toLowerCase())
+    s.name.toLowerCase().includes(fromQuery.toLowerCase())
   );
   if (index === -1) return null;
 
   const endStation =
-    direction === 'forward' ? stations[stations.length - 1] : stations[0];
+    direction === 'forward' ? stations[stations.length - 1].name : stations[0].name;
 
-  // ✅ Avoid repeating the same station
-  if (stations[index].toLowerCase() === endStation.toLowerCase()) {
+  if (stations[index].name.toLowerCase() === endStation.toLowerCase()) {
     return null;
   }
 
@@ -142,35 +140,21 @@ getDirection(stations: string[], fromQuery: string, direction: 'forward' | 'back
 }
 
 
-// getDirection(stations: string[], station: string, direction: 'forward' | 'backward'): string {
-//   const index = stations.indexOf(station);
-
-//   if (index === -1) return '';
-
-//   if (direction === 'forward' && index < stations.length - 1) {
-//     return stations[stations.length - 1]; // Toward last station
-//   } else if (direction === 'backward' && index > 0) {
-//     return stations[0]; // Toward first station
-//   }
-
-//   return '';
-// }
 
 // Helper to check if any station matches search
-hasMatchingStation(stations: string[]): boolean {
-  if (!this.searchedStation || this.searchedStation.length < 3) return false;
-
+hasMatchingStation(stations: any[]): boolean {
   return stations.some(st =>
-    st.toLowerCase().includes(this.searchedStation.toLowerCase())
+    st.name.toLowerCase() === this.searchedStation.toLowerCase()
   );
 }
+
 
 // Helper to get matching stations for current search
 getMatchingStations(line: any): string[] {
   if (!this.searchedStation) return [];
-  return line.stations.filter((st: string) =>
-    st.toLowerCase().includes(this.searchedStation.toLowerCase())
-  );
+  return line.stations
+    .filter((st: any) => st.name.toLowerCase() === this.searchedStation.toLowerCase())
+    .map((st: any) => st.name);
 }
 
 onStationSuggestionClick(station: string): void {
